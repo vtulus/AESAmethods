@@ -1,0 +1,62 @@
+2020-07-21: Updates from v0.65 to v0.70
+
+1a) ########Biogeochemical flows - P #####
+The following elementary flows are now taken into account:
+Phosphate, (CF = 2.81E-10)
+Poshosphorous, total, (8.61E-10)
+Poshosphorous,  (8.61E-10)
+
+Emission to Lake and River are now considered.
+In the v0.65 only Pshosphorous,  (8.61E-10) to Lake was considered
+
+1b) ########Biogeochemical flows - N #####
+The following elementary flows are now taken into account:
+Nitrate, (CF = 5.51E-9)
+Nitrogen, (CF = 2.44E-8)
+Nitrogen, total, (CF = 2.44E-8)
+
+Emission to Lake and River are now considered.
+In v0.65 only Nitrate,  (5.51E-9) to Lake/River was considered
+
+2) ############ Damage assessment (% of BII loss) ############
+At updated from 1.08 to 1.30 E+14 m2
+In 0.65 the Earth’s total Area considered was 1.08E+14 m2, according to ReCiPe2016,
+In this version the total area is consistent with IMAGE model 
+(https://models.pbl.nl/image/index.php/Download_packages)
+______________________________________________________________________________
+Mean Species Abundance (MSA) is used as a proxy of Biological Intactness Index (BII)
+“The main difference between MSA and BII is that every hectare is given equal weight in MSA, 
+whereas BII gives more weight to species rich areas.” (Alkemade et al. 2009)
+
+GWP    [kg CO2 eq]    = Global Warming Potential  
+                        (calculated using ""ReCiPe 2016 (H) midpoint"" characterization factors)
+BF_LU  [BII loss*m2a] = Biological footprint for Land Use
+BF_CC [BII loss*m2a]  = Biological footprint for Climate Change
+At        [m2yr]      = Earth’s total land (used in 1 yr) = 1.30E+14 
+MSA                   = Mean species abundance  
+                        (from 0: no species; to 1: undisturbed biodevirsity)
+(1-MSA)               = Loss of mean species aboundance  
+                        (from 0: no loss of species; to 1: complete loss of species)
+
+(Hanafiah et al. 2012) provides (1-MSA) values for diffent land types present in SimaPro.
+(1-MSA) values are used as the characterization factors to assess ""Biological footprint, LU"". 
+(1-MSA) values are applied to land use inventory flows (m2a).
+
+BF_LU is calculated as SUM[Ai*(1-MSAi)] for ""i-th"" land use types
+
+According to (Hanafiah et al. 2012), BF_CC can be calculated as follows:
+BF_CC = 0.27 * kg CO2 
+
+""In damage assessment""
+BII loss is finally calculated as:
+% BII loss = 100 x (BF_LU+GWP*0.27)/At
+
+The factor applied to GWP is calculated as 100 x (0.27/At) = 2.07692E-13
+the factor applied to BF_LU is calculated as 100 x (1/At)     = 7.69231E-13
+
+NOTE: Indicators with the prefix ""(not PBs)"" are used exclusively for the damage assessment, 
+where the final indicator is provided.
+
+3) N-flows to freshwater considers lake and river subcompartments
+4) ### Alternative approaches to address PBs, Biodiversity and Nitrogen Flow 
+are available in the supplementeray methods  of SUPERLAB ###

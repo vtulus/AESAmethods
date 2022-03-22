@@ -1,0 +1,20 @@
+2020-09-09: Updates from v0.71 to v0.72
+
+CFs for CO2 associated with land transformation are mofidied cosinstenly with 
+the IPCC recommendations and considering the ecoinvent approach in which pulse 
+CO2 emissions for Land Use Change are already ""amortized"" over the plantation lifetime.
+
+The characterization factors for CO2 fossil and CO2, land transformation, are now the same, 
+consistently with other common LCA methodologies.
+
+##### Climate change - CO2 concentration #####
+CF for ""Carbon dioxide, land transformation"" has been changed 
+from 8.97E-14 to 2.69E-11 (ppm / kg CO2)
+
+##### Climate change - Energy imbalance #####
+CF for ""Carbon dioxide, land transformation"" has been changed 
+from 1.18E-15 to 3.53E-13 (Wm-2 / kg CO2)
+
+##### Ocean acidification #####
+CF for ""Carbon dioxide, land transformation"" has been changed 
+from 2.74E-16 to 8.22E-14 (Omega Aragon / kg CO2)
