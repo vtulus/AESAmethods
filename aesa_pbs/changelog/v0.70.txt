@@ -1,4 +1,4 @@
-2020-07-21: Updates from v0.65 to v0.70
+2020-07-21: Updates from v0.6.5 to v0.7.0
 
 1a) ########Biogeochemical flows - P #####
 The following elementary flows are now taken into account:
