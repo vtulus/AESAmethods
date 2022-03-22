@@ -42,8 +42,8 @@
 #TODO add installation instructions
 
 ## References
-[Ryberg, M. W.; Owsianiak, M.; Richardson, K.; Hauschild, M. Z.](10.1016/j.ecolind.2017.12.065) developed CFs for the following categories of AESA (PBs-LCIA): "climate change", "ozone depletion", "ocean acidification", "biogeochemical flows", "land-system change" and "freshwater use".  
-[Galán-Martín, Á.; Tulus, V.; Díaz, I.; Pozo, C.; Pérez-Ramírez, J.; Guillén-Gosálbez, G.](10.1016/j.oneear.2021.04.001) developed CFs for "change in biosphere integrity, functional diversity" of AESA (PBs-LCIA)
+[Ryberg, M. W.; Owsianiak, M.; Richardson, K.; Hauschild, M. Z.](https://doi.org/10.1016/j.ecolind.2017.12.065) developed CFs for the following categories of AESA (PBs-LCIA): "climate change", "ozone depletion", "ocean acidification", "biogeochemical flows", "land-system change" and "freshwater use".  
+[Galán-Martín, Á.; Tulus, V.; Díaz, I.; Pozo, C.; Pérez-Ramírez, J.; Guillén-Gosálbez, G.](https://doi.org/10.1016/j.oneear.2021.04.001) developed CFs for "change in biosphere integrity, functional diversity" of AESA (PBs-LCIA)
 
 ## Maintainer
 - [V.Tulus](https://github.com/vtulus)
