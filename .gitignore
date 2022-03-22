@@ -1,0 +1,11 @@
+conda-env
+
+.ipynb_checkpoints
+.pylint.d
+.spyproject
+.vscode
+*.code-workspace
+__pycache__
+
+# Ignore files exported from SimaPro
+*/from_simapro
