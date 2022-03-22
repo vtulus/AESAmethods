@@ -30,11 +30,7 @@
     - functional diversity
 
 #### Changelog
-- [v0.7.0](aesa_pbs/changelog/v0.70.txt)
-- [v0.7.1](aesa_pbs/changelog/v0.71.txt)
-- [v0.7.2](aesa_pbs/changelog/v0.72.txt)
-- v0.8.0 #TODO add changes
-
+See [CHANGELOG](CHANGELOG.md)
 ## Usage
 #TODO add usage
 
