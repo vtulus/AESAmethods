@@ -1,4 +1,5 @@
 conda-env
+build
 
 .ipynb_checkpoints
 .pylint.d
@@ -6,6 +7,7 @@ conda-env
 .vscode
 *.code-workspace
 __pycache__
+*.egg-info
 
 # Ignore files exported from SimaPro
 *from_simapro
