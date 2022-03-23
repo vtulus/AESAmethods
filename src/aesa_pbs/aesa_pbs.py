@@ -5,10 +5,10 @@ from pathlib import Path
 from bw2io import ExcelLCIAImporter
 
 from .biosphere import get_biosphere_database
-from .version import version as __version__
+from .version import __version__
 
 DATA_DIR = Path(__file__).resolve().parent / "data"
-CHANGELOG = Path(__file__).resolve().parents[1] / "CHANGELOG.md"
+# CHANGELOG = Path(__file__).resolve().parents[2] / "CHANGELOG.md"
 
 
 # write_methods() does not write metadata other than "description", "unit" and "filename"
@@ -55,11 +55,11 @@ def add_aesa_pbs():
             json.dumps(
                 {
                     "overview": "",
-                    "authors": Ryberg_et_al,
-                    "doi": doi_ryberg,
-                    "current_version": "v" + ".".join(str(v) for v in __version__),
+                    "authors": RYBERG_ET_AL,
+                    "doi": DOI_RYBERG,
+                    "current_version": "v" + __version__,
                     "changelog": changelog,
-                    "implemented_by": author_implemented,
+                    "implemented_by": MAINTAINER,
                 }
             ),
             "aesa_ClimateChange_AtmosphericCO2Concentration.xlsx",
@@ -74,11 +74,11 @@ def add_aesa_pbs():
             json.dumps(
                 {
                     "overview": "",
-                    "authors": Ryberg_et_al,
-                    "doi": doi_ryberg,
-                    "current_version": "v" + ".".join(str(v) for v in __version__),
+                    "authors": RYBERG_ET_AL,
+                    "doi": DOI_RYBERG,
+                    "current_version": "v" + __version__,
                     "changelog": changelog,
-                    "implemented_by": author_implemented,
+                    "implemented_by": MAINTAINER,
                 }
             ),
             "aesa_ClimateChange_EnergyImbalance.xlsx",
@@ -89,11 +89,11 @@ def add_aesa_pbs():
             json.dumps(
                 {
                     "overview": "",
-                    "authors": Ryberg_et_al,
-                    "doi": doi_ryberg,
-                    "current_version": "v" + ".".join(str(v) for v in __version__),
+                    "authors": RYBERG_ET_AL,
+                    "doi": DOI_RYBERG,
+                    "current_version": "v" + __version__,
                     "changelog": changelog,
-                    "implemented_by": author_implemented,
+                    "implemented_by": MAINTAINER,
                 }
             ),
             "aesa_OzoneDepletion_StratosphericO3Concentration.xlsx",
@@ -104,11 +104,11 @@ def add_aesa_pbs():
             json.dumps(
                 {
                     "overview": "",
-                    "authors": Ryberg_et_al,
-                    "doi": doi_ryberg,
-                    "current_version": "v" + ".".join(str(v) for v in __version__),
+                    "authors": RYBERG_ET_AL,
+                    "doi": DOI_RYBERG,
+                    "current_version": "v" + __version__,
                     "changelog": changelog,
-                    "implemented_by": author_implemented,
+                    "implemented_by": MAINTAINER,
                 }
             ),
             "aesa_OceanAcidification_CarbontateIonConcentration.xlsx",
@@ -119,11 +119,11 @@ def add_aesa_pbs():
             json.dumps(
                 {
                     "overview": "P flow from freshwater systems into the ocean",
-                    "authors": Ryberg_et_al,
-                    "doi": doi_ryberg,
-                    "current_version": "v" + ".".join(str(v) for v in __version__),
+                    "authors": RYBERG_ET_AL,
+                    "doi": DOI_RYBERG,
+                    "current_version": "v" + __version__,
                     "changelog": changelog,
-                    "implemented_by": author_implemented,
+                    "implemented_by": MAINTAINER,
                 }
             ),
             "aesa_BiogeochemicalFlows_P.xlsx",
@@ -134,11 +134,11 @@ def add_aesa_pbs():
             json.dumps(
                 {
                     "overview": "industrial and intentional biological fixation of N",
-                    "authors": Ryberg_et_al,
-                    "doi": doi_ryberg,
-                    "current_version": "v" + ".".join(str(v) for v in __version__),
+                    "authors": RYBERG_ET_AL,
+                    "doi": DOI_RYBERG,
+                    "current_version": "v" + __version__,
                     "changelog": changelog,
-                    "implemented_by": author_implemented,
+                    "implemented_by": MAINTAINER,
                 }
             ),
             "aesa_BiogeochemicalFlows_N.xlsx",
@@ -149,11 +149,11 @@ def add_aesa_pbs():
             json.dumps(
                 {
                     "overview": "Unit: area of forested land as % of original forest cover",
-                    "authors": Ryberg_et_al,
-                    "doi": doi_ryberg,
-                    "current_version": "v" + ".".join(str(v) for v in __version__),
+                    "authors": RYBERG_ET_AL,
+                    "doi": DOI_RYBERG,
+                    "current_version": "v" + __version__,
                     "changelog": changelog,
-                    "implemented_by": author_implemented,
+                    "implemented_by": MAINTAINER,
                 }
             ),
             "aesa_LandSystemChange_Global.xlsx",
@@ -164,11 +164,11 @@ def add_aesa_pbs():
             json.dumps(
                 {
                     "overview": "Unit: Maximum amount of consumptive blue water use per year",
-                    "authors": Ryberg_et_al,
-                    "doi": doi_ryberg,
-                    "current_version": "v" + ".".join(str(v) for v in __version__),
+                    "authors": RYBERG_ET_AL,
+                    "doi": DOI_RYBERG,
+                    "current_version": "v" + __version__,
                     "changelog": changelog,
-                    "implemented_by": author_implemented,
+                    "implemented_by": MAINTAINER,
                 }
             ),
             "aesa_FreshwaterUse_Global.xlsx",
@@ -183,11 +183,11 @@ def add_aesa_pbs():
             json.dumps(
                 {
                     "overview": "Unit: % of Biosphere Intactness Index loss",
-                    "authors": Galan_et_al,
-                    "doi": doi_galan,
-                    "current_version": "v" + ".".join(str(v) for v in __version__),
+                    "authors": GALAN_ET_AL,
+                    "doi": DOI_GALAN,
+                    "current_version": "v" + __version__,
                     "changelog": changelog,
-                    "implemented_by": author_implemented,
+                    "implemented_by": MAINTAINER,
                 }
             ),
             "aesa_ChangeBiosphereIntegrity_FunctionalDiversity_Hierarchist.xlsx",
@@ -215,25 +215,26 @@ def add_aesa_pbs():
         print("")
 
 
-def get_changelog():
-    """Get changelog information from CHANGELOG.md
+# def get_changelog():
+#     """Get changelog information from CHANGELOG.md
 
-    Returns
-    -------
-    str
-        Changelog information
-    """
-    with open(CHANGELOG, "r") as f:
-        return f.read()
+#     Returns
+#     -------
+#     str
+#         Changelog information
+#     """
+#     with open(CHANGELOG, "r") as f:
+#         return f.read()
 
 
 # refs
-Ryberg_et_al = "Ryberg, M. W.; Owsianiak, M.; Richardson, K.; Hauschild, M. Z."
-Galan_et_al = "Galán-Martín, Á.; Tulus, V.; Díaz, I.; Pozo, C.; Pérez-Ramírez, J.; Guillén-Gosálbez, G."
-doi_ryberg = "https://doi.org/10.1016/j.ecolind.2017.12.065"
-doi_galan = "https://doi.org/10.1016/j.oneear.2021.04.001"
-author_implemented = "Tulus, V."
-changelog = get_changelog()
+RYBERG_ET_AL = "Ryberg, M. W.; Owsianiak, M.; Richardson, K.; Hauschild, M. Z."
+GALAN_ET_AL = "Galán-Martín, Á.; Tulus, V.; Díaz, I.; Pozo, C.; Pérez-Ramírez, J.; Guillén-Gosálbez, G."
+DOI_RYBERG = "https://doi.org/10.1016/j.ecolind.2017.12.065"
+DOI_GALAN = "https://doi.org/10.1016/j.oneear.2021.04.001"
+MAINTAINER = "Tulus, V."
+# changelog = get_changelog()
+changelog = "Find changelog here: https://github.com/vtulus/AESAmethods/blob/master/CHANGELOG.md"
 
 
 def drop_empty_lines(data):
