@@ -217,7 +217,8 @@ def add_aesa_pbs(verbose=True):
 
         # write method
         method.write_methods(overwrite=True, verbose=verbose)
-        print("")
+        if verbose:
+            print("")
 
 
 # def get_changelog():
