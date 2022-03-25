@@ -37,7 +37,7 @@ def add_aesa_pbs(verbose=True):
     Parameters
     ----------
     verbose : bool, optional
-        Print performed operations, by default True
+        Display applied strategies, by default True
     """
     get_biosphere_database()
 
@@ -200,8 +200,7 @@ def add_aesa_pbs(verbose=True):
     }
 
     for cat in categories:
-        if verbose:
-            print(f"Adding {cat[0]}")
+        print(f"Adding {cat[0]}")
         method = ExcelLCIAImporter(
             filepath=DATA_DIR / cat[-1],
             name=cat[0],
