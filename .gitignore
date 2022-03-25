@@ -8,6 +8,7 @@ build
 *.code-workspace
 __pycache__
 *.egg-info
+~$*
 
 # Ignore files exported from SimaPro
 *from_simapro
