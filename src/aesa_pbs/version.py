@@ -1,1 +1,1 @@
-__version__ = "0.8.1.premise"
+__version__ = "0.8.1premise"
