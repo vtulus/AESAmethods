@@ -1,5 +1,5 @@
 import json
-import os
+
 from pathlib import Path
 
 from bw2io import ExcelLCIAImporter
@@ -14,7 +14,7 @@ DATA_DIR = Path(__file__).resolve().parent / "data"
 # write_methods() does not write metadata other than "description", "unit" and "filename"
 # store everything in the description using json.dumps()
 # later can be retrieved with json.loads()
-def add_aesa_pbs():
+def add_aesa_pbs(verbose=True):
     """Add AESA (PBs-LCIA) method to a bw project.
     Included categories are:
     - climate change
@@ -33,6 +33,11 @@ def add_aesa_pbs():
         - global
     - change in biosphere integrity
         - functional diversity
+
+    Parameters
+    ----------
+    verbose : bool, optional
+        Print performed operations, by default True
     """
     get_biosphere_database()
 
@@ -195,7 +200,8 @@ def add_aesa_pbs():
     }
 
     for cat in categories:
-        print(f"Adding {cat[0]}")
+        if verbose:
+            print(f"Adding {cat[0]}")
         method = ExcelLCIAImporter(
             filepath=DATA_DIR / cat[-1],
             name=cat[0],
@@ -205,13 +211,13 @@ def add_aesa_pbs():
         )
 
         # apply strategies
-        method.apply_strategies(method.strategies + [drop_empty_lines])
+        method.apply_strategies(method.strategies + [drop_empty_lines], verbose=verbose)
 
         # confirm that everything is correctly linked
         assert len(list(method.unlinked)) == 0
 
         # write method
-        method.write_methods(overwrite=True, verbose=True)
+        method.write_methods(overwrite=True, verbose=verbose)
         print("")
 
 
