@@ -1,5 +1,4 @@
 import json
-
 from pathlib import Path
 
 from bw2io import ExcelLCIAImporter
