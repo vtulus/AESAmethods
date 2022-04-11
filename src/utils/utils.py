@@ -1,7 +1,50 @@
-__all__ = ["progressbar"]
-
 import sys
 from datetime import datetime
+import pandas as pd
+
+
+def solve_lca(activities: list, methods: list) -> pd.DataFrame:
+    """Perform LCA calculation given a list of activities and LCIA methods.
+
+    Parameters
+    ----------
+    activities : list
+        List of Brightway activities
+    methods : list
+        List of Brightway LCIA methods
+
+    Returns
+    -------
+    pd.DataFrame
+        LCA results for all activities with all methods
+    """
+
+    results = []
+    for act in activities:
+        lca = bw.LCA({act: 1})
+        lca.lci()
+        for method in methods:
+            lca.switch_method(method)
+            lca.lcia()
+            results.append(
+                (
+                    act["name"],
+                    act["location"],
+                    " - ".join([method[1], method[2]]),
+                    lca.score,
+                    bw.methods.get(method).get("unit"),
+                )
+            )
+    to_return = pd.DataFrame(
+        results, columns=["Name", "Location", "Method", "Score", "Unit"]
+    )
+    to_return = pd.pivot_table(
+        to_return,
+        index=["Name", "Location"],
+        columns=["Method", "Unit"],
+        values="Score",
+    )
+    return to_return
 
 
 def progressbar(itobj: list, **kwargs):
@@ -87,4 +130,4 @@ def progressbar(itobj: list, **kwargs):
     file.flush()
 
     end_time = datetime.now()
-    print('Duration: {}'.format(end_time - start_time))
+    print("Duration: {}".format(end_time - start_time))
