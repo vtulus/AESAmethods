@@ -3,6 +3,7 @@ __all__ = ["progressbar"]
 import sys
 from datetime import datetime
 
+
 def progressbar(itobj: list, **kwargs):
     """Generate a progress bar.
     Progress bar adapted from https://stackoverflow.com/a/34482761/14485040
