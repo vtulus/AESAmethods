@@ -41,7 +41,7 @@ def add_aesa_pbs(verbose=True):
     get_biosphere_database()
 
     # In categories:
-    # name: (method, categories)
+    # name: (method, version, categories)
     # unit: unit
     # description:
     # {overview: "overview text",
@@ -54,7 +54,12 @@ def add_aesa_pbs(verbose=True):
 
     categories = {
         (
-            ("AESA (PBs-LCIA)", "climate change", "atmospheric CO2 concentration"),
+            (
+                "AESA (PBs-LCIA)",
+                str(__version__),
+                "climate change",
+                "atmospheric CO2 concentration",
+            ),
             "ppm",
             json.dumps(
                 {
@@ -71,6 +76,7 @@ def add_aesa_pbs(verbose=True):
         (
             (
                 "AESA (PBs-LCIA)",
+                str(__version__),
                 "climate change",
                 "energy imbalance at top-of-atmosphere",
             ),
@@ -88,7 +94,12 @@ def add_aesa_pbs(verbose=True):
             "aesa_ClimateChange_EnergyImbalance.xlsx",
         ),
         (
-            ("AESA (PBs-LCIA)", "ozone depletion", "stratospheric O3 concentration"),
+            (
+                "AESA (PBs-LCIA)",
+                str(__version__),
+                "ozone depletion",
+                "stratospheric O3 concentration",
+            ),
             "Dobson unit",
             json.dumps(
                 {
@@ -103,7 +114,12 @@ def add_aesa_pbs(verbose=True):
             "aesa_OzoneDepletion_StratosphericO3Concentration.xlsx",
         ),
         (
-            ("AESA (PBs-LCIA)", "ocean acidification", "carbonate ion concentration"),
+            (
+                "AESA (PBs-LCIA)",
+                str(__version__),
+                "ocean acidification",
+                "carbonate ion concentration",
+            ),
             "omega aragonite",
             json.dumps(
                 {
@@ -118,7 +134,7 @@ def add_aesa_pbs(verbose=True):
             "aesa_OceanAcidification_CarbontateIonConcentration.xlsx",
         ),
         (
-            ("AESA (PBs-LCIA)", "biogeochemical flows", "phosphorus"),
+            ("AESA (PBs-LCIA)", str(__version__), "biogeochemical flows", "phosphorus"),
             "Tg P",
             json.dumps(
                 {
@@ -133,7 +149,7 @@ def add_aesa_pbs(verbose=True):
             "aesa_BiogeochemicalFlows_P.xlsx",
         ),
         (
-            ("AESA (PBs-LCIA)", "biogeochemical flows", "nitrogen"),
+            ("AESA (PBs-LCIA)", str(__version__), "biogeochemical flows", "nitrogen"),
             "Tg N",
             json.dumps(
                 {
@@ -148,7 +164,7 @@ def add_aesa_pbs(verbose=True):
             "aesa_BiogeochemicalFlows_N.xlsx",
         ),
         (
-            ("AESA (PBs-LCIA)", "land-system change", "global"),
+            ("AESA (PBs-LCIA)", str(__version__), "land-system change", "global"),
             "% forested land",
             json.dumps(
                 {
@@ -163,7 +179,7 @@ def add_aesa_pbs(verbose=True):
             "aesa_LandSystemChange_Global.xlsx",
         ),
         (
-            ("AESA (PBs-LCIA)", "freshwater use", "global"),
+            ("AESA (PBs-LCIA)", str(__version__), "freshwater use", "global"),
             "km3",
             json.dumps(
                 {
@@ -180,6 +196,7 @@ def add_aesa_pbs(verbose=True):
         (
             (
                 "AESA (PBs-LCIA)",
+                str(__version__),
                 "change in biosphere integrity",
                 "functional diversity",
             ),

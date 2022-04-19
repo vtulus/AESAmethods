@@ -32,7 +32,9 @@ def solve_lca(activities: list, methods: list) -> pd.DataFrame:
                 (
                     act["name"],
                     act["location"],
-                    " - ".join([method[1], method[2]]),
+                    " - ".join(
+                        [method[2], method[3]]
+                    ),  # method[0] - method name, method[1] - method version
                     lca.score,
                     bw.methods.get(method).get("unit"),
                 )
