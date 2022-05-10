@@ -5,3 +5,4 @@
 - [x] add \_\_version__ to methods' names, this will allow to install multiple versions
 - [ ] add use instructions in readme
 - [ ] add installation instructions in readme
+- [ ] add to the CHANGELOG the information about N2O in ozone depletion category (first appeared in Algunaibet et al. 2019)
