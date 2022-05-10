@@ -6,3 +6,4 @@
 - [ ] add use instructions in readme
 - [ ] add installation instructions in readme
 - [ ] add to the CHANGELOG the information about N2O in ozone depletion category (first appeared in Algunaibet et al. 2019)
+- [ ] split CBI category in 2 stressors:land occupation and GWP
