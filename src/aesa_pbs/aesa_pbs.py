@@ -199,6 +199,7 @@ def add_aesa_pbs(verbose=True):
                 str(__version__),
                 "change in biosphere integrity",
                 "functional diversity",
+                "total"
             ),
             "% BII loss",
             json.dumps(
@@ -212,6 +213,48 @@ def add_aesa_pbs(verbose=True):
                 }
             ),
             "aesa_ChangeBiosphereIntegrity_FunctionalDiversity_Hierarchist.xlsx",
+        ),
+        (
+            (
+                "AESA (PBs-LCIA)",
+                str(__version__),
+                "change in biosphere integrity",
+                "functional diversity",
+                "direct land use"
+            ),
+            "% BII loss",
+            json.dumps(
+                {
+                    "overview": "Unit: % of Biosphere Intactness Index loss",
+                    "authors": GALAN_ET_AL,
+                    "doi": DOI_GALAN,
+                    "current_version": "v" + __version__,
+                    "changelog": changelog,
+                    "implemented_by": MAINTAINER,
+                }
+            ),
+            "aesa_ChangeBiosphereIntegrity_FunctionalDiversity_Hierarchist_land_use.xlsx",
+        ),
+        (
+            (
+                "AESA (PBs-LCIA)",
+                str(__version__),
+                "change in biosphere integrity",
+                "functional diversity",
+                "CO2eq emissions"
+            ),
+            "% BII loss",
+            json.dumps(
+                {
+                    "overview": "Unit: % of Biosphere Intactness Index loss",
+                    "authors": GALAN_ET_AL,
+                    "doi": DOI_GALAN,
+                    "current_version": "v" + __version__,
+                    "changelog": changelog,
+                    "implemented_by": MAINTAINER,
+                }
+            ),
+            "aesa_ChangeBiosphereIntegrity_FunctionalDiversity_Hierarchist_CO2eq_emissions.xlsx",
         ),
     }
 
