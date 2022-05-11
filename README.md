@@ -42,7 +42,7 @@ import aesa_pbs
 aesa_pbs.__version__ # optionally check current version
 
 # open an existing bw project or create a new one
-bw.projects.set_current("<YOURPROJECT NAME>")
+bw.projects.set_current("<YOUR-PROJECT-NAME>")
 
 # install AESA PBs methods
 aesa_pbs.add_aesa_pbs(verbose=True)
