@@ -32,10 +32,33 @@
 #### Changelog
 See [CHANGELOG](CHANGELOG.md)
 ## Usage
-#TODO add usage
+```python
+import brightway2 as bw
+import aesa_pbs
+
+aesa_pbs.__version__ # optionally check current version
+
+# open an existing bw project or create a new one
+bw.projects.set_current("<YOURPROJECT NAME>")
+
+# install AESA PBs methods
+aesa_pbs.add_aesa_pbs(verbose=True)
+# (optionally set `verbose=False` to avoid seeing the applied strategies)
+```
 
 ## Installation
-#TODO add installation instructions
+Currently this package can be only installed locally.  
+To do so one option can be:
+
+1. Download zip file of the package
+2. Un-zip to a folder on your machine
+3. Open CLI:
+
+```bash
+# in the activated environment
+cd <PATH TO PACKAGE FOLDER>
+pip install . --use-feature=in-tree-build
+```
 
 ## References
 [Ryberg, M. W.; Owsianiak, M.; Richardson, K.; Hauschild, M. Z.](https://doi.org/10.1016/j.ecolind.2017.12.065) developed CFs for the following categories of AESA (PBs-LCIA): "climate change", "ozone depletion", "ocean acidification", "biogeochemical flows", "land-system change" and "freshwater use".  
