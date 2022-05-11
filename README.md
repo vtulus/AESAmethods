@@ -28,6 +28,9 @@
     - global
   - change in biosphere integrity
     - functional diversity
+      - total
+      - direct land use
+      - CO2eq emissions
 
 #### Changelog
 See [CHANGELOG](CHANGELOG.md)
