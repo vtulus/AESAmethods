@@ -32,6 +32,9 @@ def add_aesa_pbs(verbose=True):
         - global
     - change in biosphere integrity
         - functional diversity
+            - total
+            - direct land use
+            - CO2eq emissions
 
     Parameters
     ----------
