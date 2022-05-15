@@ -26,6 +26,8 @@ def add_aesa_pbs(verbose=True):
     - biogeochemical flows
         - phosphorus
         - nitrogen
+            - inverse modelling, surface water
+            - directly fixated
     - land-system change
         - global
     - freshwater use
@@ -152,7 +154,7 @@ def add_aesa_pbs(verbose=True):
             "aesa_BiogeochemicalFlows_P.xlsx",
         ),
         (
-            ("AESA (PBs-LCIA)", str(__version__), "biogeochemical flows", "nitrogen"),
+            ("AESA (PBs-LCIA)", str(__version__), "biogeochemical flows", "nitrogen", "inverse modelling, surface water"),
             "Tg N",
             json.dumps(
                 {
@@ -164,7 +166,22 @@ def add_aesa_pbs(verbose=True):
                     "implemented_by": MAINTAINER,
                 }
             ),
-            "aesa_BiogeochemicalFlows_N.xlsx",
+            "aesa_BiogeochemicalFlows_N_inverseModelling_surfaceWater.xlsx",
+        ),
+        (
+            ("AESA (PBs-LCIA)", str(__version__), "biogeochemical flows", "nitrogen", "directly fixated"),
+            "Tg N",
+            json.dumps(
+                {
+                    "overview": "direct quantification of industrial and intentional biological fixation of N fertilizer",
+                    "authors": MAINTAINER,
+                    "doi": None,
+                    "current_version": "v" + __version__,
+                    "changelog": changelog,
+                    "implemented_by": MAINTAINER,
+                }
+            ),
+            "aesa_BiogeochemicalFlows_N_directlyFixated.xlsx",
         ),
         (
             ("AESA (PBs-LCIA)", str(__version__), "land-system change", "global"),
