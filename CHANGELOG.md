@@ -43,8 +43,8 @@ Updates from v0.6.5
 ### **Biogeochemical flows - P**  
 The following elementary flows are now taken into account:
 - Phosphate, (CF = 2.81E-10) 
-- Poshosphorous, total, (8.61E-10)
-- Poshosphorous,  (8.61E-10)
+- Phosphorous, total, (8.61E-10)
+- Phosphorous,  (8.61E-10)
   
 > Emission to Lake and River are now considered.  
 > In the v0.65 only Phosphorous,  (8.61E-10) to Lake was considered.
