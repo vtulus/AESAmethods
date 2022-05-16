@@ -1,7 +1,10 @@
+import functools
 import json
 from pathlib import Path
 
-from bw2io import ExcelLCIAImporter
+import brightway2 as bw
+from bw2io import ExcelLCIAImporter, strategies
+from prettytable import PrettyTable
 
 from .biosphere import get_biosphere_database
 from .version import __version__
@@ -26,6 +29,8 @@ def add_aesa_pbs(verbose=True):
     - biogeochemical flows
         - phosphorus
         - nitrogen
+            - inverse modelling, surface water
+            - directly fixated
     - land-system change
         - global
     - freshwater use
@@ -152,7 +157,13 @@ def add_aesa_pbs(verbose=True):
             "aesa_BiogeochemicalFlows_P.xlsx",
         ),
         (
-            ("AESA (PBs-LCIA)", str(__version__), "biogeochemical flows", "nitrogen"),
+            (
+                "AESA (PBs-LCIA)",
+                str(__version__),
+                "biogeochemical flows",
+                "nitrogen",
+                "inverse modelling, surface water",
+            ),
             "Tg N",
             json.dumps(
                 {
@@ -164,7 +175,28 @@ def add_aesa_pbs(verbose=True):
                     "implemented_by": MAINTAINER,
                 }
             ),
-            "aesa_BiogeochemicalFlows_N.xlsx",
+            "aesa_BiogeochemicalFlows_N_inverseModelling_surfaceWater.xlsx",
+        ),
+        (
+            (
+                "AESA (PBs-LCIA)",
+                str(__version__),
+                "biogeochemical flows",
+                "nitrogen",
+                "directly fixated",
+            ),
+            "Tg N",
+            json.dumps(
+                {
+                    "overview": "direct quantification of industrial and intentional biological fixation of N fertilizer",
+                    "authors": MAINTAINER,
+                    "doi": None,
+                    "current_version": "v" + __version__,
+                    "changelog": changelog,
+                    "implemented_by": MAINTAINER,
+                }
+            ),
+            "aesa_BiogeochemicalFlows_N_directlyFixated.xlsx",
         ),
         (
             ("AESA (PBs-LCIA)", str(__version__), "land-system change", "global"),
@@ -202,7 +234,7 @@ def add_aesa_pbs(verbose=True):
                 str(__version__),
                 "change in biosphere integrity",
                 "functional diversity",
-                "total"
+                "total",
             ),
             "% BII loss",
             json.dumps(
@@ -223,7 +255,7 @@ def add_aesa_pbs(verbose=True):
                 str(__version__),
                 "change in biosphere integrity",
                 "functional diversity",
-                "direct land use"
+                "direct land use",
             ),
             "% BII loss",
             json.dumps(
@@ -244,7 +276,7 @@ def add_aesa_pbs(verbose=True):
                 str(__version__),
                 "change in biosphere integrity",
                 "functional diversity",
-                "CO2eq emissions"
+                "CO2eq emissions",
             ),
             "% BII loss",
             json.dumps(
@@ -271,11 +303,52 @@ def add_aesa_pbs(verbose=True):
             filename=cat[-1],
         )
 
-        # apply strategies
-        method.apply_strategies(method.strategies + [drop_empty_lines], verbose=verbose)
+        # flows of the method for directly fixated nitrogen may not be linked
+        # because of the missing database `A_technosphere_flows`
+        if all(
+            map(
+                lambda item: item in str(cat[0]).lower(),
+                ["nitrogen", "directly fixated"],
+            )
+        ):
+            if "A_technosphere_flows" not in bw.databases:
+                # throw a warning and install the missing database
+                warning_directly_fixated_n()
+                # write new database
+                bw.Database("A_technosphere_flows").write(
+                    {
+                        ("A_technosphere_flows", "n-fert"): {  # (db name, code)
+                            "name": "nitrogen fertilizer",
+                            "unit": "kilogram",
+                            "type": "inventory flow",
+                            "categories": ("inventory",),
+                        }
+                    }
+                )
+            # apply strategies
+            method.apply_strategies(
+                method.strategies
+                + [
+                    drop_empty_lines,
+                    functools.partial(
+                        strategies.link_iterable_by_fields,
+                        other=bw.Database("A_technosphere_flows"),
+                        kind="biosphere",
+                        fields=("name", "categories"),
+                    ),
+                ],
+                verbose=verbose,
+            )
+        else:
+            # apply strategies
+            method.apply_strategies(
+                method.strategies + [drop_empty_lines], verbose=verbose
+            )
 
         # confirm that everything is correctly linked
-        assert len(list(method.unlinked)) == 0
+        assert (
+            len(list(method.unlinked)) == 0
+        ), f"{cat[0]} method contains unlinked flows. Method could not be installed."
 
         # write method
         method.write_methods(overwrite=True, verbose=verbose)
@@ -313,3 +386,27 @@ def drop_empty_lines(data):
     for method in data:
         method["exchanges"] = [obj for obj in method["exchanges"] if obj["name"]]
     return data
+
+
+def warning_directly_fixated_n() -> None:
+    """Printing a warning regarding a missing database.
+    """
+    t = PrettyTable(["Warning"])
+    t.add_row(
+        [
+            "The method for quantification of directly fixated nitrogen\n"
+            "requires an additional database `A_technosphere_flows`.\n"
+            "This database was not found in the current project.\n"
+            "It will be generated now.\n"
+            # "No further actions needed."
+            "\nNext steps:\n"
+            "1. Use `get_nitrogenous_fertilizers()` to filter activities\n"
+            "\tproducing nitrogenous fertilizers in a specific background database.\n"
+            "2. Use `update_nitrogen_fertilizer_exchanges()` to modify those activities.\n\n"
+            "Optionally, \n"
+            "modified activities can be cleaned with `remove_nitrogen_fertilizer_exchanges()`."
+        ]
+    )
+    # align text to the left
+    t.align = "l"
+    print(t)
