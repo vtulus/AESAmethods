@@ -81,7 +81,7 @@ def update_nitrogen_fertilizer_exchanges(activities: list, show_updated=True) ->
 def remove_nitrogen_fertilizer_exchanges(activities: list, show_cleaned=True) -> None:
     """Delete exchanges for 'nitrogen fertilizer' from `activities`.
 
-    Does not return anything, but modified `activities` inplace.
+    Does not return anything, but modifies `activities` inplace.
 
     Parameters
     ----------
