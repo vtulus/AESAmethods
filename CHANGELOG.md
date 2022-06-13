@@ -1,8 +1,56 @@
 # Changelog
-(NOTE: Changelog for versions < 0.8.0 refers to the implementation of the method in SimaPro)
+## 0.8.8 (2022-06-13)
+- Add notebooks with use examples
+- ---
+- Sync `premise`-based branch with this version (v0.8.8+premise)
+
+## 0.8.7 (2022-05-16)
+- Add usage and installation instructions to README
+- Add **method for quantification of direct N fixation**
+---
+- Sync `premise`-based branch with this version (v0.8.7+premise)
+
+## 0.8.6 (2022-05-11)
+- Split **CBI method** into 3 subcategories:
+   - total
+   - direct land use
+   - CO2eq emissions
+---
+- Sync `premise`-based branch with this version (v0.8.6+premise) 
+
+## 0.8.5 (2022-04-19)
+- Add `__version__` to method name
+- Correct `solve_lca()`
+
+## 0.8.4 (2022-04-13)
+- Add "Occupation, lake, artificial" (land) CF to **CBI method** (CF =  7.69231E-13)
+
+## 0.8.3 (2022-04-13)
+Change/Add CFs of **FWU method**:
+- Add "Water, unspecified natural origin" (fossil well and in ground) (CF = 1E-9)
+- Add "Water, cooling, unspecified natural origin" (CF = 1E-9)
+- Add "Water, turbine use, unspecified natural origin" (CF = -1E-9)
+- Add "Water" (fossil well and ground- long-term) (CF = 1E-9)
+
+## 0.8.2 (2022-04-11)
+- Add `checkPBsmethod.ipynb` to `notebooks\test` folder
+- Add `utils.py`
+- Add strategies to generate "subcategories" for **CBI method**
+- Add strategy `add_subcategory_methane_air` for **CBI method**
+---
+- Add branch for `premise`-based version of the AESA methods
+  - Add CFs for specific CO2 flows to account for NETs, see e44988eeba336
+
+## 0.8.1 (2022-03-25)
+- Move notebooks to `notebooks\dev` folder
+- Move source code to `src` folder
+- Add package setup files
+- Add option to suppress output of `aesa_pbs.add_aesa_pbs()`
 
 ## 0.8.0 (2022-03-22)
 AESA (PBs-LCIA) method converted to Brightway-readable format.
+
+> **NOTE**: Changelog for versions `<0.8.0` refers to the implementation of the method in SimaPro
 
 ## 0.7.2 (2020-09-09)
 CFs for CO2 associated with land transformation are modified consistently with the IPCC recommendations and considering the ecoinvent approach, in which pulse CO2 emissions for Land Use Change are already "amortized" over the plantation lifetime.
@@ -94,3 +142,9 @@ The factor applied to `BF_LU` is calculated as `100 x (1/At) = 7.69231E-13`
 ### **N-flows to freshwater considers lake and river sub-compartments**
 ### **Alternative approaches to address PBs, Biodiversity and Nitrogen Flow**
 Are available in the supplementary methods of SUPERLAB project
+
+## < 0.6.5 (2019)
+Add CF for N2O (dinitrogen monoxide) in **Ozone depletion PB**.  
+From [Algunaibet et al. 2019](https://doi.org/10.1039/c8ee03423k): 
+> "Although the existing method to compute PBs does not assign a characterization factor that quantifies the N2O impact on the stratospheric ozone depletion PB, N2O emissions do exert a noticeable pressure on the ozone layer. Therefore, we here expand the existing method developed by Ryberg et al. by designing a characterization factor that quantifies the impact of N2O emissions on the stratospheric ozone depletion PB. In essence, we first convert the N2O emissions to CFC-11 equivalent (i.e., 0.018 kg of CFC-11 equivalent per kg of N2O) and then apply the characterization factor that links CFC-11 to the stratospheric ozone depletion PB available in the existing framework."
+- dinitrogen monoxide (air, all subcategories) (CF = 1.41E-10)
