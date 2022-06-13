@@ -22,6 +22,8 @@
   - biogeochemical flows
     - phosphorus
     - nitrogen
+      - inverse modelling, surface water
+      - directly fixated
   - land-system change
     - global
   - freshwater use
@@ -47,7 +49,15 @@ bw.projects.set_current("<YOUR-PROJECT-NAME>")
 # install AESA PBs methods
 aesa_pbs.add_aesa_pbs(verbose=True)
 # (optionally set `verbose=False` to avoid seeing the applied strategies)
+
+# adapt a database for quantification of directly fixated nitrogen
+# 1. retrieve list of nitrogenous fertilizers from "<DATABASE-NAME>"
+nflow_activities = aesa_pbs.get_nitrogenous_fertilizers("<DATABASE-NAME>")
+
+# 2. create exchanges for 'nitrogen fertilizer' in `activities` if they don't exist already.
+aesa_pbs.update_nitrogen_fertilizer_exchanges(nflow_activities, show_updated=True)
 ```
+See [example](notebooks/examples/how-to-use-aesa-methods.ipynb) for more detailed explanation of the usage.
 
 ## Installation
 Currently this package can be only installed locally.  
