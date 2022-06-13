@@ -400,11 +400,11 @@ def warning_directly_fixated_n() -> None:
             "It will be generated now.\n"
             # "No further actions needed."
             "\nNext steps:\n"
-            "1. Use `get_nitrogenous_fertilizers()` to filter activities\n"
+            "1. Use `aesa_pbs.get_nitrogenous_fertilizers()` to filter activities\n"
             "\tproducing nitrogenous fertilizers in a specific background database.\n"
-            "2. Use `update_nitrogen_fertilizer_exchanges()` to modify those activities.\n\n"
+            "2. Use `aesa_pbs.update_nitrogen_fertilizer_exchanges()` to modify those activities.\n\n"
             "Optionally, \n"
-            "modified activities can be cleaned with `remove_nitrogen_fertilizer_exchanges()`."
+            "modified activities can be cleaned with `aesa_pbs.remove_nitrogen_fertilizer_exchanges()`."
         ]
     )
     # align text to the left
