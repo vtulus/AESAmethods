@@ -1,1 +1,1 @@
-__version__ = "0.8.7.dev+premise.aesa"
+__version__ = "0.8.8.dev+premise.aesa"
