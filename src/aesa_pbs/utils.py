@@ -9,16 +9,16 @@ DATA_DIR = Path(__file__).resolve().parent / "data"
 
 
 class DataConverter:
-    """Class to convert data from/to *.xlsx or *.yaml formats.
+    """Class to convert data from/to `*.xlsx` or `*.yaml` formats.
 
     Class reads characterization factors (CFs) data from
     an xlsx or yaml file into a `pandas.DataFrame` and
     contains methods to write it to an xlsx or yaml file.
 
     Parameters
-        ----------
-        filepath : Path
-            Path to a file for conversion
+    ----------
+    filepath : Path
+        Path to a file for conversion
     """
 
     def __init__(self, filepath: Path) -> None:
@@ -31,7 +31,6 @@ class DataConverter:
         elif self.file_suffix == ".yaml":
             self.data = self.from_yaml()
 
-    # TODO: check for duplicates (drop duplicates)
     def from_excel(self) -> pd.DataFrame:
         """Read an excel file with 'name', 'categories' and 'amount' columns.
 
@@ -54,6 +53,7 @@ class DataConverter:
             )
         else:
             data_clean = data
+        data_clean = data_clean.drop_duplicates(keep="first", ignore_index=True)
         return data_clean
 
     def from_yaml(self) -> pd.DataFrame:
@@ -77,6 +77,7 @@ class DataConverter:
             )
         else:
             data_clean = data
+        data_clean = data_clean.drop_duplicates(keep="first", ignore_index=True)
         return data_clean
 
     def to_yaml(self, filename: str = None, verbose=True) -> None:
@@ -123,9 +124,9 @@ class DataConverter:
 
         output_file_path = Path(str(DATA_DIR) + f"/{filename}.xlsx")
 
-        with pd.ExcelWriter( # pylint: disable=abstract-class-instantiated
+        with pd.ExcelWriter(  # pylint: disable=abstract-class-instantiated
             output_file_path, mode="w", engine="openpyxl"
-        ) as writer:  
+        ) as writer:
             self.data.to_excel(writer, index=False)
         if verbose:
             print(f"File created in {output_file_path}")
