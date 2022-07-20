@@ -1,1 +1,1 @@
-__version__ = "0.8.8+xlsxtoyaml1"
+__version__ = "0.8.8+xlsxtoyaml.4"
