@@ -1,11 +1,29 @@
+import tempfile
 import warnings
 from pathlib import Path
 
 import pandas as pd
 import yaml
 
-DATA_EXCELS = Path(__file__).resolve().parent / "data_excels"
 DATA_DIR = Path(__file__).resolve().parent / "data"
+DATA_EXCELS = Path(DATA_DIR).resolve() / "excels"
+
+
+class DumperBlankLine(yaml.SafeDumper):
+    """HACK: insert blank lines between top-level objects.
+
+    inspired by https://github.com/yaml/pyyaml/issues/127#issuecomment-525800484
+    """
+
+    def write_line_break(self, data=None):
+        super().write_line_break(data)
+
+        if len(self.indents) == 1:
+            super().write_line_break()
+
+
+class DirectoryDoesNotExist(OSError):
+    "Raised when directory path doesn't exist."
 
 
 class DataConverter:
@@ -17,13 +35,14 @@ class DataConverter:
 
     Parameters
     ----------
-    filepath : Path
-        Path to a file for conversion
+    filepath : str
+        Absolute path to a file for conversion
     """
 
-    def __init__(self, filepath: Path) -> None:
+    def __init__(self, filepath: str) -> None:
         """Initialize an instance of a DataConverter"""
-        self.filepath = check_filepath(filepath)
+        if file_exists(filepath):
+            self.filepath = Path(filepath)
         self.file_suffix = self.filepath.suffix
 
         if self.file_suffix == ".xlsx":
@@ -32,7 +51,7 @@ class DataConverter:
             self.data = self.from_yaml()
 
     def from_excel(self) -> pd.DataFrame:
-        """Read an excel file with 'name', 'categories' and 'amount' columns.
+        """Read an xlsx file with 'name', 'categories' and 'amount' columns.
 
         Returns
         -------
@@ -80,21 +99,23 @@ class DataConverter:
         data_clean = data_clean.drop_duplicates(keep="first", ignore_index=True)
         return data_clean
 
-    def to_yaml(self, filename: str = None, verbose=True) -> None:
+    def to_yaml(self, outfilepath: str = None, verbose=True) -> None:
         """Write data to yaml file.
 
         Parameters
         ----------
-        filename : str, optional
-            File name without extension. If None is provided, uses input file name.
+        outfilepath : str, optional
+            Absolute file path. If None is provided, uses input file name and default directory.
         verbose : bool, optional
             Print completion message, by default True
         """
         data_dict = self.data.to_dict(orient="records")
-        if not filename:
+        if not outfilepath:
             filename = self.filepath.stem
+            outfilepath = str(DATA_DIR) + f"/{filename}.yaml"
 
-        output_file_path = Path(str(DATA_DIR) + f"/{filename}.yaml")
+        if parent_dir_exists(outfilepath):
+            output_file_path = Path(outfilepath)
 
         with open(output_file_path, "w") as file:
             yaml.dump(
@@ -109,20 +130,22 @@ class DataConverter:
         if verbose:
             print(f"File created in {output_file_path}")
 
-    def to_excel(self, filename: str = None, verbose=True) -> None:
-        """_summary_
+    def to_excel(self, outfilepath: str = None, verbose=True) -> None:
+        """Write data to xlsx file.
 
         Parameters
         ----------
-        filename : str, optional
-            File name without extension. If None is provided, uses input file name.
+        outfilepath : str, optional
+            Absolute file path. If None is provided, uses input file name and default directory.
         verbose : bool, optional
             Print completion message, by default True
         """
-        if not filename:
+        if not outfilepath:
             filename = self.filepath.stem
+            outfilepath = str(DATA_EXCELS) + f"/{filename}.xlsx"
 
-        output_file_path = Path(str(DATA_DIR) + f"/{filename}.xlsx")
+        if parent_dir_exists(outfilepath):
+            output_file_path = Path(outfilepath)
 
         with pd.ExcelWriter(  # pylint: disable=abstract-class-instantiated
             output_file_path, mode="w", engine="openpyxl"
@@ -132,22 +155,24 @@ class DataConverter:
             print(f"File created in {output_file_path}")
 
 
-class DumperBlankLine(yaml.SafeDumper):
-    """HACK: insert blank lines between top-level objects.
-
-    inspired by https://github.com/yaml/pyyaml/issues/127#issuecomment-525800484
-    """
-
-    def write_line_break(self, data=None):
-        super().write_line_break(data)
-
-        if len(self.indents) == 1:
-            super().write_line_break()
-
-
-def check_filepath(filepath: Path) -> Path:
+def file_exists(filepath: str) -> bool:
     "Check if file exists in passed filepath."
-
     if not Path(filepath).is_file():
         raise FileNotFoundError(f"{filepath} does not exist.")
-    return filepath
+    return True
+
+
+def parent_dir_exists(filepath: str) -> bool:
+    """Check if parent directory of the passed filepath exists.
+
+    inspired by https://stackoverflow.com/a/34102855/14485040
+    """
+    dirname = Path(filepath).resolve().parent
+    try:
+        with tempfile.TemporaryFile(dir=dirname):
+            pass
+        return True
+    except EnvironmentError as exc:
+        raise DirectoryDoesNotExist(
+            f"{dirname} does not exist. Must provide a path to an existing directory."
+        ) from exc
