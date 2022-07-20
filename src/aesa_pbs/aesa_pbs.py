@@ -1,5 +1,6 @@
 import functools
 import json
+from pathlib import Path
 
 import brightway2 as bw
 from bw2io import ExcelLCIAImporter, strategies
@@ -291,7 +292,9 @@ def add_aesa_pbs(verbose=True):
     }
 
     for cat in categories:
-        generate_excel_from_yaml(filepath=DATA_DIR / cat[-1])
+        generate_excel_from_yaml(
+            filepath=Path(str(DATA_DIR) + f"/{cat[-1]}").with_suffix(".yaml")
+        )
 
     for cat in categories:
         print(f"Adding {cat[0]}")
@@ -422,6 +425,7 @@ def generate_excel_from_yaml(filepath: str) -> None:
     """
     convert = DataConverter(filepath)
     convert.to_excel(verbose=True)
+
 
 # TODO: make directory for excels
 # TODO: delete old data dir, create new one
