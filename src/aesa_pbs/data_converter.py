@@ -110,7 +110,7 @@ class DataConverter:
             filename = self.filepath.stem
             outfilepath = str(DATA_DIR) + f"/{filename}.yaml"
 
-        make_dir(outfilepath) # make directories if missing
+        make_dir(Path(outfilepath).resolve().parent) # make directories if missing
         output_file_path = Path(outfilepath)
 
         with open(output_file_path, "w") as file:
@@ -140,7 +140,7 @@ class DataConverter:
             filename = self.filepath.stem
             outfilepath = str(DATA_EXCELS) + f"/{filename}.xlsx"
 
-        make_dir(outfilepath) # make directories if missing
+        make_dir(Path(outfilepath).resolve().parent) # make directories if missing
         output_file_path = Path(outfilepath)
 
         with pd.ExcelWriter(  # pylint: disable=abstract-class-instantiated
