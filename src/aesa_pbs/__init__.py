@@ -12,5 +12,5 @@ from .n_direct_fixation import (
     remove_nitrogen_fertilizer_exchanges,
     update_nitrogen_fertilizer_exchanges,
 )
-from .utils import DataConverter
+from .data_converter import DataConverter
 from .version import __version__
