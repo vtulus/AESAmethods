@@ -1,16 +1,13 @@
 import functools
 import json
-from pathlib import Path
 
 import brightway2 as bw
 from bw2io import ExcelLCIAImporter, strategies
 from prettytable import PrettyTable
 
 from .biosphere import get_biosphere_database
+from .data_converter import DATA_DIR, DATA_EXCELS, DataConverter
 from .version import __version__
-
-DATA_DIR = Path(__file__).resolve().parent / "data"
-# CHANGELOG = Path(__file__).resolve().parents[2] / "CHANGELOG.md"
 
 
 # write_methods() does not write metadata other than "description", "unit" and "filename"
@@ -294,9 +291,12 @@ def add_aesa_pbs(verbose=True):
     }
 
     for cat in categories:
+        generate_excel_from_yaml(filepath=DATA_DIR / cat[-1])
+
+    for cat in categories:
         print(f"Adding {cat[0]}")
         method = ExcelLCIAImporter(
-            filepath=DATA_DIR / cat[-1],
+            filepath=DATA_EXCELS / cat[-1],
             name=cat[0],
             unit=cat[1],
             description=cat[2],
@@ -410,3 +410,18 @@ def warning_directly_fixated_n() -> None:
     # align text to the left
     t.align = "l"
     print(t)
+
+
+def generate_excel_from_yaml(filepath: str) -> None:
+    """Generate xlsx file from yaml file.
+
+    Parameters
+    ----------
+    filepath : str
+        Absolute path to a file for conversion
+    """
+    convert = DataConverter(filepath)
+    convert.to_excel(verbose=True)
+
+# TODO: make directory for excels
+# TODO: delete old data dir, create new one
