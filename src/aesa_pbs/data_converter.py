@@ -22,10 +22,6 @@ class DumperBlankLine(yaml.SafeDumper):
             super().write_line_break()
 
 
-class DirectoryDoesNotExist(OSError):
-    "Raised when directory path doesn't exist."
-
-
 class DataConverter:
     """Class to convert data from/to `*.xlsx` or `*.yaml` formats.
 
@@ -114,8 +110,8 @@ class DataConverter:
             filename = self.filepath.stem
             outfilepath = str(DATA_DIR) + f"/{filename}.yaml"
 
-        if parent_dir_exists(outfilepath):
-            output_file_path = Path(outfilepath)
+        make_dir(outfilepath) # make directories if missing
+        output_file_path = Path(outfilepath)
 
         with open(output_file_path, "w") as file:
             yaml.dump(
@@ -144,8 +140,8 @@ class DataConverter:
             filename = self.filepath.stem
             outfilepath = str(DATA_EXCELS) + f"/{filename}.xlsx"
 
-        if parent_dir_exists(outfilepath):
-            output_file_path = Path(outfilepath)
+        make_dir(outfilepath) # make directories if missing
+        output_file_path = Path(outfilepath)
 
         with pd.ExcelWriter(  # pylint: disable=abstract-class-instantiated
             output_file_path, mode="w", engine="openpyxl"
@@ -162,17 +158,6 @@ def file_exists(filepath: str) -> bool:
     return True
 
 
-def parent_dir_exists(filepath: str) -> bool:
-    """Check if parent directory of the passed filepath exists.
-
-    inspired by https://stackoverflow.com/a/34102855/14485040
-    """
-    dirname = Path(filepath).resolve().parent
-    try:
-        with tempfile.TemporaryFile(dir=dirname):
-            pass
-        return True
-    except EnvironmentError as exc:
-        raise DirectoryDoesNotExist(
-            f"{dirname} does not exist. Must provide a path to an existing directory."
-        ) from exc
+def make_dir(dirpath: str)-> None:
+    "Make missing directory(ies)."
+    Path(dirpath).mkdir(parents=True, exist_ok=True)

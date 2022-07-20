@@ -425,7 +425,3 @@ def generate_excel_from_yaml(filepath: str) -> None:
     """
     convert = DataConverter(filepath)
     convert.to_excel(verbose=True)
-
-
-# TODO: make directory for excels
-# TODO: delete old data dir, create new one
