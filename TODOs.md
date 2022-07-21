@@ -1,8 +1,9 @@
 ### List of future improvements
 
 - [ ] add comments to YAML files. With [ruamel.yaml](https://yaml.readthedocs.io/en/latest/)?
-- [ ] in n_direct_fixation.py` wrap functions in a class.
+- [ ] in `n_direct_fixation.py` wrap functions in a class.
 - [ ] Remove (possible) duplicated CFs at writing methods.
+- [ ] add `delete_method` function
 - [ ] why no method for direct P quantification? should it be done similar to "direct N fertilizer" method?
 ---
 - [x] move files with CFs to non-binary files. ~~CSV? JSON?~~ **YAML!** Convert them to excel before reading in bw.
