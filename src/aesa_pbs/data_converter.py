@@ -1,5 +1,4 @@
-import tempfile
-import warnings
+import logging
 from pathlib import Path
 
 import pandas as pd
@@ -7,6 +6,9 @@ import yaml
 
 DATA_DIR = Path(__file__).resolve().parent / "data"
 DATA_EXCELS = Path(DATA_DIR).resolve() / "excels"
+
+
+logging.basicConfig(format="%(levelname)s: %(message)s", level=logging.DEBUG)
 
 
 class DumperBlankLine(yaml.SafeDumper):
@@ -55,21 +57,7 @@ class DataConverter:
             Data from excel file
         """
         data = pd.read_excel(self.filepath)
-        assert sorted(list(data.columns)) == sorted(
-            ["name", "categories", "amount"]
-        ), "Excel file must contain only 'name', 'categories' and 'amount' columns."
-        if data.isna().values.any():
-            data_clean = data.dropna(axis=0, how="any")
-            if data_clean.empty:
-                raise ValueError(f"Data in {self.filepath} is not valid.")
-            warnings.warn(
-                f"\n\nSome data are missing in {self.filepath}."
-                "\nRows with incomplete data are removed.\n"
-            )
-        else:
-            data_clean = data
-        data_clean = data_clean.drop_duplicates(keep="first", ignore_index=True)
-        return data_clean
+        return sanitize(data, self.filepath.name)
 
     def from_yaml(self) -> pd.DataFrame:
         """Read an yaml file with 'name', 'categories' and 'amount' keys.
@@ -82,18 +70,7 @@ class DataConverter:
         with open(self.filepath, "r") as file:
             loaded = yaml.safe_load(file)
         data = pd.DataFrame(loaded, columns=["name", "categories", "amount"])
-        if data.isna().values.any():
-            data_clean = data.dropna(axis=0, how="any")
-            if data_clean.empty:
-                raise ValueError(f"Data in {self.filepath} is not valid.")
-            warnings.warn(
-                f"\n\nSome data are missing in {self.filepath}."
-                "\nRows with incomplete data are removed.\n"
-            )
-        else:
-            data_clean = data
-        data_clean = data_clean.drop_duplicates(keep="first", ignore_index=True)
-        return data_clean
+        return sanitize(data, self.filepath.name)
 
     def to_yaml(self, outfilepath: str = None, verbose=True) -> None:
         """Write data to yaml file.
@@ -110,7 +87,7 @@ class DataConverter:
             filename = self.filepath.stem
             outfilepath = str(DATA_DIR) + f"/{filename}.yaml"
 
-        make_dir(Path(outfilepath).resolve().parent) # make directories if missing
+        make_dir(Path(outfilepath).resolve().parent)  # make directories if missing
         output_file_path = Path(outfilepath)
 
         with open(output_file_path, "w") as file:
@@ -140,7 +117,7 @@ class DataConverter:
             filename = self.filepath.stem
             outfilepath = str(DATA_EXCELS) + f"/{filename}.xlsx"
 
-        make_dir(Path(outfilepath).resolve().parent) # make directories if missing
+        make_dir(Path(outfilepath).resolve().parent)  # make directories if missing
         output_file_path = Path(outfilepath)
 
         with pd.ExcelWriter(  # pylint: disable=abstract-class-instantiated
@@ -151,6 +128,108 @@ class DataConverter:
             print(f"File created in {output_file_path}")
 
 
+def sanitize(data: pd.DataFrame, filename: str) -> pd.DataFrame:
+    """Check for missing values and duplicated rows in the data.
+
+    Uses `remove_missing()` and `remove_duplicates()`.
+
+    Parameters
+    ----------
+    data : pd.DataFrame
+        Data to sanitize
+    filename : str
+        Name of the file from where the data is retrieved
+
+    Returns
+    -------
+    pd.DataFrame
+        Sanitized data without missing values, nor duplicates
+    """
+    assert sorted(list(data.columns)) == sorted(
+        ["name", "categories", "amount"]
+    ), "Data must contain 'name', 'categories' and 'amount' column labels."
+    sanitized_data = remove_missing(data, filename)
+    sanitized_data = remove_duplicates(sanitized_data, filename)
+    return sanitized_data
+
+
+def remove_missing(data: pd.DataFrame, filename: str) -> pd.DataFrame:
+    """Remove rows containing NaN values.
+
+    Parameters
+    ----------
+    data : pd.DataFrame
+        Data to check for missing values
+    filename : str
+        Name of the file from where the data is retrieved
+
+    Returns
+    -------
+    pd.DataFrame
+        Clean data without missing values
+
+    Raises
+    ------
+    ValueError
+        If the resulting DataFrame is empty
+    """
+    missing_data = data[data.isna().any(axis=1)]
+    if missing_data.empty:
+        clean_data = data
+    else:
+        clean_data = data.dropna(axis=0, how="any")
+        if not missing_data.isna().values.all():
+            message_missing = (
+                f"Data is missing in {filename} (see below incomplete sets):\n"
+            )
+            message_missing += missing_data.to_markdown(
+                index=False, tablefmt="pretty", stralign="left"
+            )
+            message_missing += "\nNote: These sets will be omitted."
+            logging.warning(message_missing)
+    if clean_data.empty:
+        raise ValueError(f"Data in {filename} is not valid.")
+    return clean_data
+
+
+def remove_duplicates(data: pd.DataFrame, filename: str) -> pd.DataFrame:
+    """Remove duplicated rows.
+
+    Parameters
+    ----------
+    data : pd.DataFrame
+        Data to check for duplicated rows.
+    filename : str
+        Name of the file from where the data is retrieved
+
+    Returns
+    -------
+    pd.DataFrame
+        Clean data without duplicates
+
+    Raises
+    ------
+    ValueError
+        If the resulting DataFrame is empty
+    """
+    duplicates = data[
+        data.duplicated(subset=["name", "categories", "amount"], keep="first")
+    ]
+    if duplicates.empty:
+        clean_data = data
+    else:
+        message_duplicate = f"Duplicated flows found in {filename} (see below):\n"
+        message_duplicate += duplicates.to_markdown(
+            index=False, tablefmt="pretty", stralign="left"
+        )
+        message_duplicate += "\nNote: All duplicates will be removed."
+        logging.warning(message_duplicate)
+        clean_data = data.drop_duplicates(keep="first", ignore_index=True)
+    if clean_data.empty:
+        raise ValueError(f"Data in {filename} is not valid.")
+    return clean_data
+
+
 def file_exists(filepath: str) -> bool:
     "Check if file exists in passed filepath."
     if not Path(filepath).is_file():
@@ -158,6 +237,6 @@ def file_exists(filepath: str) -> bool:
     return True
 
 
-def make_dir(dirpath: str)-> None:
+def make_dir(dirpath: str) -> None:
     "Make missing directory(ies)."
     Path(dirpath).mkdir(parents=True, exist_ok=True)
