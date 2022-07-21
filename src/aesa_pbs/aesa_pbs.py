@@ -390,7 +390,7 @@ def drop_empty_lines(data):
         method["exchanges"] = [obj for obj in method["exchanges"] if obj["name"]]
     return data
 
-
+# TODO: substitute the print by logging?
 def warning_directly_fixated_n() -> None:
     """Printing a warning regarding a missing database.
     """

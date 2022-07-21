@@ -72,6 +72,7 @@ class DataConverter:
         data = pd.DataFrame(loaded, columns=["name", "categories", "amount"])
         return sanitize(data, self.filepath.name)
 
+    # TODO: check that outfilepath extension is correct. Must be .yaml
     def to_yaml(self, outfilepath: str = None, verbose=True) -> None:
         """Write data to yaml file.
 
@@ -85,6 +86,7 @@ class DataConverter:
         data_dict = self.data.to_dict(orient="records")
         if not outfilepath:
             filename = self.filepath.stem
+            # TODO: take as base dir the self.filepath and create folder "excels" there
             outfilepath = str(DATA_DIR) + f"/{filename}.yaml"
 
         make_dir(Path(outfilepath).resolve().parent)  # make directories if missing
@@ -103,6 +105,7 @@ class DataConverter:
         if verbose:
             print(f"File created in {output_file_path}")
 
+    # TODO: check that outfilepath extension is correct. Must be .xlsx
     def to_excel(self, outfilepath: str = None, verbose=True) -> None:
         """Write data to xlsx file.
 
@@ -145,11 +148,13 @@ def sanitize(data: pd.DataFrame, filename: str) -> pd.DataFrame:
     pd.DataFrame
         Sanitized data without missing values, nor duplicates
     """
+    # TODO: assert to check that the needed columns are present. The rest may be dropped.
     assert sorted(list(data.columns)) == sorted(
         ["name", "categories", "amount"]
     ), "Data must contain 'name', 'categories' and 'amount' column labels."
     sanitized_data = remove_missing(data, filename)
     sanitized_data = remove_duplicates(sanitized_data, filename)
+    # TODO: make sure that "amount" contains only numbers?
     return sanitized_data
 
 
@@ -185,7 +190,7 @@ def remove_missing(data: pd.DataFrame, filename: str) -> pd.DataFrame:
             message_missing += missing_data.to_markdown(
                 index=False, tablefmt="pretty", stralign="left"
             )
-            message_missing += "\nNote: These sets will be omitted."
+            message_missing += "\nNote: These sets will be omitted.\n"
             logging.warning(message_missing)
     if clean_data.empty:
         raise ValueError(f"Data in {filename} is not valid.")
@@ -222,7 +227,7 @@ def remove_duplicates(data: pd.DataFrame, filename: str) -> pd.DataFrame:
         message_duplicate += duplicates.to_markdown(
             index=False, tablefmt="pretty", stralign="left"
         )
-        message_duplicate += "\nNote: All duplicates will be removed."
+        message_duplicate += "\nNote: All duplicates will be removed.\n"
         logging.warning(message_duplicate)
         clean_data = data.drop_duplicates(keep="first", ignore_index=True)
     if clean_data.empty:
