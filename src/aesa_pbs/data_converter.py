@@ -72,7 +72,6 @@ class DataConverter:
         data = pd.DataFrame(loaded, columns=["name", "categories", "amount"])
         return sanitize(data, self.filepath.name)
 
-    # TODO: check that outfilepath extension is correct. Must be .yaml
     def to_yaml(self, outfilepath: str = None, verbose=True) -> None:
         """Write data to yaml file.
 
@@ -88,6 +87,7 @@ class DataConverter:
             filename = self.filepath.stem
             # TODO: take as base dir the self.filepath and create folder "excels" there
             outfilepath = str(DATA_DIR) + f"/{filename}.yaml"
+        __validate_extension(outfilepath, ".yaml")
 
         make_dir(Path(outfilepath).resolve().parent)  # make directories if missing
         output_file_path = Path(outfilepath)
@@ -105,7 +105,6 @@ class DataConverter:
         if verbose:
             print(f"File created in {output_file_path}")
 
-    # TODO: check that outfilepath extension is correct. Must be .xlsx
     def to_excel(self, outfilepath: str = None, verbose=True) -> None:
         """Write data to xlsx file.
 
@@ -119,6 +118,7 @@ class DataConverter:
         if not outfilepath:
             filename = self.filepath.stem
             outfilepath = str(DATA_EXCELS) + f"/{filename}.xlsx"
+        __validate_extension(outfilepath, ".xlsx")
 
         make_dir(Path(outfilepath).resolve().parent)  # make directories if missing
         output_file_path = Path(outfilepath)
@@ -129,6 +129,21 @@ class DataConverter:
             self.data.to_excel(writer, index=False)
         if verbose:
             print(f"File created in {output_file_path}")
+
+
+def __validate_extension(filepath: str, extension: str) -> None:
+    """Validate if filepath extension is correct.
+
+    Parameters
+    ----------
+    filepath : str
+        Absolute file path.
+    extension : str
+        Desired extension of the file.
+    """
+    assert (
+        Path(filepath).suffix == extension
+    ), f"Filepath extension ('{Path(filepath).suffix}') is not valid. Must be '{extension}'."
 
 
 def sanitize(data: pd.DataFrame, filename: str) -> pd.DataFrame:
@@ -153,9 +168,9 @@ def sanitize(data: pd.DataFrame, filename: str) -> pd.DataFrame:
         ["name", "categories", "amount"]
     ), "Data must contain 'name', 'categories' and 'amount' column labels."
 
-    # "amount" column should have only numeric values, 
+    # "amount" column should have only numeric values,
     # to_numeric() converts non-numeric values to NaN
-    data["amount"] = pd.to_numeric(data['amount'], errors='coerce')
+    data["amount"] = pd.to_numeric(data["amount"], errors="coerce")
     sanitized_data = remove_missing(data, filename)
     sanitized_data = remove_duplicates(sanitized_data, filename)
     return sanitized_data
@@ -187,9 +202,7 @@ def remove_missing(data: pd.DataFrame, filename: str) -> pd.DataFrame:
     else:
         clean_data = data.dropna(axis=0, how="any")
         if not missing_data.isna().values.all():
-            message_missing = (
-                f"Some data is missing (or invalid) in {filename} (see below incomplete sets):\n"
-            )
+            message_missing = f"Some data is missing (or invalid) in {filename} (see below incomplete sets):\n"
             message_missing += missing_data.to_markdown(
                 index=False, tablefmt="pretty", stralign="left"
             )
