@@ -8,7 +8,7 @@ DATA_DIR = Path(__file__).resolve().parent / "data"
 DATA_EXCELS = Path(DATA_DIR).resolve() / "excels"
 
 
-logging.basicConfig(format="%(levelname)s: %(message)s", level=logging.DEBUG)
+logging.basicConfig(format="%(levelname)s: %(message)s")  # , level=logging.WARNING)
 
 
 class DumperBlankLine(yaml.SafeDumper):
@@ -152,9 +152,12 @@ def sanitize(data: pd.DataFrame, filename: str) -> pd.DataFrame:
     assert sorted(list(data.columns)) == sorted(
         ["name", "categories", "amount"]
     ), "Data must contain 'name', 'categories' and 'amount' column labels."
+
+    # "amount" column should have only numeric values, 
+    # to_numeric() converts non-numeric values to NaN
+    data["amount"] = pd.to_numeric(data['amount'], errors='coerce')
     sanitized_data = remove_missing(data, filename)
     sanitized_data = remove_duplicates(sanitized_data, filename)
-    # TODO: make sure that "amount" contains only numbers?
     return sanitized_data
 
 
@@ -185,7 +188,7 @@ def remove_missing(data: pd.DataFrame, filename: str) -> pd.DataFrame:
         clean_data = data.dropna(axis=0, how="any")
         if not missing_data.isna().values.all():
             message_missing = (
-                f"Data is missing in {filename} (see below incomplete sets):\n"
+                f"Some data is missing (or invalid) in {filename} (see below incomplete sets):\n"
             )
             message_missing += missing_data.to_markdown(
                 index=False, tablefmt="pretty", stralign="left"
