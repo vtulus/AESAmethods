@@ -424,4 +424,4 @@ def generate_excel_from_yaml(filepath: str) -> None:
         Absolute path to a file for conversion
     """
     convert = DataConverter(filepath)
-    convert.to_excel(verbose=True)
+    convert.to_excel(verbose=False)
