@@ -44,11 +44,11 @@ class DataConverter:
         self.file_suffix = self.filepath.suffix
 
         if self.file_suffix == ".xlsx":
-            self.data = self.from_excel()
+            self.data = self._from_excel()
         elif self.file_suffix == ".yaml":
-            self.data = self.from_yaml()
+            self.data = self._from_yaml()
 
-    def from_excel(self) -> pd.DataFrame:
+    def _from_excel(self) -> pd.DataFrame:
         """Read an xlsx file with 'name', 'categories' and 'amount' columns.
 
         Returns
@@ -57,9 +57,9 @@ class DataConverter:
             Data from excel file
         """
         data = pd.read_excel(self.filepath)
-        return sanitize(data, self.filepath.name)
+        return _sanitize(data, self.filepath.name)
 
-    def from_yaml(self) -> pd.DataFrame:
+    def _from_yaml(self) -> pd.DataFrame:
         """Read an yaml file with 'name', 'categories' and 'amount' keys.
 
         Returns
@@ -70,7 +70,7 @@ class DataConverter:
         with open(self.filepath, "r") as file:
             loaded = yaml.safe_load(file)
         data = pd.DataFrame(loaded, columns=["name", "categories", "amount"])
-        return sanitize(data, self.filepath.name)
+        return _sanitize(data, self.filepath.name)
 
     def to_yaml(self, outfilepath: str = None, verbose=True) -> None:
         """Write data to yaml file.
@@ -87,7 +87,7 @@ class DataConverter:
             filename = self.filepath.stem
             # TODO: take as base dir the self.filepath and create folder "excels" there
             outfilepath = str(DATA_DIR) + f"/{filename}.yaml"
-        __validate_extension(outfilepath, ".yaml")
+        _validate_extension(outfilepath, ".yaml")
 
         make_dir(Path(outfilepath).resolve().parent)  # make directories if missing
         output_file_path = Path(outfilepath)
@@ -118,7 +118,7 @@ class DataConverter:
         if not outfilepath:
             filename = self.filepath.stem
             outfilepath = str(DATA_EXCELS) + f"/{filename}.xlsx"
-        __validate_extension(outfilepath, ".xlsx")
+        _validate_extension(outfilepath, ".xlsx")
 
         make_dir(Path(outfilepath).resolve().parent)  # make directories if missing
         output_file_path = Path(outfilepath)
@@ -131,7 +131,7 @@ class DataConverter:
             print(f"File created in {output_file_path}")
 
 
-def __validate_extension(filepath: str, extension: str) -> None:
+def _validate_extension(filepath: str, extension: str) -> None:
     """Validate if filepath extension is correct.
 
     Parameters
@@ -146,7 +146,7 @@ def __validate_extension(filepath: str, extension: str) -> None:
     ), f"Filepath extension ('{Path(filepath).suffix}') is not valid. Must be '{extension}'."
 
 
-def sanitize(data: pd.DataFrame, filename: str) -> pd.DataFrame:
+def _sanitize(data: pd.DataFrame, filename: str) -> pd.DataFrame:
     """Check for missing values and duplicated rows in the data.
 
     Uses `remove_missing()` and `remove_duplicates()`.
@@ -171,12 +171,12 @@ def sanitize(data: pd.DataFrame, filename: str) -> pd.DataFrame:
     # "amount" column should have only numeric values,
     # to_numeric() converts non-numeric values to NaN
     data["amount"] = pd.to_numeric(data["amount"], errors="coerce")
-    sanitized_data = remove_missing(data, filename)
-    sanitized_data = remove_duplicates(sanitized_data, filename)
+    sanitized_data = _remove_missing(data, filename)
+    sanitized_data = _remove_duplicates(sanitized_data, filename)
     return sanitized_data
 
 
-def remove_missing(data: pd.DataFrame, filename: str) -> pd.DataFrame:
+def _remove_missing(data: pd.DataFrame, filename: str) -> pd.DataFrame:
     """Remove rows containing NaN values.
 
     Parameters
@@ -202,7 +202,10 @@ def remove_missing(data: pd.DataFrame, filename: str) -> pd.DataFrame:
     else:
         clean_data = data.dropna(axis=0, how="any")
         if not missing_data.isna().values.all():
-            message_missing = f"Some data is missing (or invalid) in {filename} (see below incomplete sets):\n"
+            message_missing = (
+                f"Some data is missing (or invalid) in {filename} "
+                "(see below incomplete sets):\n"
+            )
             message_missing += missing_data.to_markdown(
                 index=False, tablefmt="pretty", stralign="left"
             )
@@ -213,7 +216,7 @@ def remove_missing(data: pd.DataFrame, filename: str) -> pd.DataFrame:
     return clean_data
 
 
-def remove_duplicates(data: pd.DataFrame, filename: str) -> pd.DataFrame:
+def _remove_duplicates(data: pd.DataFrame, filename: str) -> pd.DataFrame:
     """Remove duplicated rows.
 
     Parameters
