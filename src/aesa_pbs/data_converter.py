@@ -4,10 +4,6 @@ from pathlib import Path
 import pandas as pd
 import yaml
 
-DATA_DIR = Path(__file__).resolve().parent / "data"
-DATA_EXCELS = Path(DATA_DIR).resolve() / "excels"
-
-
 logging.basicConfig(format="%(levelname)s: %(message)s")  # , level=logging.WARNING)
 
 
@@ -85,8 +81,8 @@ class DataConverter:
         data_dict = self.data.to_dict(orient="records")
         if not outfilepath:
             filename = self.filepath.stem
-            # TODO: take as base dir the self.filepath and create folder "excels" there
-            outfilepath = str(DATA_DIR) + f"/{filename}.yaml"
+            dir_path = self.filepath.resolve().parent
+            outfilepath = str(dir_path) + f"/{filename}.yaml"
         _validate_extension(outfilepath, ".yaml")
 
         make_dir(Path(outfilepath).resolve().parent)  # make directories if missing
@@ -117,7 +113,8 @@ class DataConverter:
         """
         if not outfilepath:
             filename = self.filepath.stem
-            outfilepath = str(DATA_EXCELS) + f"/{filename}.xlsx"
+            dir_path = self.filepath.resolve().parent
+            outfilepath = str(dir_path) + f"excels/{filename}.xlsx"
         _validate_extension(outfilepath, ".xlsx")
 
         make_dir(Path(outfilepath).resolve().parent)  # make directories if missing
