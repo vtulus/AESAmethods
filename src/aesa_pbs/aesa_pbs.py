@@ -7,8 +7,11 @@ from bw2io import ExcelLCIAImporter, strategies
 from prettytable import PrettyTable
 
 from .biosphere import get_biosphere_database
-from .data_converter import DATA_DIR, DATA_EXCELS, DataConverter
+from .data_converter import DataConverter
 from .version import __version__
+
+DATA_DIR = Path(__file__).resolve().parent / "data"
+DATA_EXCELS = Path(DATA_DIR).resolve() / "excels"
 
 
 # write_methods() does not write metadata other than "description", "unit" and "filename"
