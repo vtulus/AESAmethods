@@ -57,7 +57,7 @@ def add_aesa_pbs(verbose=True):
     #  authors: of the method/category,
     #  doi: doi of published work,
     #  current_version: current version
-    #  changelog: changelog,
+    #  changelog: CHANGELOG,
     #  implemented_by: author implemented}
     # filename: excel file with categories
 
@@ -76,7 +76,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": RYBERG_ET_AL,
                     "doi": DOI_RYBERG,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -96,7 +96,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": RYBERG_ET_AL,
                     "doi": DOI_RYBERG,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -116,7 +116,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": RYBERG_ET_AL,
                     "doi": DOI_RYBERG,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -136,7 +136,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": RYBERG_ET_AL,
                     "doi": DOI_RYBERG,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -151,7 +151,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": RYBERG_ET_AL,
                     "doi": DOI_RYBERG,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -172,7 +172,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": RYBERG_ET_AL,
                     "doi": DOI_RYBERG,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -193,7 +193,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": MAINTAINER,
                     "doi": None,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -208,7 +208,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": RYBERG_ET_AL,
                     "doi": DOI_RYBERG,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -223,7 +223,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": RYBERG_ET_AL,
                     "doi": DOI_RYBERG,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -244,7 +244,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": GALAN_ET_AL,
                     "doi": DOI_GALAN,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -265,7 +265,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": GALAN_ET_AL,
                     "doi": DOI_GALAN,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -286,7 +286,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": GALAN_ET_AL,
                     "doi": DOI_GALAN,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -380,8 +380,8 @@ GALAN_ET_AL = "Galán-Martín, Á.; Tulus, V.; Díaz, I.; Pozo, C.; Pérez-Ramí
 DOI_RYBERG = "https://doi.org/10.1016/j.ecolind.2017.12.065"
 DOI_GALAN = "https://doi.org/10.1016/j.oneear.2021.04.001"
 MAINTAINER = "Tulus, V."
-# changelog = get_changelog()
-changelog = "Find changelog here: https://github.com/vtulus/AESAmethods/blob/master/CHANGELOG.md"
+# CHANGELOG = get_changelog()
+CHANGELOG = "Find changelog here: https://github.com/vtulus/AESAmethods/blob/master/CHANGELOG.md"
 
 
 def drop_empty_lines(data):
@@ -393,12 +393,13 @@ def drop_empty_lines(data):
         method["exchanges"] = [obj for obj in method["exchanges"] if obj["name"]]
     return data
 
-# TODO: substitute the print by logging?
+
+# TODO: substitute the print with logging?
 def warning_directly_fixated_n() -> None:
     """Printing a warning regarding a missing database.
     """
-    t = PrettyTable(["Warning"])
-    t.add_row(
+    message = PrettyTable(["Warning"])
+    message.add_row(
         [
             "The method for quantification of directly fixated nitrogen\n"
             "requires an additional database `A_technosphere_flows`.\n"
@@ -406,16 +407,19 @@ def warning_directly_fixated_n() -> None:
             "It will be generated now.\n"
             # "No further actions needed."
             "\nNext steps:\n"
-            "1. Use `aesa_pbs.get_nitrogenous_fertilizers()` to filter activities\n"
-            "\tproducing nitrogenous fertilizers in a specific background database.\n"
-            "2. Use `aesa_pbs.update_nitrogen_fertilizer_exchanges()` to modify those activities.\n\n"
+            "1. Use `aesa_pbs.get_nitrogenous_fertilizers()` to filter\n"
+            "   activities producing nitrogenous fertilizers in a\n"
+            "   specific background database.\n"
+            "2. Use `aesa_pbs.update_nitrogen_fertilizer_exchanges()`\n"
+            "   to modify those activities.\n\n"
             "Optionally, \n"
-            "modified activities can be cleaned with `aesa_pbs.remove_nitrogen_fertilizer_exchanges()`."
+            "modified activities can be cleaned with\n"
+            "   `aesa_pbs.remove_nitrogen_fertilizer_exchanges()`."
         ]
     )
     # align text to the left
-    t.align = "l"
-    print(t)
+    message.align = "l"
+    print(message)
 
 
 def generate_excel_from_yaml(filepath: str) -> None:
