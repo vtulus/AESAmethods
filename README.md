@@ -63,14 +63,14 @@ See [example](notebooks/examples/how-to-use-aesa-methods.ipynb) for more detaile
 Currently this package can be only installed locally.  
 To do so one option can be:
 
-1. Download zip file of the package
-2. Un-zip to a folder on your machine
+1. Download the zip file of the package
+2. Un-zip to a folder on your machine (copy path to folder)
 3. Open CLI:
 
 ```bash
 # in the activated environment
-cd <PATH TO PACKAGE FOLDER>
-pip install . --use-feature=in-tree-build
+pip install "<PATH-TO-PACKAGE-FOLDER>"
+# Note: if pip<21.3, use `--use-feature=in-tree-build` flag
 ```
 
 ## References
