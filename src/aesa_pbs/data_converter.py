@@ -160,10 +160,10 @@ def _sanitize(data: pd.DataFrame, filename: str) -> pd.DataFrame:
     pd.DataFrame
         Sanitized data without missing values, nor duplicates
     """
-    # TODO: assert to check that the needed columns are present. The rest may be dropped.
-    assert sorted(list(data.columns)) == sorted(
-        ["name", "categories", "amount"]
+    assert {"name", "categories", "amount"}.issubset(
+        data.columns
     ), "Data must contain 'name', 'categories' and 'amount' column labels."
+    data = data[["name", "categories", "amount"]]  # the extra columns are dropped
 
     # "amount" column should have only numeric values,
     # to_numeric() converts non-numeric values to NaN
