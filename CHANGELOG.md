@@ -1,4 +1,9 @@
 # Changelog
+## 0.9.0 (2022-07-25)
+- Files containing CFs information are now stored in .yaml format (instead of .xlsx)
+  - `add_aesa_pbs()` still reads .xlsx files, which are generated in the background on execution with the help of the functionality added by the `DataConverter` class
+- Add check for duplicated CFs in .yaml files
+
 ## 0.8.8 (2022-06-13)
 - Add notebooks with use examples
 - ---
