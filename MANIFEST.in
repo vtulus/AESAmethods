@@ -1,1 +1,1 @@
-include src/aesa_pbs/data/*.xlsx
+include src/aesa_pbs/data/*.yaml
