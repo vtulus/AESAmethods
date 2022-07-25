@@ -114,7 +114,7 @@ class DataConverter:
         if not outfilepath:
             filename = self.filepath.stem
             dir_path = self.filepath.resolve().parent
-            outfilepath = str(dir_path) + f"excels/{filename}.xlsx"
+            outfilepath = str(dir_path) + f"/excels/{filename}.xlsx"
         _validate_extension(outfilepath, ".xlsx")
 
         make_dir(Path(outfilepath).resolve().parent)  # make directories if missing
