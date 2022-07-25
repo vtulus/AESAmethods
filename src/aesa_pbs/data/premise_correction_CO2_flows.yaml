@@ -1,0 +1,45 @@
+# TODO: use this file to modify the other yaml files containing the related flows.
+
+- name: Carbon dioxide, in air
+  categories: natural resource::in air
+  amount: -1
+
+- name: Carbon dioxide, non-fossil, resource correction
+  categories: natural resource::in air
+  amount: -1
+
+- name: Carbon dioxide, non-fossil
+  categories: air::lower stratosphere + upper troposphere
+  amount: 1
+
+- name: Carbon dioxide, non-fossil
+  categories: air::non-urban air or from high stacks
+  amount: 1
+
+- name: Carbon dioxide, non-fossil
+  categories: air::unspecified
+  amount: 1
+
+- name: Carbon dioxide, non-fossil
+  categories: air::urban air close to ground
+  amount: 1
+
+- name: Hydrogen
+  categories: air::low population density, long-term
+  amount: 11
+
+- name: Hydrogen
+  categories: air::lower stratosphere + upper troposphere
+  amount: 11
+
+- name: Hydrogen
+  categories: air::non-urban air or from high stacks
+  amount: 11
+
+- name: Hydrogen
+  categories: air::unspecified
+  amount: 11
+
+- name: Hydrogen
+  categories: air::urban air close to ground
+  amount: 11

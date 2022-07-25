@@ -44,23 +44,28 @@
 
 - name: Carbon dioxide, non-fossil
   categories: air
-  amount: 0.0
+  amount: 2.69e-11
+  comment: CF updated for premise version of the method
 
 - name: Carbon dioxide, non-fossil
   categories: air::low population density, long-term
-  amount: 0.0
+  amount: 2.69e-11
+  comment: CF updated for premise version of the method
 
 - name: Carbon dioxide, non-fossil
   categories: air::lower stratosphere + upper troposphere
-  amount: 0.0
+  amount: 2.69e-11
+  comment: CF updated for premise version of the method
 
 - name: Carbon dioxide, non-fossil
   categories: air::non-urban air or from high stacks
-  amount: 0.0
+  amount: 2.69e-11
+  comment: CF updated for premise version of the method
 
 - name: Carbon dioxide, non-fossil
   categories: air::urban air close to ground
-  amount: 0.0
+  amount: 2.69e-11
+  comment: CF updated for premise version of the method
 
 - name: Carbon monoxide, fossil
   categories: air
@@ -165,3 +170,58 @@
 - name: NMVOC, non-methane volatile organic compounds, unspecified origin
   categories: air::urban air close to ground
   amount: 8.07e-11
+
+- name: Carbon dioxide, in air
+  categories: natural resource::in air
+  amount: -2.69e-11
+  comment: CF added for premise version of the method
+
+- name: Carbon dioxide, non-fossil, resource correction
+  categories: natural resource::in air
+  amount: -2.69e-11
+  comment: CF added for premise version of the method
+
+- name: Hydrogen
+  categories: air::low population density, long-term
+  amount: 2.959e-10
+  comment: CF added for premise version of the method
+
+- name: Hydrogen
+  categories: air::lower stratosphere + upper troposphere
+  amount: 2.959e-10
+  comment: CF added for premise version of the method
+
+- name: Hydrogen
+  categories: air::non-urban air or from high stacks
+  amount: 2.959e-10
+  comment: CF added for premise version of the method
+
+- name: Hydrogen
+  categories: air::unspecified
+  amount: 2.959e-10
+  comment: CF added for premise version of the method
+
+- name: Hydrogen
+  categories: air::urban air close to ground
+  amount: 2.959e-10
+  comment: CF added for premise version of the method
+
+- name: Carbon dioxide, to soil or biomass stock
+  categories: soil::agricultural
+  amount: -2.69e-11
+  comment: CF added for premise version of the method
+
+- name: Carbon dioxide, to soil or biomass stock
+  categories: soil::forestry
+  amount: -2.69e-11
+  comment: CF added for premise version of the method
+
+- name: Carbon dioxide, to soil or biomass stock
+  categories: soil::industrial
+  amount: -2.69e-11
+  comment: CF added for premise version of the method
+
+- name: Carbon dioxide, to soil or biomass stock
+  categories: soil::unspecified
+  amount: -2.69e-11
+  comment: CF added for premise version of the method

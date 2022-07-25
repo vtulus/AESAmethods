@@ -901,3 +901,58 @@
 - name: sulfur hexafluoride
   categories: air::urban air close to ground
   amount: 5.418069230769231e-09
+
+- name: Carbon dioxide, in air
+  categories: natural resource::in air
+  amount: -2.076923076923077e-13
+  comment: CF added for premise version of the method
+
+- name: Carbon dioxide, non-fossil, resource correction
+  categories: natural resource::in air
+  amount: -2.076923076923077e-13
+  comment: CF added for premise version of the method
+
+- name: Carbon dioxide, non-fossil
+  categories: air::lower stratosphere + upper troposphere
+  amount: 2.076923076923077e-13
+  comment: CF added for premise version of the method
+
+- name: Carbon dioxide, non-fossil
+  categories: air::non-urban air or from high stacks
+  amount: 2.076923076923077e-13
+  comment: CF added for premise version of the method
+
+- name: Carbon dioxide, non-fossil
+  categories: air::unspecified
+  amount: 2.076923076923077e-13
+  comment: CF added for premise version of the method
+
+- name: Carbon dioxide, non-fossil
+  categories: air::urban air close to ground
+  amount: 2.076923076923077e-13
+  comment: CF added for premise version of the method
+
+- name: Hydrogen
+  categories: air::low population density, long-term
+  amount: 2.2846153846153847e-12
+  comment: CF added for premise version of the method
+
+- name: Hydrogen
+  categories: air::lower stratosphere + upper troposphere
+  amount: 2.2846153846153847e-12
+  comment: CF added for premise version of the method
+
+- name: Hydrogen
+  categories: air::non-urban air or from high stacks
+  amount: 2.2846153846153847e-12
+  comment: CF added for premise version of the method
+
+- name: Hydrogen
+  categories: air::unspecified
+  amount: 2.2846153846153847e-12
+  comment: CF added for premise version of the method
+
+- name: Hydrogen
+  categories: air::urban air close to ground
+  amount: 2.2846153846153847e-12
+  comment: CF added for premise version of the method
