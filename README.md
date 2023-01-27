@@ -81,4 +81,4 @@ pip install "<PATH-TO-PACKAGE-FOLDER>"
 - [V.Tulus](https://github.com/vtulus)
 
 ## License
-[BSD 3-Clause License](LICENSE). Copyright (c) 2022, Victor Tulus. All rights reserved.
+[BSD 3-Clause License](LICENSE). Copyright (c) 2023, Victor Tulus. All rights reserved.
