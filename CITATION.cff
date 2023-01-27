@@ -28,6 +28,17 @@ keywords:
 license: BSD-3-Clause
 version: 0.9.0
 date-released: '2023-01-27'
+preferred-citation:
+  authors:
+    - family-names: Tulus
+      given-names: Victor
+  title: Implementation of AESA methods for Brightway2 (v0.9.0) 
+  type: software
+  date-released: '2023-01-27'
+  identifiers:
+    - type: doi
+      value: 10.5281/zenodo.7575887
+      description: DOI of release v0.9.0
 references:
   - authors:
       - family-names: Ryberg
