@@ -1,0 +1,53 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: bw-AESAmethods
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Victor
+    family-names: Tulus
+    email: vtulus@ethz.ch
+    affiliation: 'ICB, D-CHAB, ETH Zurich'
+    orcid: 'https://orcid.org/0000-0001-8774-9492'
+repository-code: 'https://github.com/vtulus/AESAmethods'
+abstract: >-
+  Brightway implementation of Absolute Environmental
+  Sustainability Assessment (AESA) methods
+keywords:
+  - AESA
+  - LCA
+  - PB
+license: BSD-3-Clause
+references:
+  - authors:
+      - family-names: Ryberg
+        given-names: M. W.
+      - family-names: Owsianiak
+        given-names: M.
+      - family-names: Richardson
+        given-names: K.
+      - family-names: Hauschild
+        given-names: M. Z.
+    title: 'Development of a life-cycle impact assessment methodology linked to the Planetary Boundaries framework'
+    type: article
+    doi: 10.1016/j.ecolind.2017.12.065
+  - authors:
+      - family-names: Galán-Martín
+        given-names: Á.
+      - family-names: Tulus
+        given-names: V.
+      - family-names: Díaz
+        given-names: I.
+      - family-names: Pozo
+        given-names: C.
+      - family-names: Pérez-Ramírez
+        given-names: J.
+      - family-names: Guillén-Gosálbez
+        given-names: G.
+    title: 'Sustainability footprints of a renewable carbon transition for the petrochemical sector within planetary boundaries'
+    type: article
+    doi: 10.1016/j.oneear.2021.04.001
