@@ -13,6 +13,10 @@ authors:
     email: vtulus@ethz.ch
     affiliation: 'ICB, D-CHAB, ETH Zurich'
     orcid: 'https://orcid.org/0000-0001-8774-9492'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.7575887
+    description: DOI of release v0.9.0
 repository-code: 'https://github.com/vtulus/AESAmethods'
 abstract: >-
   Brightway implementation of Absolute Environmental
@@ -22,6 +26,8 @@ keywords:
   - LCA
   - PB
 license: BSD-3-Clause
+version: 0.9.0
+date-released: '2023-01-27'
 references:
   - authors:
       - family-names: Ryberg
@@ -32,7 +38,9 @@ references:
         given-names: K.
       - family-names: Hauschild
         given-names: M. Z.
-    title: 'Development of a life-cycle impact assessment methodology linked to the Planetary Boundaries framework'
+    title: >-
+      Development of a life-cycle impact assessment methodology linked to the
+      Planetary Boundaries framework
     type: article
     doi: 10.1016/j.ecolind.2017.12.065
   - authors:
@@ -48,6 +56,8 @@ references:
         given-names: J.
       - family-names: Guillén-Gosálbez
         given-names: G.
-    title: 'Sustainability footprints of a renewable carbon transition for the petrochemical sector within planetary boundaries'
+    title: >-
+      Sustainability footprints of a renewable carbon transition for the
+      petrochemical sector within planetary boundaries
     type: article
     doi: 10.1016/j.oneear.2021.04.001
