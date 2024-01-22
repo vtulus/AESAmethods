@@ -12,7 +12,7 @@ Eliminate the CFs for the following elementary flows:
 Modify the following elementary flows:
    - "NMVOC, non-methane volatile organic compounds, unspecified origin"
 
-- Add the PB **Atmospheric Aerosol Loading**.
+Add the PB **Atmospheric Aerosol Loading**.
 [Ryberg et al.](https://doi.org/10.1016/j.ecolind.2017.12.065) provides the CFs.
 ---
 - Add a fork to the upstream repository (vtulus/AESAmethods) sync with the previous version (v0.9.0)
