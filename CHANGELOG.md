@@ -14,8 +14,8 @@ Modify the following elementary flows:
 
 Add the PB **Atmospheric Aerosol Loading**.
 [Ryberg et al.](https://doi.org/10.1016/j.ecolind.2017.12.065) provides the CFs.
----
-- Add a fork to the upstream repository (vtulus/AESAmethods) sync with the previous version (v0.9.0)
+
+Add a fork to the upstream repository (vtulus/AESAmethods) sync with the previous version (v0.9.0)
 
 ## 0.8.8 (2022-06-13)
 - Add notebooks with use examples
