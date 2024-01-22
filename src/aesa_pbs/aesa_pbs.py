@@ -7,10 +7,11 @@ from bw2io import ExcelLCIAImporter, strategies
 from prettytable import PrettyTable
 
 from .biosphere import get_biosphere_database
+from .data_converter import DataConverter
 from .version import __version__
 
 DATA_DIR = Path(__file__).resolve().parent / "data"
-# CHANGELOG = Path(__file__).resolve().parents[2] / "CHANGELOG.md"
+DATA_EXCELS = Path(DATA_DIR).resolve() / "excels"
 
 
 # write_methods() does not write metadata other than "description", "unit" and "filename"
@@ -40,6 +41,7 @@ def add_aesa_pbs(verbose=True):
             - total
             - direct land use
             - CO2eq emissions
+    - atmospheric aerosol loading
 
     Parameters
     ----------
@@ -56,7 +58,7 @@ def add_aesa_pbs(verbose=True):
     #  authors: of the method/category,
     #  doi: doi of published work,
     #  current_version: current version
-    #  changelog: changelog,
+    #  changelog: CHANGELOG,
     #  implemented_by: author implemented}
     # filename: excel file with categories
 
@@ -75,7 +77,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": RYBERG_ET_AL,
                     "doi": DOI_RYBERG,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -95,7 +97,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": RYBERG_ET_AL,
                     "doi": DOI_RYBERG,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -115,7 +117,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": RYBERG_ET_AL,
                     "doi": DOI_RYBERG,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -135,7 +137,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": RYBERG_ET_AL,
                     "doi": DOI_RYBERG,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -150,7 +152,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": RYBERG_ET_AL,
                     "doi": DOI_RYBERG,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -171,7 +173,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": RYBERG_ET_AL,
                     "doi": DOI_RYBERG,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -192,7 +194,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": MAINTAINER,
                     "doi": None,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -207,7 +209,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": RYBERG_ET_AL,
                     "doi": DOI_RYBERG,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -222,7 +224,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": RYBERG_ET_AL,
                     "doi": DOI_RYBERG,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -243,7 +245,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": GALAN_ET_AL,
                     "doi": DOI_GALAN,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -264,7 +266,7 @@ def add_aesa_pbs(verbose=True):
                     "authors": GALAN_ET_AL,
                     "doi": DOI_GALAN,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
@@ -285,18 +287,64 @@ def add_aesa_pbs(verbose=True):
                     "authors": GALAN_ET_AL,
                     "doi": DOI_GALAN,
                     "current_version": "v" + __version__,
-                    "changelog": changelog,
+                    "changelog": CHANGELOG,
                     "implemented_by": MAINTAINER,
                 }
             ),
             "aesa_ChangeBiosphereIntegrity_FunctionalDiversity_Hierarchist_CO2eq_emissions.xlsx",
         ),
+        (
+            (
+                "AESA (PBs-LCIA)",
+                str(__version__),
+                "change in biosphere integrity",
+                "functional diversity",
+                "CO2eq emissions",
+            ),
+            "% BII loss",
+            json.dumps(
+                {
+                    "overview": "Unit: % of Biosphere Intactness Index loss",
+                    "authors": GALAN_ET_AL,
+                    "doi": DOI_GALAN,
+                    "current_version": "v" + __version__,
+                    "changelog": CHANGELOG,
+                    "implemented_by": MAINTAINER,
+                }
+            ),
+            "aesa_ChangeBiosphereIntegrity_FunctionalDiversity_Hierarchist_CO2eq_emissions.xlsx",
+        ),
+        (
+            (
+                "AESA (PBs-LCIA)",
+                str(__version__),
+                "atmospheric aerosol loading",
+                "AOD (Global)",
+            ),
+            "yr/kg",
+            json.dumps(
+                {
+                    "overview": "Unit: % of Biosphere Intactness Index loss",
+                    "authors": RYBERG_ET_AL,
+                    "doi": DOI_RYBERG,
+                    "current_version": "v" + __version__,
+                    "changelog": CHANGELOG,
+                    "implemented_by": UPDATE,
+                }
+            ),
+            "aesa_Atmospheric_aerosol_loading.xlsx",
+        ),
     }
+
+    for cat in categories:
+        generate_excel_from_yaml(
+            filepath=Path(str(DATA_DIR) + f"/{cat[-1]}").with_suffix(".yaml")
+        )
 
     for cat in categories:
         print(f"Adding {cat[0]}")
         method = ExcelLCIAImporter(
-            filepath=DATA_DIR / cat[-1],
+            filepath=DATA_EXCELS / cat[-1],
             name=cat[0],
             unit=cat[1],
             description=cat[2],
@@ -374,8 +422,9 @@ GALAN_ET_AL = "Galán-Martín, Á.; Tulus, V.; Díaz, I.; Pozo, C.; Pérez-Ramí
 DOI_RYBERG = "https://doi.org/10.1016/j.ecolind.2017.12.065"
 DOI_GALAN = "https://doi.org/10.1016/j.oneear.2021.04.001"
 MAINTAINER = "Tulus, V."
-# changelog = get_changelog()
-changelog = "Find changelog here: https://github.com/vtulus/AESAmethods/blob/master/CHANGELOG.md"
+UPDATE = "Puig-Samper, G."
+# CHANGELOG = get_changelog()
+CHANGELOG = "Find changelog here: https://github.com/vtulus/AESAmethods/blob/master/CHANGELOG.md"
 
 
 def drop_empty_lines(data):
@@ -388,11 +437,12 @@ def drop_empty_lines(data):
     return data
 
 
+# TODO: substitute the print with logging?
 def warning_directly_fixated_n() -> None:
     """Printing a warning regarding a missing database.
     """
-    t = PrettyTable(["Warning"])
-    t.add_row(
+    message = PrettyTable(["Warning"])
+    message.add_row(
         [
             "The method for quantification of directly fixated nitrogen\n"
             "requires an additional database `A_technosphere_flows`.\n"
@@ -400,13 +450,28 @@ def warning_directly_fixated_n() -> None:
             "It will be generated now.\n"
             # "No further actions needed."
             "\nNext steps:\n"
-            "1. Use `aesa_pbs.get_nitrogenous_fertilizers()` to filter activities\n"
-            "\tproducing nitrogenous fertilizers in a specific background database.\n"
-            "2. Use `aesa_pbs.update_nitrogen_fertilizer_exchanges()` to modify those activities.\n\n"
+            "1. Use `aesa_pbs.get_nitrogenous_fertilizers()` to filter\n"
+            "   activities producing nitrogenous fertilizers in a\n"
+            "   specific background database.\n"
+            "2. Use `aesa_pbs.update_nitrogen_fertilizer_exchanges()`\n"
+            "   to modify those activities.\n\n"
             "Optionally, \n"
-            "modified activities can be cleaned with `aesa_pbs.remove_nitrogen_fertilizer_exchanges()`."
+            "modified activities can be cleaned with\n"
+            "   `aesa_pbs.remove_nitrogen_fertilizer_exchanges()`."
         ]
     )
     # align text to the left
-    t.align = "l"
-    print(t)
+    message.align = "l"
+    print(message)
+
+
+def generate_excel_from_yaml(filepath: str) -> None:
+    """Generate xlsx file from yaml file.
+
+    Parameters
+    ----------
+    filepath : str
+        Absolute path to a file for conversion
+    """
+    convert = DataConverter(filepath)
+    convert.to_excel(verbose=False)

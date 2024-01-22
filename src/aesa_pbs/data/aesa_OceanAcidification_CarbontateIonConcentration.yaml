@@ -1,0 +1,159 @@
+- name: Carbon dioxide, fossil
+  categories: air
+  amount: 8.22e-14
+
+- name: Carbon dioxide, fossil
+  categories: air::low population density, long-term
+  amount: 8.22e-14
+
+- name: Carbon dioxide, fossil
+  categories: air::lower stratosphere + upper troposphere
+  amount: 8.22e-14
+
+- name: Carbon dioxide, fossil
+  categories: air::non-urban air or from high stacks
+  amount: 8.22e-14
+
+- name: Carbon dioxide, fossil
+  categories: air::urban air close to ground
+  amount: 8.22e-14
+
+- name: Carbon dioxide, from soil or biomass stock
+  categories: air
+  amount: 8.22e-14
+
+- name: Carbon dioxide, from soil or biomass stock
+  categories: air::low population density, long-term
+  amount: 8.22e-14
+
+- name: Carbon dioxide, from soil or biomass stock
+  categories: air::lower stratosphere + upper troposphere
+  amount: 8.22e-14
+
+- name: Carbon dioxide, from soil or biomass stock
+  categories: air::non-urban air or from high stacks
+  amount: 8.22e-14
+
+- name: Carbon dioxide, from soil or biomass stock
+  categories: air::urban air close to ground
+  amount: 8.22e-14
+
+- name: Carbon dioxide, non-fossil
+  categories: air
+  amount: 0.0
+
+- name: Carbon dioxide, non-fossil
+  categories: air::low population density, long-term
+  amount: 0.0
+
+- name: Carbon dioxide, non-fossil
+  categories: air::lower stratosphere + upper troposphere
+  amount: 0.0
+
+- name: Carbon dioxide, non-fossil
+  categories: air::non-urban air or from high stacks
+  amount: 0.0
+
+- name: Carbon dioxide, non-fossil
+  categories: air::urban air close to ground
+  amount: 0.0
+
+- name: Carbon monoxide, fossil
+  categories: air
+  amount: 1.29e-13
+
+- name: Carbon monoxide, fossil
+  categories: air::low population density, long-term
+  amount: 1.29e-13
+
+- name: Carbon monoxide, fossil
+  categories: air::lower stratosphere + upper troposphere
+  amount: 1.29e-13
+
+- name: Carbon monoxide, fossil
+  categories: air::non-urban air or from high stacks
+  amount: 1.29e-13
+
+- name: Carbon monoxide, fossil
+  categories: air::urban air close to ground
+  amount: 1.29e-13
+
+- name: Carbon monoxide, non-fossil
+  categories: air
+  amount: 1.29e-13
+
+- name: Carbon monoxide, non-fossil
+  categories: air::low population density, long-term
+  amount: 1.29e-13
+
+- name: Carbon monoxide, non-fossil
+  categories: air::lower stratosphere + upper troposphere
+  amount: 1.29e-13
+
+- name: Carbon monoxide, non-fossil
+  categories: air::non-urban air or from high stacks
+  amount: 1.29e-13
+
+- name: Carbon monoxide, non-fossil
+  categories: air::urban air close to ground
+  amount: 1.29e-13
+
+- name: Methane, fossil
+  categories: air
+  amount: 2.26e-13
+
+- name: Methane, fossil
+  categories: air::low population density, long-term
+  amount: 2.26e-13
+
+- name: Methane, fossil
+  categories: air::lower stratosphere + upper troposphere
+  amount: 2.26e-13
+
+- name: Methane, fossil
+  categories: air::non-urban air or from high stacks
+  amount: 2.26e-13
+
+- name: Methane, fossil
+  categories: air::urban air close to ground
+  amount: 2.26e-13
+
+- name: Methane, non-fossil
+  categories: air
+  amount: 2.26e-13
+
+- name: Methane, non-fossil
+  categories: air::low population density, long-term
+  amount: 2.26e-13
+
+- name: Methane, non-fossil
+  categories: air::lower stratosphere + upper troposphere
+  amount: 2.26e-13
+
+- name: Methane, non-fossil
+  categories: air::non-urban air or from high stacks
+  amount: 2.26e-13
+
+- name: Methane, non-fossil
+  categories: air::urban air close to ground
+  amount: 2.26e-13
+
+- name: NMVOC, non-methane volatile organic compounds
+  categories: air
+  amount: 2.47e-13
+
+- name: NMVOC, non-methane volatile organic compounds
+  categories: air::low population density, long-term
+  amount: 2.47e-13
+
+- name: NMVOC, non-methane volatile organic compounds
+  categories: air::lower stratosphere + upper troposphere
+  amount: 2.47e-13
+
+- name: NMVOC, non-methane volatile organic compounds
+  categories: air::non-urban air or from high stacks
+  amount: 2.47e-13
+
+- name: NMVOC, non-methane volatile organic compounds
+  categories: air::urban air close to ground
+  amount: 2.47e-13

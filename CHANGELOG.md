@@ -1,4 +1,22 @@
 # Changelog
+## 0.9.1 (2024-19-01)
+- Add README
+### **Updates from v0.9.0**
+- Adaptat othe PB-LCIA method for ecoinvent 3.9.1
+
+Eliminate the CFs for the following elementary flows:
+   - "Methane (air urban air close to ground)" 
+   - "Methane, from soil or biomass stock (air indoor)" 
+   - "Carbon dioxide from soil or biomass stock (air indoor)"
+
+Modify the following elementary flows:
+   - "NMVOC, non-methane volatile organic compounds, unspecified origin"
+
+Add the PB **Atmospheric Aerosol Loading**.
+[Ryberg et al.](https://doi.org/10.1016/j.ecolind.2017.12.065) provides the CFs.
+---
+- Add a fork to the upstream repository (vtulus/AESAmethods) sync with the previous version (v0.9.0)
+
 ## 0.8.8 (2022-06-13)
 - Add notebooks with use examples
 - ---

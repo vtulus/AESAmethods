@@ -1,0 +1,891 @@
+- name: Occupation, annual crop
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, annual crop, greenhouse
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, annual crop, irrigated
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, annual crop, irrigated, extensive
+  categories: natural resource::land
+  amount: 5.384615384615384e-13
+
+- name: Occupation, annual crop, irrigated, intensive
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, annual crop, non-irrigated
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, annual crop, non-irrigated, extensive
+  categories: natural resource::land
+  amount: 5.384615384615384e-13
+
+- name: Occupation, annual crop, non-irrigated, intensive
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, arable land, unspecified use
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, construction site
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Occupation, dump site
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Occupation, forest, extensive
+  categories: natural resource::land
+  amount: 2.307692307692307e-13
+
+- name: Occupation, forest, intensive
+  categories: natural resource::land
+  amount: 6.153846153846154e-13
+
+- name: Occupation, forest, secondary (non-use)
+  categories: natural resource::land
+  amount: 3.846153846153846e-13
+
+- name: Occupation, forest, unspecified
+  categories: natural resource::land
+  amount: 3.846153846153846e-13
+
+- name: Occupation, heterogeneous, agricultural
+  categories: natural resource::land
+  amount: 3.846153846153846e-13
+
+- name: Occupation, industrial area
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Occupation, mineral extraction site
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Occupation, pasture, man made
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, pasture, man made, extensive
+  categories: natural resource::land
+  amount: 2.307692307692307e-13
+
+- name: Occupation, pasture, man made, intensive
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, permanent crop
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, permanent crop, irrigated
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, permanent crop, irrigated, extensive
+  categories: natural resource::land
+  amount: 5.384615384615384e-13
+
+- name: Occupation, permanent crop, irrigated, intensive
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, permanent crop, non-irrigated
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, permanent crop, non-irrigated, extensive
+  categories: natural resource::land
+  amount: 5.384615384615384e-13
+
+- name: Occupation, permanent crop, non-irrigated, intensive
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, river, artificial
+  categories: natural resource::land
+  amount: 7.692307692307692e-13
+
+- name: Occupation, lake, artificial
+  categories: natural resource::land
+  amount: 7.692307692307692e-13
+
+- name: Occupation, shrub land, sclerophyllous
+  categories: natural resource::land
+  amount: 0.0
+
+- name: Occupation, traffic area, rail network
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Occupation, traffic area, rail/road embankment
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Occupation, traffic area, road network
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Occupation, urban, continuously built
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Occupation, urban, discontinuously built
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Occupation, urban, green area
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Occupation, urban/industrial fallow (non-use)
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Chloroform
+  categories: air
+  amount: 4.153846153846154e-12
+
+- name: Chloroform
+  categories: air::low population density, long-term
+  amount: 4.153846153846154e-12
+
+- name: Chloroform
+  categories: air::lower stratosphere + upper troposphere
+  amount: 4.153846153846154e-12
+
+- name: Chloroform
+  categories: air::non-urban air or from high stacks
+  amount: 4.153846153846154e-12
+
+- name: Chloroform
+  categories: air::urban air close to ground
+  amount: 4.153846153846154e-12
+
+- name: Hydrocarbons, chlorinated
+  categories: air
+  amount: 2.866153846153846e-12
+
+- name: Hydrocarbons, chlorinated
+  categories: air::low population density, long-term
+  amount: 2.866153846153846e-12
+
+- name: Hydrocarbons, chlorinated
+  categories: air::lower stratosphere + upper troposphere
+  amount: 2.866153846153846e-12
+
+- name: Hydrocarbons, chlorinated
+  categories: air::non-urban air or from high stacks
+  amount: 2.866153846153846e-12
+
+- name: Hydrocarbons, chlorinated
+  categories: air::urban air close to ground
+  amount: 2.866153846153846e-12
+
+- name: carbon dioxide, fossil
+  categories: air
+  amount: 2.076923076923077e-13
+
+- name: carbon dioxide, fossil
+  categories: air::low population density, long-term
+  amount: 2.076923076923077e-13
+
+- name: carbon dioxide, fossil
+  categories: air::lower stratosphere + upper troposphere
+  amount: 2.076923076923077e-13
+
+- name: carbon dioxide, fossil
+  categories: air::non-urban air or from high stacks
+  amount: 2.076923076923077e-13
+
+- name: carbon dioxide, fossil
+  categories: air::urban air close to ground
+  amount: 2.076923076923077e-13
+
+- name: carbon dioxide, from soil or biomass stock
+  categories: air
+  amount: 2.076923076923077e-13
+
+- name: carbon dioxide, from soil or biomass stock
+  categories: air::low population density, long-term
+  amount: 2.076923076923077e-13
+
+- name: carbon dioxide, from soil or biomass stock
+  categories: air::lower stratosphere + upper troposphere
+  amount: 2.076923076923077e-13
+
+- name: carbon dioxide, from soil or biomass stock
+  categories: air::non-urban air or from high stacks
+  amount: 2.076923076923077e-13
+
+- name: carbon dioxide, from soil or biomass stock
+  categories: air::urban air close to ground
+  amount: 2.076923076923077e-13
+
+- name: carbon dioxide, to soil or biomass stock
+  categories: soil
+  amount: -2.076923076923077e-13
+
+- name: carbon dioxide, to soil or biomass stock
+  categories: soil::agricultural
+  amount: -2.076923076923077e-13
+
+- name: carbon dioxide, to soil or biomass stock
+  categories: soil::forestry
+  amount: -2.076923076923077e-13
+
+- name: carbon dioxide, to soil or biomass stock
+  categories: soil::industrial
+  amount: -2.076923076923077e-13
+
+- name: dinitrogen monoxide
+  categories: air
+  amount: 6.18923076923077e-11
+
+- name: dinitrogen monoxide
+  categories: air::low population density, long-term
+  amount: 6.18923076923077e-11
+
+- name: dinitrogen monoxide
+  categories: air::lower stratosphere + upper troposphere
+  amount: 6.18923076923077e-11
+
+- name: dinitrogen monoxide
+  categories: air::non-urban air or from high stacks
+  amount: 6.18923076923077e-11
+
+- name: dinitrogen monoxide
+  categories: air::urban air close to ground
+  amount: 6.18923076923077e-11
+
+- name: ethane, 1,1,1,2-tetrafluoro-, hfc-134a
+  categories: air
+  amount: 3.217153846153846e-10
+
+- name: ethane, 1,1,1,2-tetrafluoro-, hfc-134a
+  categories: air::low population density, long-term
+  amount: 3.217153846153846e-10
+
+- name: ethane, 1,1,1,2-tetrafluoro-, hfc-134a
+  categories: air::lower stratosphere + upper troposphere
+  amount: 3.217153846153846e-10
+
+- name: ethane, 1,1,1,2-tetrafluoro-, hfc-134a
+  categories: air::non-urban air or from high stacks
+  amount: 3.217153846153846e-10
+
+- name: ethane, 1,1,1,2-tetrafluoro-, hfc-134a
+  categories: air::urban air close to ground
+  amount: 3.217153846153846e-10
+
+- name: ethane, 1,1,1-trifluoro-, hfc-143a
+  categories: air
+  amount: 1.143969230769231e-09
+
+- name: ethane, 1,1,1-trifluoro-, hfc-143a
+  categories: air::low population density, long-term
+  amount: 1.143969230769231e-09
+
+- name: ethane, 1,1,1-trifluoro-, hfc-143a
+  categories: air::lower stratosphere + upper troposphere
+  amount: 1.143969230769231e-09
+
+- name: ethane, 1,1,1-trifluoro-, hfc-143a
+  categories: air::non-urban air or from high stacks
+  amount: 1.143969230769231e-09
+
+- name: ethane, 1,1,1-trifluoro-, hfc-143a
+  categories: air::urban air close to ground
+  amount: 1.143969230769231e-09
+
+- name: ethane, 1,1,2-trichloro-1,2,2-trifluoro-, cfc-113
+  categories: air
+  amount: 1.367861538461538e-09
+
+- name: ethane, 1,1,2-trichloro-1,2,2-trifluoro-, cfc-113
+  categories: air::low population density, long-term
+  amount: 1.367861538461538e-09
+
+- name: ethane, 1,1,2-trichloro-1,2,2-trifluoro-, cfc-113
+  categories: air::lower stratosphere + upper troposphere
+  amount: 1.367861538461538e-09
+
+- name: ethane, 1,1,2-trichloro-1,2,2-trifluoro-, cfc-113
+  categories: air::non-urban air or from high stacks
+  amount: 1.367861538461538e-09
+
+- name: ethane, 1,1,2-trichloro-1,2,2-trifluoro-, cfc-113
+  categories: air::urban air close to ground
+  amount: 1.367861538461538e-09
+
+- name: ethane, 1,1-dichloro-1-fluoro-, hcfc-141b
+  categories: air
+  amount: 1.948153846153846e-10
+
+- name: ethane, 1,1-dichloro-1-fluoro-, hcfc-141b
+  categories: air::low population density, long-term
+  amount: 1.948153846153846e-10
+
+- name: ethane, 1,1-dichloro-1-fluoro-, hcfc-141b
+  categories: air::lower stratosphere + upper troposphere
+  amount: 1.948153846153846e-10
+
+- name: ethane, 1,1-dichloro-1-fluoro-, hcfc-141b
+  categories: air::non-urban air or from high stacks
+  amount: 1.948153846153846e-10
+
+- name: ethane, 1,1-dichloro-1-fluoro-, hcfc-141b
+  categories: air::urban air close to ground
+  amount: 1.948153846153846e-10
+
+- name: ethane, 1,1-difluoro-, hfc-152a
+  categories: air
+  amount: 3.468461538461538e-11
+
+- name: ethane, 1,1-difluoro-, hfc-152a
+  categories: air::low population density, long-term
+  amount: 3.468461538461538e-11
+
+- name: ethane, 1,1-difluoro-, hfc-152a
+  categories: air::lower stratosphere + upper troposphere
+  amount: 3.468461538461538e-11
+
+- name: ethane, 1,1-difluoro-, hfc-152a
+  categories: air::non-urban air or from high stacks
+  amount: 3.468461538461538e-11
+
+- name: ethane, 1,1-difluoro-, hfc-152a
+  categories: air::urban air close to ground
+  amount: 3.468461538461538e-11
+
+- name: ethane, 1,2-dichloro-1,1,2,2-tetrafluoro-, cfc-114
+  categories: air
+  amount: 1.996961538461538e-09
+
+- name: ethane, 1,2-dichloro-1,1,2,2-tetrafluoro-, cfc-114
+  categories: air::low population density, long-term
+  amount: 1.996961538461538e-09
+
+- name: ethane, 1,2-dichloro-1,1,2,2-tetrafluoro-, cfc-114
+  categories: air::lower stratosphere + upper troposphere
+  amount: 1.996961538461538e-09
+
+- name: ethane, 1,2-dichloro-1,1,2,2-tetrafluoro-, cfc-114
+  categories: air::non-urban air or from high stacks
+  amount: 1.996961538461538e-09
+
+- name: ethane, 1,2-dichloro-1,1,2,2-tetrafluoro-, cfc-114
+  categories: air::urban air close to ground
+  amount: 1.996961538461538e-09
+
+- name: ethane, 1-chloro-1,1-difluoro-, hcfc-142b
+  categories: air
+  amount: 4.870384615384616e-10
+
+- name: ethane, 1-chloro-1,1-difluoro-, hcfc-142b
+  categories: air::low population density, long-term
+  amount: 4.870384615384616e-10
+
+- name: ethane, 1-chloro-1,1-difluoro-, hcfc-142b
+  categories: air::lower stratosphere + upper troposphere
+  amount: 4.870384615384616e-10
+
+- name: ethane, 1-chloro-1,1-difluoro-, hcfc-142b
+  categories: air::non-urban air or from high stacks
+  amount: 4.870384615384616e-10
+
+- name: ethane, 1-chloro-1,1-difluoro-, hcfc-142b
+  categories: air::urban air close to ground
+  amount: 4.870384615384616e-10
+
+- name: ethane, 2,2-dichloro-1,1,1-trifluoro-, hcfc-123
+  categories: air
+  amount: 1.993846153846154e-11
+
+- name: ethane, 2,2-dichloro-1,1,1-trifluoro-, hcfc-123
+  categories: air::low population density, long-term
+  amount: 1.993846153846154e-11
+
+- name: ethane, 2,2-dichloro-1,1,1-trifluoro-, hcfc-123
+  categories: air::lower stratosphere + upper troposphere
+  amount: 1.993846153846154e-11
+
+- name: ethane, 2,2-dichloro-1,1,1-trifluoro-, hcfc-123
+  categories: air::non-urban air or from high stacks
+  amount: 1.993846153846154e-11
+
+- name: ethane, 2,2-dichloro-1,1,1-trifluoro-, hcfc-123
+  categories: air::urban air close to ground
+  amount: 1.993846153846154e-11
+
+- name: ethane, 2-chloro-1,1,1,2-tetrafluoro-, hcfc-124
+  categories: air
+  amount: 1.318846153846154e-10
+
+- name: ethane, 2-chloro-1,1,1,2-tetrafluoro-, hcfc-124
+  categories: air::low population density, long-term
+  amount: 1.318846153846154e-10
+
+- name: ethane, 2-chloro-1,1,1,2-tetrafluoro-, hcfc-124
+  categories: air::lower stratosphere + upper troposphere
+  amount: 1.318846153846154e-10
+
+- name: ethane, 2-chloro-1,1,1,2-tetrafluoro-, hcfc-124
+  categories: air::non-urban air or from high stacks
+  amount: 1.318846153846154e-10
+
+- name: ethane, 2-chloro-1,1,1,2-tetrafluoro-, hcfc-124
+  categories: air::urban air close to ground
+  amount: 1.318846153846154e-10
+
+- name: ethane, chloropentafluoro-, cfc-115
+  categories: air
+  amount: 1.768707692307692e-09
+
+- name: ethane, chloropentafluoro-, cfc-115
+  categories: air::low population density, long-term
+  amount: 1.768707692307692e-09
+
+- name: ethane, chloropentafluoro-, cfc-115
+  categories: air::lower stratosphere + upper troposphere
+  amount: 1.768707692307692e-09
+
+- name: ethane, chloropentafluoro-, cfc-115
+  categories: air::non-urban air or from high stacks
+  amount: 1.768707692307692e-09
+
+- name: ethane, chloropentafluoro-, cfc-115
+  categories: air::urban air close to ground
+  amount: 1.768707692307692e-09
+
+- name: ethane, hexafluoro-, hfc-116
+  categories: air
+  amount: 2.562923076923077e-09
+
+- name: ethane, hexafluoro-, hfc-116
+  categories: air::low population density, long-term
+  amount: 2.562923076923077e-09
+
+- name: ethane, hexafluoro-, hfc-116
+  categories: air::lower stratosphere + upper troposphere
+  amount: 2.562923076923077e-09
+
+- name: ethane, hexafluoro-, hfc-116
+  categories: air::non-urban air or from high stacks
+  amount: 2.562923076923077e-09
+
+- name: ethane, hexafluoro-, hfc-116
+  categories: air::urban air close to ground
+  amount: 2.562923076923077e-09
+
+- name: ethane, pentafluoro-, hfc-125
+  categories: air
+  amount: 7.665923076923077e-10
+
+- name: ethane, pentafluoro-, hfc-125
+  categories: air::low population density, long-term
+  amount: 7.665923076923077e-10
+
+- name: ethane, pentafluoro-, hfc-125
+  categories: air::lower stratosphere + upper troposphere
+  amount: 7.665923076923077e-10
+
+- name: ethane, pentafluoro-, hfc-125
+  categories: air::non-urban air or from high stacks
+  amount: 7.665923076923077e-10
+
+- name: ethane, pentafluoro-, hfc-125
+  categories: air::urban air close to ground
+  amount: 7.665923076923077e-10
+
+- name: methane, bromo-, halon 1001
+  categories: air
+  amount: 6.230769230769231e-13
+
+- name: methane, bromo-, halon 1001
+  categories: air::low population density, long-term
+  amount: 6.230769230769231e-13
+
+- name: methane, bromo-, halon 1001
+  categories: air::lower stratosphere + upper troposphere
+  amount: 6.230769230769231e-13
+
+- name: methane, bromo-, halon 1001
+  categories: air::non-urban air or from high stacks
+  amount: 6.230769230769231e-13
+
+- name: methane, bromo-, halon 1001
+  categories: air::urban air close to ground
+  amount: 6.230769230769231e-13
+
+- name: methane, bromochlorodifluoro-, halon 1211
+  categories: air
+  amount: 4.29923076923077e-10
+
+- name: methane, bromochlorodifluoro-, halon 1211
+  categories: air::low population density, long-term
+  amount: 4.29923076923077e-10
+
+- name: methane, bromochlorodifluoro-, halon 1211
+  categories: air::lower stratosphere + upper troposphere
+  amount: 4.29923076923077e-10
+
+- name: methane, bromochlorodifluoro-, halon 1211
+  categories: air::non-urban air or from high stacks
+  amount: 4.29923076923077e-10
+
+- name: methane, bromochlorodifluoro-, halon 1211
+  categories: air::urban air close to ground
+  amount: 4.29923076923077e-10
+
+- name: methane, bromotrifluoro-, halon 1301
+  categories: air
+  amount: 1.48583076923077e-09
+
+- name: methane, bromotrifluoro-, halon 1301
+  categories: air::low population density, long-term
+  amount: 1.48583076923077e-09
+
+- name: methane, bromotrifluoro-, halon 1301
+  categories: air::lower stratosphere + upper troposphere
+  amount: 1.48583076923077e-09
+
+- name: methane, bromotrifluoro-, halon 1301
+  categories: air::non-urban air or from high stacks
+  amount: 1.48583076923077e-09
+
+- name: methane, bromotrifluoro-, halon 1301
+  categories: air::urban air close to ground
+  amount: 1.48583076923077e-09
+
+- name: methane, chlorodifluoro-, hcfc-22
+  categories: air
+  amount: 4.374e-10
+
+- name: methane, chlorodifluoro-, hcfc-22
+  categories: air::low population density, long-term
+  amount: 4.374e-10
+
+- name: methane, chlorodifluoro-, hcfc-22
+  categories: air::lower stratosphere + upper troposphere
+  amount: 4.374e-10
+
+- name: methane, chlorodifluoro-, hcfc-22
+  categories: air::non-urban air or from high stacks
+  amount: 4.374e-10
+
+- name: methane, chlorodifluoro-, hcfc-22
+  categories: air::urban air close to ground
+  amount: 4.374e-10
+
+- name: methane, chlorotrifluoro-, cfc-13
+  categories: air
+  amount: 3.209053846153847e-09
+
+- name: methane, chlorotrifluoro-, cfc-13
+  categories: air::low population density, long-term
+  amount: 3.209053846153847e-09
+
+- name: methane, chlorotrifluoro-, cfc-13
+  categories: air::lower stratosphere + upper troposphere
+  amount: 3.209053846153847e-09
+
+- name: methane, chlorotrifluoro-, cfc-13
+  categories: air::non-urban air or from high stacks
+  amount: 3.209053846153847e-09
+
+- name: methane, chlorotrifluoro-, cfc-13
+  categories: air::urban air close to ground
+  amount: 3.209053846153847e-09
+
+- name: methane, dichloro-, hcc-30
+  categories: air
+  amount: 2.284615384615385e-12
+
+- name: methane, dichloro-, hcc-30
+  categories: air::low population density, long-term
+  amount: 2.284615384615385e-12
+
+- name: methane, dichloro-, hcc-30
+  categories: air::lower stratosphere + upper troposphere
+  amount: 2.284615384615385e-12
+
+- name: methane, dichloro-, hcc-30
+  categories: air::non-urban air or from high stacks
+  amount: 2.284615384615385e-12
+
+- name: methane, dichloro-, hcc-30
+  categories: air::urban air close to ground
+  amount: 2.284615384615385e-12
+
+- name: methane, dichlorodifluoro-, cfc-12
+  categories: air
+  amount: 2.398223076923077e-09
+
+- name: methane, dichlorodifluoro-, cfc-12
+  categories: air::low population density, long-term
+  amount: 2.398223076923077e-09
+
+- name: methane, dichlorodifluoro-, cfc-12
+  categories: air::lower stratosphere + upper troposphere
+  amount: 2.398223076923077e-09
+
+- name: methane, dichlorodifluoro-, cfc-12
+  categories: air::non-urban air or from high stacks
+  amount: 2.398223076923077e-09
+
+- name: methane, dichlorodifluoro-, cfc-12
+  categories: air::urban air close to ground
+  amount: 2.398223076923077e-09
+
+- name: methane, dichlorofluoro-, hcfc-21
+  categories: air
+  amount: 3.717692307692308e-11
+
+- name: methane, dichlorofluoro-, hcfc-21
+  categories: air::low population density, long-term
+  amount: 3.717692307692308e-11
+
+- name: methane, dichlorofluoro-, hcfc-21
+  categories: air::lower stratosphere + upper troposphere
+  amount: 3.717692307692308e-11
+
+- name: methane, dichlorofluoro-, hcfc-21
+  categories: air::non-urban air or from high stacks
+  amount: 3.717692307692308e-11
+
+- name: methane, dichlorofluoro-, hcfc-21
+  categories: air::urban air close to ground
+  amount: 3.717692307692308e-11
+
+- name: methane, difluoro-, hfc-32
+  categories: air
+  amount: 1.696846153846154e-10
+
+- name: methane, difluoro-, hfc-32
+  categories: air::low population density, long-term
+  amount: 1.696846153846154e-10
+
+- name: methane, difluoro-, hfc-32
+  categories: air::lower stratosphere + upper troposphere
+  amount: 1.696846153846154e-10
+
+- name: methane, difluoro-, hfc-32
+  categories: air::non-urban air or from high stacks
+  amount: 1.696846153846154e-10
+
+- name: methane, difluoro-, hfc-32
+  categories: air::urban air close to ground
+  amount: 1.696846153846154e-10
+
+- name: methane, fossil
+  categories: air
+  amount: 7.476923076923077e-12
+
+- name: methane, fossil
+  categories: air::low population density, long-term
+  amount: 7.476923076923077e-12
+
+- name: methane, fossil
+  categories: air::lower stratosphere + upper troposphere
+  amount: 7.476923076923077e-12
+
+- name: methane, fossil
+  categories: air::non-urban air or from high stacks
+  amount: 7.476923076923077e-12
+
+- name: methane, fossil
+  categories: air::urban air close to ground
+  amount: 7.476923076923077e-12
+
+- name: methane, from soil or biomass stock
+  categories: air
+  amount: 7.061538461538462e-12
+
+- name: methane, from soil or biomass stock
+  categories: air::low population density, long-term
+  amount: 7.061538461538462e-12
+
+- name: methane, from soil or biomass stock
+  categories: air::lower stratosphere + upper troposphere
+  amount: 7.061538461538462e-12
+
+- name: methane, from soil or biomass stock
+  categories: air::non-urban air or from high stacks
+  amount: 7.061538461538462e-12
+
+- name: methane, from soil or biomass stock
+  categories: air::urban air close to ground
+  amount: 7.061538461538462e-12
+
+- name: methane, monochloro-, r-40
+  categories: air
+  amount: 3.115384615384616e-12
+
+- name: methane, monochloro-, r-40
+  categories: air::low population density, long-term
+  amount: 3.115384615384616e-12
+
+- name: methane, monochloro-, r-40
+  categories: air::lower stratosphere + upper troposphere
+  amount: 3.115384615384616e-12
+
+- name: methane, monochloro-, r-40
+  categories: air::non-urban air or from high stacks
+  amount: 3.115384615384616e-12
+
+- name: methane, monochloro-, r-40
+  categories: air::urban air close to ground
+  amount: 3.115384615384616e-12
+
+- name: methane, non-fossil
+  categories: air
+  amount: 7.061538461538462e-12
+
+- name: methane, non-fossil
+  categories: air::low population density, long-term
+  amount: 7.061538461538462e-12
+
+- name: methane, non-fossil
+  categories: air::lower stratosphere + upper troposphere
+  amount: 7.061538461538462e-12
+
+- name: methane, non-fossil
+  categories: air::non-urban air or from high stacks
+  amount: 7.061538461538462e-12
+
+- name: methane, non-fossil
+  categories: air::urban air close to ground
+  amount: 7.061538461538462e-12
+
+- name: methane, tetrachloro-, r-10
+  categories: air
+  amount: 4.193307692307692e-10
+
+- name: methane, tetrachloro-, r-10
+  categories: air::low population density, long-term
+  amount: 4.193307692307692e-10
+
+- name: methane, tetrachloro-, r-10
+  categories: air::lower stratosphere + upper troposphere
+  amount: 4.193307692307692e-10
+
+- name: methane, tetrachloro-, r-10
+  categories: air::non-urban air or from high stacks
+  amount: 4.193307692307692e-10
+
+- name: methane, tetrachloro-, r-10
+  categories: air::urban air close to ground
+  amount: 4.193307692307692e-10
+
+- name: methane, tetrafluoro-, r-14
+  categories: air
+  amount: 1.526330769230769e-09
+
+- name: methane, tetrafluoro-, r-14
+  categories: air::low population density, long-term
+  amount: 1.526330769230769e-09
+
+- name: methane, tetrafluoro-, r-14
+  categories: air::lower stratosphere + upper troposphere
+  amount: 1.526330769230769e-09
+
+- name: methane, tetrafluoro-, r-14
+  categories: air::non-urban air or from high stacks
+  amount: 1.526330769230769e-09
+
+- name: methane, tetrafluoro-, r-14
+  categories: air::urban air close to ground
+  amount: 1.526330769230769e-09
+
+- name: methane, trichlorofluoro-, cfc-11
+  categories: air
+  amount: 1.111569230769231e-09
+
+- name: methane, trichlorofluoro-, cfc-11
+  categories: air::low population density, long-term
+  amount: 1.111569230769231e-09
+
+- name: methane, trichlorofluoro-, cfc-11
+  categories: air::lower stratosphere + upper troposphere
+  amount: 1.111569230769231e-09
+
+- name: methane, trichlorofluoro-, cfc-11
+  categories: air::non-urban air or from high stacks
+  amount: 1.111569230769231e-09
+
+- name: methane, trichlorofluoro-, cfc-11
+  categories: air::urban air close to ground
+  amount: 1.111569230769231e-09
+
+- name: methane, trifluoro-, hfc-23
+  categories: air
+  amount: 2.877784615384616e-09
+
+- name: methane, trifluoro-, hfc-23
+  categories: air::low population density, long-term
+  amount: 2.877784615384616e-09
+
+- name: methane, trifluoro-, hfc-23
+  categories: air::lower stratosphere + upper troposphere
+  amount: 2.877784615384616e-09
+
+- name: methane, trifluoro-, hfc-23
+  categories: air::non-urban air or from high stacks
+  amount: 2.877784615384616e-09
+
+- name: methane, trifluoro-, hfc-23
+  categories: air::urban air close to ground
+  amount: 2.877784615384616e-09
+
+- name: nitrogen fluoride
+  categories: air
+  amount: 3.714576923076923e-09
+
+- name: nitrogen fluoride
+  categories: air::low population density, long-term
+  amount: 3.714576923076923e-09
+
+- name: nitrogen fluoride
+  categories: air::lower stratosphere + upper troposphere
+  amount: 3.714576923076923e-09
+
+- name: nitrogen fluoride
+  categories: air::non-urban air or from high stacks
+  amount: 3.714576923076923e-09
+
+- name: nitrogen fluoride
+  categories: air::urban air close to ground
+  amount: 3.714576923076923e-09
+
+- name: perfluoropentane
+  categories: air
+  amount: 1.969753846153846e-09
+
+- name: sulfur hexafluoride
+  categories: air
+  amount: 5.418069230769231e-09
+
+- name: sulfur hexafluoride
+  categories: air::low population density, long-term
+  amount: 5.418069230769231e-09
+
+- name: sulfur hexafluoride
+  categories: air::lower stratosphere + upper troposphere
+  amount: 5.418069230769231e-09
+
+- name: sulfur hexafluoride
+  categories: air::non-urban air or from high stacks
+  amount: 5.418069230769231e-09
+
+- name: sulfur hexafluoride
+  categories: air::urban air close to ground
+  amount: 5.418069230769231e-09

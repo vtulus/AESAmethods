@@ -1,0 +1,7 @@
+- name: Phosphate
+  categories: water::surface water
+  amount: 2.81e-10
+
+- name: Phosphorus
+  categories: water::surface water
+  amount: 8.61e-10
