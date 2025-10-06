@@ -5,3 +5,11 @@
 - name: Nitrogen
   categories: water::surface water
   amount: 2.44e-08
+
+- name: Nitrate
+  categories: water::ground-
+  amount: 6.45e-10
+
+- name: Nitrate
+  categories: water::ground-, long-term
+  amount: 6.45e-10
