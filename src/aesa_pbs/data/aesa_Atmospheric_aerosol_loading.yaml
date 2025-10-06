@@ -1,0 +1,190 @@
+- name: Carbon disulfide
+  categories: air::low population density, long-term
+  amount: 2.49e-14
+
+- name: Carbon disulfide
+  categories: air::lower stratosphere + upper troposphere
+  amount: 2.49e-14
+
+- name: Carbon disulfide
+  categories: air::non-urban air or from high stacks
+  amount: 2.49e-14
+
+- name: Carbon disulfide
+  categories: air::urban air close to ground
+  amount: 2.49e-14
+
+- name: Carbon disulfide
+  categories: air
+  amount: 2.49e-14
+
+- name: Elemental carbon
+  categories: air::urban air close to ground
+  amount: 1.07e-13
+
+- name: Nitrate
+  categories: air::low population density, long-term
+  amount: 9.73e-14
+
+- name: Nitrate
+  categories: air::lower stratosphere + upper troposphere
+  amount: 9.73e-14
+
+- name: Nitrate
+  categories: air::non-urban air or from high stacks
+  amount: 9.73e-14
+
+- name: Nitrate
+  categories: air::urban air close to ground
+  amount: 9.73e-14
+
+- name: Nitrate
+  categories: air
+  amount: 9.73e-14
+
+- name: Nitrogen oxides
+  categories: air::low population density, long-term
+  amount: 3.67e-14
+
+- name: Nitrogen oxides
+  categories: air::lower stratosphere + upper troposphere
+  amount: 3.67e-14
+- name: Nitrogen oxides
+  categories: air::non-urban air or from high stacks
+  amount: 3.67e-14
+
+- name: Nitrogen oxides
+  categories: air::urban air close to ground
+  amount: 3.67e-14
+
+- name: Nitrogen oxides
+  categories: air
+  amount: 3.67e-14
+
+- name: NMVOC, non-methane volatile organic compounds
+  categories: air::low population density, long-term
+  amount: 1.93e-14
+
+- name: NMVOC, non-methane volatile organic compounds
+  categories: air::lower stratosphere + upper troposphere
+  amount: 1.93e-14
+
+- name: NMVOC, non-methane volatile organic compounds
+  categories: air::non-urban air or from high stacks
+  amount: 1.93e-14
+
+- name: NMVOC, non-methane volatile organic compounds
+  categories: air::urban air close to ground
+  amount: 4.83e-15
+
+- name: NMVOC, non-methane volatile organic compounds
+  categories: air
+  amount: 1.93e-14
+
+- name: Organic carbon
+  categories: air::urban air close to ground
+  amount: 1.07e-13
+
+- name: Organic carbon
+  categories: air::urban air close to ground
+  amount: 1.07e-13
+
+- name: Particulate Matter, < 2.5 um
+  categories: air::low population density, long-term
+  amount: 1.08e-11
+
+- name: Particulate Matter, < 2.5 um
+  categories: air::lower stratosphere + upper troposphere
+  amount: 1.08e-11
+
+- name: Particulate Matter, < 2.5 um
+  categories: air::non-urban air or from high stacks
+  amount: 1.08e-11
+
+- name: Particulate Matter, < 2.5 um
+  categories: air::urban air close to ground
+  amount: 1.08e-11
+
+- name: Particulate Matter, < 2.5 um
+  categories: air
+  amount: 1.08e-11
+
+- name: Particulate Matter, > 10 um
+  categories: air::low population density, long-term
+  amount: 9.69e-15
+
+- name: Particulate Matter, > 10 um
+  categories: air::lower stratosphere + upper troposphere
+  amount: 9.69e-15
+
+- name: Particulate Matter, > 10 um
+  categories: air::non-urban air or from high stacks
+  amount: 9.69e-15
+
+- name: Particulate Matter, > 10 um
+  categories: air::urban air close to ground
+  amount: 9.69e-15
+
+- name: Particulate Matter, > 10 um
+  categories: air
+  amount: 9.69e-15
+
+- name: Particulate Matter, > 2.5 um and < 10um
+  categories: air::low population density, long-term
+  amount: 5.2e-13
+
+- name: Particulate Matter, > 2.5 um and < 10um
+  categories: air::lower stratosphere + upper troposphere
+  amount: 5.2e-13
+
+- name: Particulate Matter, > 2.5 um and < 10um
+  categories: air::non-urban air or from high stacks
+  amount: 5.2e-13
+
+- name: Particulate Matter, > 2.5 um and < 10um
+  categories: air::urban air close to ground
+  amount: 5.2e-13
+
+- name: Particulate Matter, > 2.5 um and < 10um
+  categories: air
+  amount: 5.2e-13
+
+- name: Sulfate
+  categories: air::low population density, long-term
+  amount: 1.67e-13
+
+- name: Sulfate
+  categories: air::lower stratosphere + upper troposphere
+  amount: 1.67e-13
+
+- name: Sulfate
+  categories: air::non-urban air or from high stacks
+  amount: 1.67e-13
+
+- name: Sulfate
+  categories: air::urban air close to ground
+  amount: 1.67e-13
+
+- name: Sulfate
+  categories: air
+  amount: 1.67e-13
+
+- name: Sulfur dioxide
+  categories: air::low population density, long-term
+  amount: 6.84e-14
+
+- name: Sulfur dioxide
+  categories: air::lower stratosphere + upper troposphere
+  amount: 6.84e-14
+
+- name: Sulfur dioxide
+  categories: air::non-urban air or from high stacks
+  amount: 6.84e-14
+
+- name: Sulfur dioxide
+  categories: air::urban air close to ground
+  amount: 6.84e-14
+
+- name: Sulfur dioxide
+  categories: air
+  amount: 6.84e-14
