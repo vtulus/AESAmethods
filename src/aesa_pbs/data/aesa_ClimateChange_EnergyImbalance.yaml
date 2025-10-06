@@ -23,10 +23,6 @@
   amount: 3.53e-13
 
 - name: Carbon dioxide, from soil or biomass stock
-  categories: air::indoor
-  amount: 3.53e-13
-
-- name: Carbon dioxide, from soil or biomass stock
   categories: air::low population density, long-term
   amount: 3.53e-13
 
@@ -186,10 +182,6 @@
   categories: air::urban air close to ground
   amount: 7.43e-09
 
-- name: Methane
-  categories: air::urban air close to ground
-  amount: 1.59e-12
-
 - name: Methane, chlorodifluoro-, HCFC-22
   categories: air
   amount: 1.63e-10
@@ -330,23 +322,23 @@
   categories: air::urban air close to ground
   amount: 4.79e-10
 
-- name: NMVOC, non-methane volatile organic compounds, unspecified origin
+- name: NMVOC, non-methane volatile organic compounds
   categories: air
   amount: 1.06e-12
 
-- name: NMVOC, non-methane volatile organic compounds, unspecified origin
+- name: NMVOC, non-methane volatile organic compounds
   categories: air::low population density, long-term
   amount: 1.06e-12
 
-- name: NMVOC, non-methane volatile organic compounds, unspecified origin
+- name: NMVOC, non-methane volatile organic compounds
   categories: air::lower stratosphere + upper troposphere
   amount: 1.06e-12
 
-- name: NMVOC, non-methane volatile organic compounds, unspecified origin
+- name: NMVOC, non-methane volatile organic compounds
   categories: air::non-urban air or from high stacks
   amount: 1.06e-12
 
-- name: NMVOC, non-methane volatile organic compounds, unspecified origin
+- name: NMVOC, non-methane volatile organic compounds
   categories: air::urban air close to ground
   amount: 1.06e-12
 
