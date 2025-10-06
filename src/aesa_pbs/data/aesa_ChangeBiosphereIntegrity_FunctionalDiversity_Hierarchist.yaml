@@ -230,10 +230,6 @@
   categories: air::urban air close to ground
   amount: 2.076923076923077e-13
 
-- name: carbon dioxide, from soil or biomass stock
-  categories: air::indoor
-  amount: 2.076923076923077e-13
-
 - name: carbon dioxide, to soil or biomass stock
   categories: soil
   amount: -2.076923076923077e-13
@@ -510,10 +506,6 @@
   categories: air::urban air close to ground
   amount: 7.665923076923077e-10
 
-- name: methane
-  categories: air::urban air close to ground
-  amount: 7.476923076923077e-12
-
 - name: methane, bromo-, halon 1001
   categories: air
   amount: 6.230769230769231e-13
@@ -732,10 +724,6 @@
 
 - name: methane, from soil or biomass stock
   categories: air::urban air close to ground
-  amount: 7.061538461538462e-12
-
-- name: methane, from soil or biomass stock
-  categories: air::indoor
   amount: 7.061538461538462e-12
 
 - name: methane, monochloro-, r-40
