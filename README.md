@@ -33,6 +33,7 @@
       - total
       - direct land use
       - CO2eq emissions
+  - atmospheric aerosol loading
 
 #### Changelog
 See [CHANGELOG](CHANGELOG.md)
