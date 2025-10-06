@@ -41,6 +41,7 @@ def add_aesa_pbs(verbose=True):
             - total
             - direct land use
             - CO2eq emissions
+    - atmospheric aerosol loading
 
     Parameters
     ----------
@@ -292,6 +293,26 @@ def add_aesa_pbs(verbose=True):
             ),
             "aesa_ChangeBiosphereIntegrity_FunctionalDiversity_Hierarchist_CO2eq_emissions.xlsx",
         ),
+        (
+            (
+                "AESA (PBs-LCIA)",
+                str(__version__),
+                "atmospheric aerosol loading",
+                "AOD (Global)",
+            ),
+            "yr/kg",
+            json.dumps(
+                {
+                    "overview": "Unit: AOD",
+                    "authors": RYBERG_ET_AL,
+                    "doi": DOI_RYBERG,
+                    "current_version": "v" + __version__,
+                    "changelog": CHANGELOG,
+                    "implemented_by": MAINTAINER_UPDATE,
+                }
+            ),
+            "aesa_Atmospheric_aerosol_loading.xlsx",
+        ),
     }
 
     for cat in categories:
@@ -380,6 +401,7 @@ GALAN_ET_AL = "Galán-Martín, Á.; Tulus, V.; Díaz, I.; Pozo, C.; Pérez-Ramí
 DOI_RYBERG = "https://doi.org/10.1016/j.ecolind.2017.12.065"
 DOI_GALAN = "https://doi.org/10.1016/j.oneear.2021.04.001"
 MAINTAINER = "Tulus, V."
+MAINTAINER_UPDATE = "Puig-Samper, G."
 # CHANGELOG = get_changelog()
 CHANGELOG = "Find changelog here: https://github.com/vtulus/AESAmethods/blob/master/CHANGELOG.md"
 
