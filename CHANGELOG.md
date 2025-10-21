@@ -1,4 +1,7 @@
 # Changelog
+## 0.9.1 (2025-10-21)
+- Added missing CFs for Nitrogen emissions to groundwater
+
 ## 0.9.1 (2025-10-06)
 - Adapt the PB-LCIA method for ecoinvent 3.9.1
 - Add the PB **Atmospheric Aerosol Loading**. CFs from [Ryberg et al.](https://doi.org/10.1016/j.ecolind.2017.12.065)
