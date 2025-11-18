@@ -1,0 +1,151 @@
+- name: Occupation, annual crop
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, annual crop, greenhouse
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, annual crop, irrigated
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, annual crop, irrigated, extensive
+  categories: natural resource::land
+  amount: 5.384615384615384e-13
+
+- name: Occupation, annual crop, irrigated, intensive
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, annual crop, non-irrigated
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, annual crop, non-irrigated, extensive
+  categories: natural resource::land
+  amount: 5.384615384615384e-13
+
+- name: Occupation, annual crop, non-irrigated, intensive
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, arable land, unspecified use
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, construction site
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Occupation, dump site
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Occupation, forest, extensive
+  categories: natural resource::land
+  amount: 2.307692307692307e-13
+
+- name: Occupation, forest, intensive
+  categories: natural resource::land
+  amount: 6.153846153846154e-13
+
+- name: Occupation, forest, secondary (non-use)
+  categories: natural resource::land
+  amount: 3.846153846153846e-13
+
+- name: Occupation, forest, unspecified
+  categories: natural resource::land
+  amount: 3.846153846153846e-13
+
+- name: Occupation, heterogeneous, agricultural
+  categories: natural resource::land
+  amount: 3.846153846153846e-13
+
+- name: Occupation, industrial area
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Occupation, mineral extraction site
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Occupation, pasture, man made
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, pasture, man made, extensive
+  categories: natural resource::land
+  amount: 2.307692307692307e-13
+
+- name: Occupation, pasture, man made, intensive
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, permanent crop
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, permanent crop, irrigated
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, permanent crop, irrigated, extensive
+  categories: natural resource::land
+  amount: 5.384615384615384e-13
+
+- name: Occupation, permanent crop, irrigated, intensive
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, permanent crop, non-irrigated
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, permanent crop, non-irrigated, extensive
+  categories: natural resource::land
+  amount: 5.384615384615384e-13
+
+- name: Occupation, permanent crop, non-irrigated, intensive
+  categories: natural resource::land
+  amount: 6.923076923076923e-13
+
+- name: Occupation, river, artificial
+  categories: natural resource::land
+  amount: 7.692307692307692e-13
+
+- name: Occupation, lake, artificial
+  categories: natural resource::land
+  amount: 7.692307692307692e-13
+
+- name: Occupation, shrub land, sclerophyllous
+  categories: natural resource::land
+  amount: 0.0
+
+- name: Occupation, traffic area, rail network
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Occupation, traffic area, rail/road embankment
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Occupation, traffic area, road network
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Occupation, urban, continuously built
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Occupation, urban, discontinuously built
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Occupation, urban, green area
+  categories: natural resource::land
+  amount: 7.307692307692307e-13
+
+- name: Occupation, urban/industrial fallow (non-use)
+  categories: natural resource::land
+  amount: 7.307692307692307e-13

@@ -1,0 +1,52 @@
+[build-system]
+requires = [
+    "setuptools>=58",
+    "wheel",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aesa_pbs"
+dynamic = ["version"]
+authors = [
+    { name = "Victor Tulus", email = "vtulus@ethz.ch" },
+]
+description = "Implementation of Absolute Environmental Sustainability Assessment (AESA) methods in brightway"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: Microsoft :: Windows",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+dependencies = [
+    "bw2io >= 0.8.6",
+    "brightway2",
+    "prettytable",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/vtulus/AESAmethods"
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "pytest-cov",
+    "pre-commit",
+]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.dynamic]
+version = { attr = "aesa_pbs.version.__version__" }
+
+[tool.isort]
+profile = "black"

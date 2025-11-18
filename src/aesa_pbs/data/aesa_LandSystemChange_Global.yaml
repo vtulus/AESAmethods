@@ -1,0 +1,39 @@
+- name: Transformation, from forest, extensive
+  categories: natural resource::land
+  amount: 1.56e-12
+
+- name: Transformation, from forest, intensive
+  categories: natural resource::land
+  amount: 1.56e-12
+
+- name: Transformation, from forest, primary (non-use)
+  categories: natural resource::land
+  amount: 1.56e-12
+
+- name: Transformation, from forest, secondary (non-use)
+  categories: natural resource::land
+  amount: 1.56e-12
+
+- name: Transformation, from forest, unspecified
+  categories: natural resource::land
+  amount: 1.56e-12
+
+- name: Transformation, to forest, extensive
+  categories: natural resource::land
+  amount: -1.56e-12
+
+- name: Transformation, to forest, intensive
+  categories: natural resource::land
+  amount: -1.56e-12
+
+- name: Transformation, to forest, primary (non-use)
+  categories: natural resource::land
+  amount: -1.56e-12
+
+- name: Transformation, to forest, secondary (non-use)
+  categories: natural resource::land
+  amount: -1.56e-12
+
+- name: Transformation, to forest, unspecified
+  categories: natural resource::land
+  amount: -1.56e-12

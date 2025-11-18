@@ -1,0 +1,59 @@
+- name: Water
+  categories: water::ground-
+  amount: -1.0e-09
+
+- name: Water
+  categories: water::surface water
+  amount: -1.0e-09
+
+- name: Water, cooling, unspecified natural origin
+  categories: natural resource::in water
+  amount: 1.0e-09
+
+- name: Water, lake
+  categories: natural resource::in water
+  amount: 1.0e-09
+
+- name: Water, river
+  categories: natural resource::in water
+  amount: 1.0e-09
+
+- name: Water, salt, ocean
+  categories: natural resource::in water
+  amount: 0.0
+
+- name: Water, salt, sole
+  categories: natural resource::in water
+  amount: 0.0
+
+- name: Water, turbine use, unspecified natural origin
+  categories: natural resource::in water
+  amount: 1.0e-09
+
+- name: Water, unspecified natural origin
+  categories: natural resource::in water
+  amount: 1.0e-09
+
+- name: Water, unspecified natural origin
+  categories: natural resource::fossil well
+  amount: 1.0e-09
+
+- name: Water, unspecified natural origin
+  categories: natural resource::in ground
+  amount: 1.0e-09
+
+- name: Water, well, in ground
+  categories: natural resource::in water
+  amount: 1.0e-09
+
+- name: Water
+  categories: water
+  amount: -1.0e-09
+
+- name: Water
+  categories: water::fossil well
+  amount: -1.0e-09
+
+- name: Water
+  categories: water::ground-, long-term
+  amount: -1.0e-09
