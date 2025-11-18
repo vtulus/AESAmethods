@@ -1,4 +1,13 @@
 # Changelog
+## 0.10.0 (2025-11-18)
+- Modernized the repository by migrating to `uv` for dependency management and `Ruff` for code formatting and linting.
+- Replaced `setup.cfg` with a modern `pyproject.toml` using `hatchling`.
+- Defined all project dependencies in `pyproject.toml`.
+- Generated a `uv.lock` file for reproducible environments.
+- Added a `.pre-commit-config.yaml` to run `Ruff` automatically.
+- Formatted the entire codebase with `Ruff`.
+- Updated versioning to use `importlib.metadata`.
+
 ## 0.9.0 (2022-07-25)
 - Files containing CFs information are now stored in .yaml format (instead of .xlsx)
   - `add_aesa_pbs()` still reads .xlsx files, which are generated in the background on execution with the help of the functionality added by the `DataConverter` class

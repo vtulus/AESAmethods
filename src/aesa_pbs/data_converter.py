@@ -74,7 +74,8 @@ class DataConverter:
         Parameters
         ----------
         outfilepath : str, optional
-            Absolute file path. If None is provided, uses input file name and default directory.
+            Absolute file path. If None is provided, uses input file name
+            and default directory.
         verbose : bool, optional
             Print completion message, by default True
         """
@@ -107,7 +108,8 @@ class DataConverter:
         Parameters
         ----------
         outfilepath : str, optional
-            Absolute file path. If None is provided, uses input file name and default directory.
+            Absolute file path. If None is provided, uses input file name
+            and default directory.
         verbose : bool, optional
             Print completion message, by default True
         """
@@ -138,9 +140,10 @@ def _validate_extension(filepath: str, extension: str) -> None:
     extension : str
         Desired extension of the file.
     """
-    assert (
-        Path(filepath).suffix == extension
-    ), f"Filepath extension ('{Path(filepath).suffix}') is not valid. Must be '{extension}'."
+    assert Path(filepath).suffix == extension, (
+        f"Filepath extension ('{Path(filepath).suffix}') is not valid. Must be"
+        f" '{extension}'."
+    )
 
 
 def _sanitize(data: pd.DataFrame, filename: str) -> pd.DataFrame:
@@ -160,9 +163,9 @@ def _sanitize(data: pd.DataFrame, filename: str) -> pd.DataFrame:
     pd.DataFrame
         Sanitized data without missing values, nor duplicates
     """
-    assert {"name", "categories", "amount"}.issubset(
-        data.columns
-    ), "Data must contain 'name', 'categories' and 'amount' column labels."
+    assert {"name", "categories", "amount"}.issubset(data.columns), (
+        "Data must contain 'name', 'categories' and 'amount' column labels."
+    )
     data = data[["name", "categories", "amount"]]  # the extra columns are dropped
 
     # "amount" column should have only numeric values,
@@ -233,19 +236,28 @@ def _remove_duplicates(data: pd.DataFrame, filename: str) -> pd.DataFrame:
     ValueError
         If the resulting DataFrame is empty
     """
-    duplicates = data[
-        data.duplicated(subset=["name", "categories", "amount"], keep="first")
-    ]
+    # Create a temporary series with string-ified categories for duplicate check
+    categories_as_str = data["categories"].astype(str)
+
+    # Identify duplicates based on the original columns, but using the stringified
+    # categories
+    is_duplicated = data.assign(categories=categories_as_str).duplicated(
+        subset=["name", "categories", "amount"], keep="first"
+    )
+
+    duplicates = data[is_duplicated]
     if duplicates.empty:
         clean_data = data
     else:
-        message_duplicate = f"Duplicated flows found in {filename} (see below):\n"
+        message_duplicate = (
+            f"Duplicated flows found in {filename} (see below):\n"
+        )
         message_duplicate += duplicates.to_markdown(
             index=False, tablefmt="pretty", stralign="left"
         )
         message_duplicate += "\nNote: All duplicates will be removed.\n"
         logging.warning(message_duplicate)
-        clean_data = data.drop_duplicates(keep="first", ignore_index=True)
+        clean_data = data[~is_duplicated].reset_index(drop=True)
     if clean_data.empty:
         raise ValueError(f"Data in {filename} is not valid.")
     return clean_data
