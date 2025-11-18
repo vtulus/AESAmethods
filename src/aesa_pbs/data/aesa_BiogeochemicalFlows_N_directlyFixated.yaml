@@ -1,0 +1,3 @@
+- name: nitrogen fertilizer
+  categories: inventory
+  amount: 1.0e-09

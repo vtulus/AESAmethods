@@ -122,6 +122,8 @@ dmypy.json
 # Specific folders
 /data/*
 */old
+# ignore folder and contents created by src
+**/excels/*
 
 # Allow tracking
 !data/raw
