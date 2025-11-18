@@ -74,7 +74,8 @@ class DataConverter:
         Parameters
         ----------
         outfilepath : str, optional
-            Absolute file path. If None is provided, uses input file name and default directory.
+            Absolute file path. If None is provided, uses input file name
+            and default directory.
         verbose : bool, optional
             Print completion message, by default True
         """
@@ -107,7 +108,8 @@ class DataConverter:
         Parameters
         ----------
         outfilepath : str, optional
-            Absolute file path. If None is provided, uses input file name and default directory.
+            Absolute file path. If None is provided, uses input file name
+            and default directory.
         verbose : bool, optional
             Print completion message, by default True
         """
@@ -138,9 +140,10 @@ def _validate_extension(filepath: str, extension: str) -> None:
     extension : str
         Desired extension of the file.
     """
-    assert (
-        Path(filepath).suffix == extension
-    ), f"Filepath extension ('{Path(filepath).suffix}') is not valid. Must be '{extension}'."
+    assert Path(filepath).suffix == extension, (
+        f"Filepath extension ('{Path(filepath).suffix}') is not valid. Must be"
+        f" '{extension}'."
+    )
 
 
 def _sanitize(data: pd.DataFrame, filename: str) -> pd.DataFrame:
@@ -160,9 +163,9 @@ def _sanitize(data: pd.DataFrame, filename: str) -> pd.DataFrame:
     pd.DataFrame
         Sanitized data without missing values, nor duplicates
     """
-    assert {"name", "categories", "amount"}.issubset(
-        data.columns
-    ), "Data must contain 'name', 'categories' and 'amount' column labels."
+    assert {"name", "categories", "amount"}.issubset(data.columns), (
+        "Data must contain 'name', 'categories' and 'amount' column labels."
+    )
     data = data[["name", "categories", "amount"]]  # the extra columns are dropped
 
     # "amount" column should have only numeric values,
