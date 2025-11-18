@@ -1,7 +1,49 @@
 [build-system]
-requires = [
-    "setuptools>=58",
-    "wheel",
-    "bw2io >= 0.8.6",
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aesa_pbs"
+version = "0.10.0"
+authors = [
+    { name = "Victor Tulus", email = "vtulus@ethz.ch" },
 ]
-build-backend = "setuptools.build_meta"
+description = "Implementation of Absolute Environmental Sustainability Assessment (AESA) methods in brightway"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: Microsoft :: Windows",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+dependencies = [
+    "brightway2",
+    "bw2io",
+    "bw2data",
+    "prettytable",
+    "pandas",
+    "PyYAML",
+    "openpyxl",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/vtulus/AESAmethods"
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "pytest-cov",
+]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+
+[tool.ruff.format]
+quote-style = "double"

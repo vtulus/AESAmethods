@@ -1,3 +1,5 @@
+import importlib.metadata
+
 __all__ = [
     "add_aesa_pbs",
     "get_nitrogenous_fertilizers",
@@ -6,6 +8,8 @@ __all__ = [
     "DataConverter",
 ]
 
+__version__ = importlib.metadata.version("aesa_pbs")
+
 from .aesa_pbs import add_aesa_pbs
 from .n_direct_fixation import (
     get_nitrogenous_fertilizers,
@@ -13,4 +17,3 @@ from .n_direct_fixation import (
     update_nitrogen_fertilizer_exchanges,
 )
 from .data_converter import DataConverter
-from .version import __version__

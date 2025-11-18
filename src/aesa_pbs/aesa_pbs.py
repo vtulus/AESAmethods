@@ -8,13 +8,14 @@ from prettytable import PrettyTable
 
 from .biosphere import get_biosphere_database
 from .data_converter import DataConverter
-from .version import __version__
+from . import __version__
 
 DATA_DIR = Path(__file__).resolve().parent / "data"
 DATA_EXCELS = Path(DATA_DIR).resolve() / "excels"
 
 
-# write_methods() does not write metadata other than "description", "unit" and "filename"
+# write_methods() does not write metadata other than "description",
+# "unit" and "filename"
 # store everything in the description using json.dumps()
 # later can be retrieved with json.loads()
 def add_aesa_pbs(verbose=True):
@@ -189,7 +190,10 @@ def add_aesa_pbs(verbose=True):
             "Tg N",
             json.dumps(
                 {
-                    "overview": "direct quantification of industrial and intentional biological fixation of N fertilizer",
+                    "overview": (
+                        "direct quantification of industrial and intentional"
+                        " biological fixation of N fertilizer"
+                    ),
                     "authors": MAINTAINER,
                     "doi": None,
                     "current_version": "v" + __version__,
@@ -204,7 +208,10 @@ def add_aesa_pbs(verbose=True):
             "% forested land",
             json.dumps(
                 {
-                    "overview": "Unit: area of forested land as % of original forest cover",
+                    "overview": (
+                        "Unit: area of forested land as % of original forest"
+                        " cover"
+                    ),
                     "authors": RYBERG_ET_AL,
                     "doi": DOI_RYBERG,
                     "current_version": "v" + __version__,
@@ -219,7 +226,10 @@ def add_aesa_pbs(verbose=True):
             "km3",
             json.dumps(
                 {
-                    "overview": "Unit: Maximum amount of consumptive blue water use per year",
+                    "overview": (
+                        "Unit: Maximum amount of consumptive blue water use per"
+                        " year"
+                    ),
                     "authors": RYBERG_ET_AL,
                     "doi": DOI_RYBERG,
                     "current_version": "v" + __version__,
@@ -352,9 +362,9 @@ def add_aesa_pbs(verbose=True):
             )
 
         # confirm that everything is correctly linked
-        assert (
-            len(list(method.unlinked)) == 0
-        ), f"{cat[0]} method contains unlinked flows. Method could not be installed."
+        assert len(list(method.unlinked)) == 0, (
+            f"{cat[0]} method contains unlinked flows. Method could not be installed."
+        )
 
         # write method
         method.write_methods(overwrite=True, verbose=verbose)
@@ -375,8 +385,13 @@ def add_aesa_pbs(verbose=True):
 
 
 # refs
-RYBERG_ET_AL = "Ryberg, M. W.; Owsianiak, M.; Richardson, K.; Hauschild, M. Z."
-GALAN_ET_AL = "Galán-Martín, Á.; Tulus, V.; Díaz, I.; Pozo, C.; Pérez-Ramírez, J.; Guillén-Gosálbez, G."
+RYBERG_ET_AL = (
+    "Ryberg, M. W.; Owsianiak, M.; Richardson, K.; Hauschild, M. Z."
+)
+GALAN_ET_AL = (
+    "Galán-Martín, Á.; Tulus, V.; Díaz, I.; Pozo, C.; Pérez-Ramírez, J.;"
+    " Guillén-Gosálbez, G."
+)
 DOI_RYBERG = "https://doi.org/10.1016/j.ecolind.2017.12.065"
 DOI_GALAN = "https://doi.org/10.1016/j.oneear.2021.04.001"
 MAINTAINER = "Tulus, V."
@@ -396,8 +411,7 @@ def drop_empty_lines(data):
 
 # TODO: substitute the print with logging?
 def warning_directly_fixated_n() -> None:
-    """Printing a warning regarding a missing database.
-    """
+    """Printing a warning regarding a missing database."""
     message = PrettyTable(["Warning"])
     message.add_row(
         [

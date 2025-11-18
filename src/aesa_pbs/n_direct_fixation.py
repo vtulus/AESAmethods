@@ -5,7 +5,7 @@ def get_nitrogenous_fertilizers(db_name: str) -> list:
     """Get list of nitrogenous fertilizers
 
     Get all activities classified according to CPC as
-    "Class 3461: Mineral of chemical fertilizers, nitrogenous", 
+    "Class 3461: Mineral of chemical fertilizers, nitrogenous",
     except "market"-type activities
 
     Parameters
@@ -30,7 +30,7 @@ def get_nitrogenous_fertilizers(db_name: str) -> list:
 
 
 def update_nitrogen_fertilizer_exchanges(activities: list, show_updated=True) -> None:
-    """Create exchanges for 'nitrogen fertilizer' in `activities` if they don't exist already.
+    """Create new exchanges for 'nitrogen fertilizer' in `activities`.
 
     Does not return anything, but modified `activities` inplace.
 
@@ -100,7 +100,8 @@ def remove_nitrogen_fertilizer_exchanges(activities: list, show_cleaned=True) ->
         )
 
     print(
-        "Cleaning 'nitrogen fertilizer' exchanges from the activities that produce nitrogen fertilizer..."
+        "Cleaning 'nitrogen fertilizer' exchanges from the activities that produce"
+        " nitrogen fertilizer..."
     )
     cleaned_act = set()
     for act in activities:
@@ -110,7 +111,8 @@ def remove_nitrogen_fertilizer_exchanges(activities: list, show_cleaned=True) ->
                 cleaned_act.add(act)
     if show_cleaned:
         print(
-            f"These {len(cleaned_act)} activities have been cleaned: \n{list(cleaned_act)}."
+            f"These {len(cleaned_act)} activities have been cleaned:"
+            f" \n{list(cleaned_act)}."
         )
     else:
         print(f"{len(cleaned_act)} activities have been cleaned.")
