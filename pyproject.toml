@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "aesa_pbs"
-version = "0.1.0"
+version = "0.9.0"
 authors = [
     { name = "Victor Tulus", email = "vtulus@ethz.ch" },
 ]
