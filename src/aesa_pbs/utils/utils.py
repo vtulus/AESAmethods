@@ -59,7 +59,7 @@ def progressbar(itobj: list, **kwargs):
     ----------
     itobj : list-like
         Iterable object
-        
+
     **kwargs
     --------
     total : int, default len(itobj)
@@ -74,11 +74,13 @@ def progressbar(itobj: list, **kwargs):
         str-like symbol to be used as "done"-icon
     icon_todo : str, default "🔳"
         str-like symbol to be used as "to do"-icon
-        
+
     Example
     -------
     lst = [5, 3, 4]
-    for i in progressbar(itobj=lst, total=len(lst), prefix="Progress: ", size=5, unit="datapoint"):
+    for i in progressbar(
+        itobj=lst, total=len(lst), prefix="Progress: ", size=5, unit="datapoint"
+    ):
         # do_something
     """
     start_time = datetime.now()
@@ -111,7 +113,8 @@ def progressbar(itobj: list, **kwargs):
         # some ASCII symbol or emoji alternatives
 
         # |, *, #, %, ▒. ▓, █, ■, ♢, ⚃ ⚄ ⚅
-        # 🦾, 👍, 🔴, 🟡 🟢 🔵 🟣 ⚫️ ⚪️, 🔸 🔹 🔶 🔷 🔳 🔲 ▪️ ▫️ ◾️ ◽️ ◼️ ◻️ 🟥 🟧 🟨 🟩 🟦 🟪 ⬛️ ⬜️, ▶️
+        # 🦾, 👍, 🔴, 🟡 🟢 🔵 🟣 ⚫️ ⚪️, 🔸 🔹 🔶 🔷 🔳 🔲 ▪️ ▫️ ◾️ ◽️ ◼️ ◻️ 🟥 🟧 🟨 🟩
+        # 🟦 🟪 ⬛️ ⬜️, ▶️
 
         file.write(
             "%s[%s%s] %i/%i %s\r"
