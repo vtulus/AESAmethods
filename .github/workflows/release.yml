@@ -1,0 +1,102 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+      - 'v[0-9]+.[0-9]+.[0-9]+-*'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+          enable-cache: true
+      - run: uv sync --all-extras
+      - run: uv run pytest
+
+  check_version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check tag version matches pyproject.toml
+        id: version
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          PROJECT_VERSION=$(grep '^version = ' pyproject.toml | cut -d'"' -f2)
+          echo "TAG: $TAG"
+          echo "PROJECT_VERSION: $PROJECT_VERSION"
+          if [[ "$TAG" != "$PROJECT_VERSION" ]]; then
+            echo "ERROR: Tag version ($TAG) does not match pyproject.toml version ($PROJECT_VERSION)"
+            exit 1
+          fi
+          echo "project_version=$PROJECT_VERSION" >> $GITHUB_OUTPUT
+      - name: Check version is higher than PyPI
+        uses: maybe-hello-world/pyproject-check-version@v4
+        id: versioncheck
+        with:
+          pyproject-path: "./pyproject.toml"
+      - name: Verify version bump
+        run: |
+          echo "Local version: ${{ steps.versioncheck.outputs.local_version }}"
+          echo "Public version: ${{ steps.versioncheck.outputs.public_version }}"
+          echo "Is higher: ${{ steps.versioncheck.outputs.local_version_is_higher }}"
+          if [[ "${{ steps.versioncheck.outputs.local_version_is_higher }}" != "true" ]]; then
+            echo "ERROR: Local version must be higher than published version on PyPI"
+            exit 1
+          fi
+
+  build:
+    needs:
+      - test
+      - check_version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+          enable-cache: true
+      - run: uv sync --all-extras
+      - run: uv build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Extract changelog for version
+        id: changelog
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          # Extract section between this version header and next version header
+          sed -n "/^## $VERSION (/,/^## /p" CHANGELOG.md | head -n -1 > release_notes.md
+          if [[ ! -s release_notes.md ]]; then
+            echo "ERROR: No changelog entry found for version $VERSION"
+            exit 1
+          fi
+          cat release_notes.md
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/*
+          body_path: release_notes.md
+          generate_release_notes: false
