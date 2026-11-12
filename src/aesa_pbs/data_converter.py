@@ -249,9 +249,7 @@ def _remove_duplicates(data: pd.DataFrame, filename: str) -> pd.DataFrame:
     if duplicates.empty:
         clean_data = data
     else:
-        message_duplicate = (
-            f"Duplicated flows found in {filename} (see below):\n"
-        )
+        message_duplicate = f"Duplicated flows found in {filename} (see below):\n"
         message_duplicate += duplicates.to_markdown(
             index=False, tablefmt="pretty", stralign="left"
         )

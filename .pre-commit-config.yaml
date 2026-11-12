@@ -24,7 +24,7 @@ repos:
         args: [--fix]
       # Run the formatter.
       - id: ruff-format
-        types_or: [python, pyi, pyproject]
+        types_or: [python, pyi, jupyter, pyproject]
         exclude: "notebooks/"
 
   # Python type checking (ty)

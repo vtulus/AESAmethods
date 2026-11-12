@@ -209,8 +209,7 @@ def add_aesa_pbs(verbose=True):
             json.dumps(
                 {
                     "overview": (
-                        "Unit: area of forested land as % of original forest"
-                        " cover"
+                        "Unit: area of forested land as % of original forest cover"
                     ),
                     "authors": RYBERG_ET_AL,
                     "doi": DOI_RYBERG,
@@ -227,8 +226,7 @@ def add_aesa_pbs(verbose=True):
             json.dumps(
                 {
                     "overview": (
-                        "Unit: Maximum amount of consumptive blue water use per"
-                        " year"
+                        "Unit: Maximum amount of consumptive blue water use per year"
                     ),
                     "authors": RYBERG_ET_AL,
                     "doi": DOI_RYBERG,
@@ -385,9 +383,7 @@ def add_aesa_pbs(verbose=True):
 
 
 # refs
-RYBERG_ET_AL = (
-    "Ryberg, M. W.; Owsianiak, M.; Richardson, K.; Hauschild, M. Z."
-)
+RYBERG_ET_AL = "Ryberg, M. W.; Owsianiak, M.; Richardson, K.; Hauschild, M. Z."
 GALAN_ET_AL = (
     "Galán-Martín, Á.; Tulus, V.; Díaz, I.; Pozo, C.; Pérez-Ramírez, J.;"
     " Guillén-Gosálbez, G."

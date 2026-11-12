@@ -10,7 +10,7 @@ the project.
 import sys
 import os
 
-ROOT_DIR = os.path.abspath(os.path.join("..\.."))
+ROOT_DIR = os.path.abspath(os.path.join(r"..\.."))
 # `..` indicate a relative path to root directory
 if ROOT_DIR not in sys.path:
     sys.path.append(ROOT_DIR)
