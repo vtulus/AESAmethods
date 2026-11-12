@@ -1,5 +1,26 @@
 # Changelog
 
+This project follows [Keep a Changelog](https://keepachangelog.com/) format.
+
+## [Unreleased]
+
+### Added
+
+- Automated release workflow via GitHub Actions (`.github/workflows/release.yml`)
+  - Version validation: tag must match `pyproject.toml` and exceed PyPI version
+  - Changelog extraction: release notes pulled from `CHANGELOG.md` (required)
+  - Granular permissions: workflow-level `contents: read`, release job `contents: write`
+  - Build with `uv` and upload artifacts to GitHub Release
+- `CONTRIBUTING.md` with development setup, code style, and release process for maintainers
+
+### Changed
+
+- Refactor: use `importlib.resources` for data access in `aesa_pbs` (c75d28c)
+- Build: configure pytest and coverage settings (178b831)
+- Style: apply pre-commit formatting (markdownlint + ruff) (bd7a925)
+- Docs: add documentation for agent skills and workflows (ad24b51)
+- Chore: expand pre-commit linting and formatting hooks (19e5175)
+
 ## 0.10.0 (2025-11-18)
 
 - Modernized the repository by migrating to `uv` for dependency management and `Ruff` for code formatting and linting.
