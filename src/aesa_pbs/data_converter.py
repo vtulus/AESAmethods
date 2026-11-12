@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import logging
 from pathlib import Path
 
@@ -33,7 +35,7 @@ class DataConverter:
         Absolute path to a file for conversion
     """
 
-    def __init__(self, filepath: str) -> None:
+    def __init__(self, filepath: str | Path) -> None:
         """Initialize an instance of a DataConverter"""
         if file_exists(filepath):
             self.filepath = Path(filepath)
@@ -65,10 +67,12 @@ class DataConverter:
         """
         with open(self.filepath, "r") as file:
             loaded = yaml.safe_load(file)
-        data = pd.DataFrame(loaded, columns=["name", "categories", "amount"])
+        data = pd.DataFrame(loaded, columns=pd.Index(["name", "categories", "amount"]))
         return _sanitize(data, self.filepath.name)
 
-    def to_yaml(self, outfilepath: str = None, verbose=True) -> None:
+    def to_yaml(
+        self, outfilepath: str | Path | None = None, verbose: bool = True
+    ) -> None:
         """Write data to yaml file.
 
         Parameters
@@ -82,8 +86,7 @@ class DataConverter:
         data_dict = self.data.to_dict(orient="records")
         if not outfilepath:
             filename = self.filepath.stem
-            dir_path = self.filepath.resolve().parent
-            outfilepath = str(dir_path) + f"/{filename}.yaml"
+            outfilepath = self.filepath.resolve().parent / f"{filename}.yaml"
         _validate_extension(outfilepath, ".yaml")
 
         make_dir(Path(outfilepath).resolve().parent)  # make directories if missing
@@ -102,12 +105,14 @@ class DataConverter:
         if verbose:
             print(f"File created in {output_file_path}")
 
-    def to_excel(self, outfilepath: str = None, verbose=True) -> None:
+    def to_excel(
+        self, outfilepath: str | Path | None = None, verbose: bool = True
+    ) -> None:
         """Write data to xlsx file.
 
         Parameters
         ----------
-        outfilepath : str, optional
+        outfilepath : str | Path, optional
             Absolute file path. If None is provided, uses input file name
             and default directory.
         verbose : bool, optional
@@ -115,8 +120,7 @@ class DataConverter:
         """
         if not outfilepath:
             filename = self.filepath.stem
-            dir_path = self.filepath.resolve().parent
-            outfilepath = str(dir_path) + f"/excels/{filename}.xlsx"
+            outfilepath = self.filepath.resolve().parent / f"{filename}.xlsx"
         _validate_extension(outfilepath, ".xlsx")
 
         make_dir(Path(outfilepath).resolve().parent)  # make directories if missing
@@ -130,12 +134,12 @@ class DataConverter:
             print(f"File created in {output_file_path}")
 
 
-def _validate_extension(filepath: str, extension: str) -> None:
+def _validate_extension(filepath: str | Path, extension: str) -> None:
     """Validate if filepath extension is correct.
 
     Parameters
     ----------
-    filepath : str
+    filepath : str | Path
         Absolute file path.
     extension : str
         Desired extension of the file.
@@ -236,13 +240,15 @@ def _remove_duplicates(data: pd.DataFrame, filename: str) -> pd.DataFrame:
     ValueError
         If the resulting DataFrame is empty
     """
-    # Create a temporary series with string-ified categories for duplicate check
-    categories_as_str = data["categories"].astype(str)
+    # Categories may be stored as lists (YAML) or strings (Excel). Normalise
+    # list-like values to tuples so that logically equal categories hash the
+    # same way and are detected as duplicates.
+    categories_key = data["categories"].map(
+        lambda value: tuple(value) if isinstance(value, (list, tuple)) else value
+    )
 
-    # Identify duplicates based on the original columns, but using the stringified
-    # categories
-    is_duplicated = data.assign(categories=categories_as_str).duplicated(
-        subset=["name", "categories", "amount"], keep="first"
+    is_duplicated = data.assign(_categories_key=categories_key).duplicated(
+        subset=["name", "_categories_key", "amount"], keep="first"
     )
 
     duplicates = data[is_duplicated]
@@ -261,13 +267,13 @@ def _remove_duplicates(data: pd.DataFrame, filename: str) -> pd.DataFrame:
     return clean_data
 
 
-def file_exists(filepath: str) -> bool:
+def file_exists(filepath: str | Path) -> bool:
     "Check if file exists in passed filepath."
     if not Path(filepath).is_file():
         raise FileNotFoundError(f"{filepath} does not exist.")
     return True
 
 
-def make_dir(dirpath: str) -> None:
+def make_dir(dirpath: str | Path) -> None:
     "Make missing directory(ies)."
     Path(dirpath).mkdir(parents=True, exist_ok=True)

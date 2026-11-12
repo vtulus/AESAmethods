@@ -40,7 +40,7 @@ def solve_lca(activities: list, methods: list) -> pd.DataFrame:
                 )
             )
     to_return = pd.DataFrame(
-        results, columns=["Name", "Location", "Method", "Score", "Unit"]
+        results, columns=pd.Index(["Name", "Location", "Method", "Score", "Unit"])
     )
     to_return = pd.pivot_table(
         to_return,

@@ -41,7 +41,7 @@ This project follows [Keep a Changelog](https://keepachangelog.com/) format.
 
 - Add notebooks with use examples
 
-- - ---
+---
 
 - Sync `premise`-based branch with this version (v0.8.8+premise)
 
@@ -50,7 +50,7 @@ This project follows [Keep a Changelog](https://keepachangelog.com/) format.
 - Add usage and installation instructions to README
 - Add **method for quantification of direct N fixation**
 
-- - ---
+---
 
 - Sync `premise`-based branch with this version (v0.8.7+premise)
 
@@ -61,7 +61,7 @@ This project follows [Keep a Changelog](https://keepachangelog.com/) format.
   - direct land use
   - CO2eq emissions
 
-- - ---
+---
 
 - Sync `premise`-based branch with this version (v0.8.6+premise)
 
@@ -90,7 +90,7 @@ Change/Add CFs of **FWU method**:
 - Add strategies to generate "subcategories" for **CBI method**
 - Add strategy `add_subcategory_methane_air` for **CBI method**
 
-- - ---
+---
 
 - Add branch for `premise`-based version of the AESA methods
   - Add CFs for specific CO2 flows to account for NETs, see e44988eeba336

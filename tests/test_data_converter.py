@@ -1,4 +1,6 @@
 import os
+from pathlib import Path
+
 import pandas as pd
 import pytest
 import yaml
@@ -105,3 +107,22 @@ def test_to_excel(create_test_files, tmp_path):
 
     df = pd.read_excel(output_file)
     assert len(df) == 2
+
+
+def test_to_excel_default_output(create_test_files):
+    """Test that to_excel writes next to the input when no path is given."""
+    converter = DataConverter(create_test_files["yaml"])
+    converter.to_excel(verbose=False)
+    expected = Path(create_test_files["yaml"]).with_suffix(".xlsx")
+    assert expected.exists()
+
+
+def test_handle_duplicate_list_categories(tmp_path):
+    """Test that list-valued categories are deduplicated correctly."""
+    yaml_file = tmp_path / "duplicate_list.yaml"
+    yaml_file.write_text(
+        "- name: flow1\n  categories: [cat1, cat2]\n  amount: 1.0\n"
+        "- name: flow1\n  categories: [cat1, cat2]\n  amount: 1.0\n"
+    )
+    converter = DataConverter(str(yaml_file))
+    assert len(converter.data) == 1

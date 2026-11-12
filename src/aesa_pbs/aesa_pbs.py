@@ -1,4 +1,5 @@
 import functools
+import importlib.resources as importlib_resources
 import json
 import shutil
 import tempfile
@@ -11,12 +12,6 @@ from prettytable import PrettyTable
 from .biosphere import get_biosphere_database
 from .data_converter import DataConverter
 from . import __version__
-
-try:
-    import importlib.resources as importlib_resources
-except ImportError:
-    # Python < 3.7
-    import importlib_resources
 
 
 # write_methods() does not write metadata other than "description",

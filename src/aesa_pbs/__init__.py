@@ -8,7 +8,11 @@ __all__ = [
     "DataConverter",
 ]
 
-__version__ = importlib.metadata.version("aesa_pbs")
+try:
+    __version__ = importlib.metadata.version("aesa_pbs")
+except importlib.metadata.PackageNotFoundError:  # pragma: no cover
+    # Package is used from a source checkout without being installed.
+    __version__ = "0.0.0"
 
 from .aesa_pbs import add_aesa_pbs
 from .n_direct_fixation import (
