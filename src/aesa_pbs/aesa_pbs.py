@@ -1,5 +1,7 @@
 import functools
 import json
+import shutil
+import tempfile
 from pathlib import Path
 
 import brightway2 as bw
@@ -10,8 +12,11 @@ from .biosphere import get_biosphere_database
 from .data_converter import DataConverter
 from . import __version__
 
-DATA_DIR = Path(__file__).resolve().parent / "data"
-DATA_EXCELS = Path(DATA_DIR).resolve() / "excels"
+try:
+    import importlib.resources as importlib_resources
+except ImportError:
+    # Python < 3.7
+    import importlib_resources
 
 
 # write_methods() does not write metadata other than "description",
@@ -302,77 +307,83 @@ def add_aesa_pbs(verbose=True):
         ),
     }
 
-    for cat in categories:
-        generate_excel_from_yaml(
-            filepath=Path(str(DATA_DIR) + f"/{cat[-1]}").with_suffix(".yaml")
-        )
+    temp_dir = tempfile.mkdtemp()
+    try:
+        for cat in categories:
+            yaml_filename = Path(cat[-1]).with_suffix(".yaml").name
+            with importlib_resources.path("aesa_pbs.data", yaml_filename) as yaml_path:
+                generate_excel_from_yaml(filepath=str(yaml_path), outdir=temp_dir)
 
-    for cat in categories:
-        print(f"Adding {cat[0]}")
-        method = ExcelLCIAImporter(
-            filepath=DATA_EXCELS / cat[-1],
-            name=cat[0],
-            unit=cat[1],
-            description=cat[2],
-            filename=cat[-1],
-        )
-
-        # flows of the method for directly fixated nitrogen may not be linked
-        # because of the missing database `A_technosphere_flows`
-        if all(
-            map(
-                lambda item: item in str(cat[0]).lower(),
-                ["nitrogen", "directly fixated"],
+        for cat in categories:
+            print(f"Adding {cat[0]}")
+            excel_path = Path(temp_dir) / cat[-1]
+            method = ExcelLCIAImporter(
+                filepath=excel_path,
+                name=cat[0],
+                unit=cat[1],
+                description=cat[2],
+                filename=cat[-1],
             )
-        ):
-            if "A_technosphere_flows" not in bw.databases:
-                # throw a warning and install the missing database
-                warning_directly_fixated_n()
-                # write new database
-                bw.Database("A_technosphere_flows").write(
-                    {
-                        ("A_technosphere_flows", "n-fert"): {  # (db name, code)
-                            "name": "nitrogen fertilizer",
-                            "unit": "kilogram",
-                            "type": "inventory flow",
-                            "categories": ("inventory",),
-                        }
-                    }
+
+            # flows of the method for directly fixated nitrogen may not be linked
+            # because of the missing database `A_technosphere_flows`
+            if all(
+                map(
+                    lambda item: item in str(cat[0]).lower(),
+                    ["nitrogen", "directly fixated"],
                 )
-            # apply strategies
-            method.apply_strategies(
-                method.strategies
-                + [
-                    drop_empty_lines,
-                    functools.partial(
-                        strategies.link_iterable_by_fields,
-                        other=bw.Database("A_technosphere_flows"),
-                        kind="biosphere",
-                        fields=("name", "categories"),
-                    ),
-                ],
-                verbose=verbose,
-            )
-        else:
-            # apply strategies
-            method.apply_strategies(
-                method.strategies + [drop_empty_lines], verbose=verbose
+            ):
+                if "A_technosphere_flows" not in bw.databases:
+                    # throw a warning and install the missing database
+                    warning_directly_fixated_n()
+                    # write new database
+                    bw.Database("A_technosphere_flows").write(
+                        {
+                            ("A_technosphere_flows", "n-fert"): {  # (db name, code)
+                                "name": "nitrogen fertilizer",
+                                "unit": "kilogram",
+                                "type": "inventory flow",
+                                "categories": ("inventory",),
+                            }
+                        }
+                    )
+                # apply strategies
+                method.apply_strategies(
+                    method.strategies
+                    + [
+                        drop_empty_lines,
+                        functools.partial(
+                            strategies.link_iterable_by_fields,
+                            other=bw.Database("A_technosphere_flows"),
+                            kind="biosphere",
+                            fields=("name", "categories"),
+                        ),
+                    ],
+                    verbose=verbose,
+                )
+            else:
+                # apply strategies
+                method.apply_strategies(
+                    method.strategies + [drop_empty_lines], verbose=verbose
+                )
+
+            # confirm that everything is correctly linked
+            assert len(list(method.unlinked)) == 0, (
+                f"{cat[0]} method contains unlinked flows; "
+                "method could not be installed."
             )
 
-        # confirm that everything is correctly linked
-        assert len(list(method.unlinked)) == 0, (
-            f"{cat[0]} method contains unlinked flows. Method could not be installed."
-        )
-
-        # write method
-        method.write_methods(overwrite=True, verbose=verbose)
-        if verbose:
-            print("")
+            # write method
+            method.write_methods(overwrite=True, verbose=verbose)
+            if verbose:
+                print("")
+    finally:
+        shutil.rmtree(temp_dir)
 
 
 # def get_changelog():
 #     """Get changelog information from CHANGELOG.md
-
+#
 #     Returns
 #     -------
 #     str
@@ -432,13 +443,16 @@ def warning_directly_fixated_n() -> None:
     print(message)
 
 
-def generate_excel_from_yaml(filepath: str) -> None:
+def generate_excel_from_yaml(filepath: str, outdir: str) -> None:
     """Generate xlsx file from yaml file.
 
     Parameters
     ----------
     filepath : str
         Absolute path to a file for conversion
+    outdir : str
+        Absolute path to the output directory
     """
     convert = DataConverter(filepath)
-    convert.to_excel(verbose=False)
+    output_filepath = Path(outdir) / (Path(filepath).stem + ".xlsx")
+    convert.to_excel(outfilepath=output_filepath, verbose=False)
