@@ -27,7 +27,7 @@ def test_version_is_available():
 
 
 def test_generate_excel_from_yaml(tmp_path):
-    """Test that a packaged YAML file is converted to Excel in the output dir."""
+    """A packaged YAML file is converted to Excel in the output dir."""
     with importlib.resources.path(
         "aesa_pbs.data", "aesa_FreshwaterUse_Global.yaml"
     ) as yaml_path:
@@ -175,9 +175,10 @@ def test_add_aesa_pbs_links_directly_fixated_nitrogen(aesa_methods):
     )
     assert method in bw.methods
 
-    exchanges = bw.Method(method).load()
+    # Method.load() stores node IDs; iterating the Method resolves IDs to nodes.
+    exchanges = list(bw.Method(method))
     assert exchanges
-    assert all(exchange[0][0] == "A_technosphere_flows" for exchange in exchanges)
+    assert all(exchange[0].key[0] == "A_technosphere_flows" for exchange in exchanges)
 
 
 def test_add_aesa_pbs_runs_on_existing_flow_database(biosphere):
