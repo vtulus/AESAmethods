@@ -17,6 +17,9 @@ identifiers:
   - type: doi
     value: 10.5281/zenodo.7575887
     description: DOI of release v0.9.0
+  - type: doi
+    value: 10.5281/zenodo.XXXXXXX
+    description: DOI of release v0.11.0 (pending)
 repository-code: 'https://github.com/vtulus/AESAmethods'
 abstract: >-
   Brightway implementation of Absolute Environmental
@@ -26,19 +29,19 @@ keywords:
   - LCA
   - PB
 license: BSD-3-Clause
-version: 0.9.0
-date-released: '2023-01-27'
+version: 0.11.0
+date-released: '2026-11-13'
 preferred-citation:
   authors:
     - family-names: Tulus
       given-names: Victor
-  title: Implementation of AESA methods for Brightway2 (v0.9.0) 
+  title: Implementation of AESA methods for Brightway2 (v0.11.0) 
   type: software
-  date-released: '2023-01-27'
+  date-released: '2026-11-13'
   identifiers:
     - type: doi
-      value: 10.5281/zenodo.7575887
-      description: DOI of release v0.9.0
+      value: 10.5281/zenodo.XXXXXXX
+      description: DOI of release v0.11.0 (pending)
 references:
   - authors:
       - family-names: Ryberg
