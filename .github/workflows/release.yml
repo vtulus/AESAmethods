@@ -37,12 +37,23 @@ jobs:
             exit 1
           fi
           echo "project_version=$PROJECT_VERSION" >> $GITHUB_OUTPUT
+      - name: Check package exists on PyPI
+        id: pypi_check
+        run: |
+          PROJECT_NAME=$(grep '^name = ' pyproject.toml | cut -d'"' -f2)
+          if curl -sf "https://pypi.org/pypi/$PROJECT_NAME/json" > /dev/null; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
       - name: Check version is higher than PyPI
+        if: steps.pypi_check.outputs.exists == 'true'
         uses: maybe-hello-world/pyproject-check-version@v4
         id: versioncheck
         with:
           pyproject-path: "./pyproject.toml"
       - name: Verify version bump
+        if: steps.pypi_check.outputs.exists == 'true'
         run: |
           echo "Local version: ${{ steps.versioncheck.outputs.local_version }}"
           echo "Public version: ${{ steps.versioncheck.outputs.public_version }}"
@@ -51,6 +62,10 @@ jobs:
             echo "ERROR: Local version must be higher than published version on PyPI"
             exit 1
           fi
+      - name: Skip PyPI version check (first release)
+        if: steps.pypi_check.outputs.exists == 'false'
+        run: |
+          echo "Package not found on PyPI, skipping version comparison (first release)"
 
   build:
     needs:
