@@ -218,7 +218,8 @@ def add_aesa_pbs(verbose=True):
                 generate_excel_from_yaml(filepath=str(yaml_path), outdir=temp_dir)
 
         for spec in methods:
-            print(f"Adding {spec.full_name()}")
+            if verbose:
+                print(f"Adding {spec.full_name()}")
             excel_path = Path(temp_dir) / spec.filename
             method = ExcelLCIAImporter(
                 filepath=excel_path,
@@ -315,7 +316,7 @@ def drop_empty_lines(data):
     Returns modified data
     """
     for method in data:
-        method["exchanges"] = [obj for obj in method["exchanges"] if obj["name"]]
+        method["exchanges"] = [obj for obj in method["exchanges"] if obj.get("name")]
     return data
 
 

@@ -20,7 +20,7 @@ def get_nitrogenous_fertilizers(db_name: str) -> list:
     """
     list_to_return = []
     for act in bw.Database(db_name):
-        for classification in act["classifications"]:
+        for classification in act.get("classifications", []):
             if "cpc" in classification[0].lower() and classification[1].startswith(
                 "3461"
             ):
