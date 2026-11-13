@@ -4,6 +4,8 @@ This project follows [Keep a Changelog](https://keepachangelog.com/) format.
 
 ## [Unreleased]
 
+## 0.11.0 (2026-11-13)
+
 ### Added
 
 - Automated release workflow via GitHub Actions (`.github/workflows/release.yml`)
@@ -12,6 +14,12 @@ This project follows [Keep a Changelog](https://keepachangelog.com/) format.
   - Granular permissions: workflow-level `contents: read`, release job `contents: write`
   - Build with `uv` and upload artifacts to GitHub Release
 - `CONTRIBUTING.md` with development setup, code style, and release process for maintainers
+- MethodSpec dataclass for method metadata in `aesa_pbs` (9e7622d)
+- Continuous integration workflow (`.github/workflows/ci.yml`) running ruff linting,
+  formatting checks, and the test suite on pushes and pull requests
+- Test suite (`tests/`) covering `DataConverter`, `add_aesa_pbs`, the nitrogen fertiliser
+  helpers, and `solve_lca`; Brightway tests run in throw-away projects, with a 90%
+  coverage gate in `pyproject.toml`
 
 ### Changed
 
@@ -20,6 +28,18 @@ This project follows [Keep a Changelog](https://keepachangelog.com/) format.
 - Style: apply pre-commit formatting (markdownlint + ruff) (bd7a925)
 - Docs: add documentation for agent skills and workflows (ad24b51)
 - Chore: expand pre-commit linting and formatting hooks (19e5175)
+- Refactor: improve type safety and data handling in core (bb6ee8f)
+- Style: reformat code and cleanup notebooks (e4e315b)
+- Chore: remove notebook exclusion from ruff-format (33c5060)
+- Docs: update project documentation and contribution guidelines (145a6eb)
+- Docs: add development commands and testing instructions for agents (04e7c44)
+
+### Fixed
+
+- `add_aesa_pbs(verbose=False)` no longer prints the per-method "Adding ..." lines
+- `drop_empty_lines` ignores exchanges without a `name` instead of raising `KeyError`
+- `get_nitrogenous_fertilizers` ignores activities without `classifications` instead of
+  raising `KeyError`
 
 ## 0.10.0 (2025-11-18)
 

@@ -11,7 +11,7 @@ resolution-markers = [
 
 [[package]]
 name = "aesa-pbs"
-version = "0.10.0"
+version = "0.11.0"
 source = { editable = "." }
 dependencies = [
     { name = "brightway2" },
