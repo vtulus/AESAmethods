@@ -1,0 +1,7 @@
+- name: Nitrate
+  categories: water::surface water
+  amount: 5.51e-09
+
+- name: Nitrogen
+  categories: water::surface water
+  amount: 2.44e-08
