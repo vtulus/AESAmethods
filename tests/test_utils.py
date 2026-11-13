@@ -84,12 +84,11 @@ def _first_characterised_flow(method, biosphere):
     """Return the biosphere flow characterised by the method's first CF."""
     import brightway2 as bw
 
-    for key, amount in bw.Method(method).load():
-        if key[0] != "biosphere3":
-            continue
-        activity = bd.Database("biosphere3").get(key[1])
-        if activity is not None:
-            return activity, amount
+    # Method.load() stores integer node IDs; Method iteration resolves IDs
+    # to Brightway node objects, whose keys provide the database and code.
+    for flow, amount in bw.Method(method):
+        if flow.key[0] == "biosphere3":
+            return flow, amount
     raise LookupError(f"No characterised flow found for {method}")
 
 
