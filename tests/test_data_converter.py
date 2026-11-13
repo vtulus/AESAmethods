@@ -126,3 +126,44 @@ def test_handle_duplicate_list_categories(tmp_path):
     )
     converter = DataConverter(str(yaml_file))
     assert len(converter.data) == 1
+
+
+def test_to_yaml_default_output(create_test_files):
+    """Test that to_yaml writes next to the input when no path is given."""
+    converter = DataConverter(create_test_files["yaml"])
+    converter.to_yaml(verbose=False)
+
+    expected = Path(create_test_files["yaml"]).with_suffix(".yaml")
+    assert expected.exists()
+
+    with open(expected) as file:
+        assert len(yaml.safe_load(file)) == 2
+
+
+def test_data_without_valid_rows_raises(tmp_path):
+    """A file whose rows are all incomplete is rejected."""
+    yaml_file = tmp_path / "empty.yaml"
+    yaml_file.write_text("- name: flow1\n  categories: [cat1]\n")
+
+    with pytest.raises(ValueError, match="is not valid"):
+        DataConverter(str(yaml_file))
+
+
+def test_missing_file_raises():
+    """Reading a file that does not exist raises FileNotFoundError."""
+    with pytest.raises(FileNotFoundError):
+        DataConverter("does-not-exist.yaml")
+
+
+def test_missing_data_is_logged(create_test_files, caplog):
+    """Dropping incomplete rows is reported as a warning."""
+    DataConverter(create_test_files["missing"])
+
+    assert "Some data is missing" in caplog.text
+
+
+def test_duplicate_data_is_logged(create_test_files, caplog):
+    """Dropping duplicated rows is reported as a warning."""
+    DataConverter(create_test_files["duplicate"])
+
+    assert "Duplicated flows found" in caplog.text
