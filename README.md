@@ -1,15 +1,5 @@
 # AESA methods implemented for use in [Brightway](https://github.com/brightway-lca/brightway2)
 
-- [AESA methods implemented for use in Brightway](#aesa-methods-implemented-for-use-in-brightway)
-  - [Implemented methods and impact categories](#implemented-methods-and-impact-categories)
-    - [AESA (PBs-LCIA)](#aesa-pbs-lcia)
-      - [Changelog](#changelog)
-  - [Usage](#usage)
-  - [Installation](#installation)
-  - [References](#references)
-  - [Maintainer](#maintainer)
-  - [License](#license)
-
 ## Implemented methods and impact categories
 
 ### AESA (PBs-LCIA)
@@ -46,8 +36,6 @@ See [CHANGELOG](CHANGELOG.md)
 import brightway2 as bw
 import aesa_pbs
 
-aesa_pbs.__version__  # optionally check current version
-
 # open an existing bw project or create a new one
 bw.projects.set_current("<YOUR-PROJECT-NAME>")
 
@@ -63,26 +51,24 @@ nflow_activities = aesa_pbs.get_nitrogenous_fertilizers("<DATABASE-NAME>")
 aesa_pbs.update_nitrogen_fertilizer_exchanges(nflow_activities, show_updated=True)
 ```
 
-See [example](notebooks/examples/how-to-use-aesa-methods.ipynb) for more detailed explanation of the usage.
+See [example notebook](notebooks/examples/how-to-use-aesa-methods.ipynb) for detailed usage.
 
 ## Installation
 
-Currently this package can be only installed locally.  
-To do so one option can be:
-
-1. Download the zip file of the package
-2. Un-zip to a folder on your machine (copy path to folder)
-3. Open CLI:
-
 ```bash
-# in the activated environment
-pip install "<PATH-TO-PACKAGE-FOLDER>"
-# Note: if pip<21.3, use `--use-feature=in-tree-build` flag
+# from PyPI (recommended)
+pip install aesa-pbs
+
+# or with uv
+uv add aesa-pbs
+
+# for development
+uv pip install -e .
 ```
 
 ## References
 
-[Ryberg, M. W.; Owsianiak, M.; Richardson, K.; Hauschild, M. Z.](https://doi.org/10.1016/j.ecolind.2017.12.065) developed CFs for the following categories of AESA (PBs-LCIA): "climate change", "ozone depletion", "ocean acidification", "biogeochemical flows", "land-system change" and "freshwater use".  
+[Ryberg, M. W.; Owsianiak, M.; Richardson, K.; Hauschild, M. Z.](https://doi.org/10.1016/j.ecolind.2017.12.065) developed CFs for the following categories of AESA (PBs-LCIA): "climate change", "ozone depletion", "ocean acidification", "biogeochemical flows", "land-system change" and "freshwater use".
 [Galán-Martín, Á.; Tulus, V.; Díaz, I.; Pozo, C.; Pérez-Ramírez, J.; Guillén-Gosálbez, G.](https://doi.org/10.1016/j.oneear.2021.04.001) developed CFs for "change in biosphere integrity, functional diversity" of AESA (PBs-LCIA)
 
 ## Maintainer

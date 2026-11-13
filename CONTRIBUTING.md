@@ -24,58 +24,45 @@ uv run pytest
 
 ## Code Style
 
-This project uses `ruff` for linting and formatting:
+This project uses `ruff` for linting and formatting via `pre-commit`:
 
 ```bash
-# Check for issues
-uv run ruff check .
-
-# Auto-fix issues
-uv run ruff check . --fix
-
-# Format code
-uv run ruff format .
+# Run all checks (lint + format)
+uv run pre-commit run --all-files
 ```
 
 Pre-commit hooks are configured to run automatically on commit.
 
-## Release Process (for maintainers)
+## Contribution Workflow
 
-Releases are automated via GitHub Actions. This project uses the [Keep a Changelog](https://keepachangelog.com/) format with an `[Unreleased]` section.
+This project uses a **trunk-based development** model:
 
-To create a new release:
-
-1. **Update the version** in `pyproject.toml` (e.g., `version = "0.11.0"`)
-2. **Move changes from `[Unreleased]` to a new versioned section** in `CHANGELOG.md`:
-
-   ```markdown
-   ## 0.11.0 (2026-11-13)
-
-   ### Added
-   - New feature description
-
-   ### Changed
-   - Change description
-   ```
-
-   Leave an empty `[Unreleased]` section for the next development cycle.
-   The changelog entry **must** be present for the release workflow to succeed.
-3. **Commit and tag**:
+1. **Branch** from `main` for each feature/fix:
 
    ```bash
-   git add pyproject.toml CHANGELOG.md
-   git commit -m "Release 0.11.0"
-   git tag v0.11.0
-   git push origin main --tags
+   git checkout main
+   git pull
+   git checkout -b my-feature
    ```
 
-4. The workflow will:
-   - Validate the tag matches `pyproject.toml` version
-   - Verify version is higher than published on PyPI
-   - Run tests
-   - Build the package
-   - Create a GitHub Release with changelog notes from `CHANGELOG.md`
-   - Publish to PyPI (if configured)
+2. **Develop** with small, focused commits. Run checks locally:
+
+   ```bash
+   uv run pytest
+   uv run pre-commit run --all-files
+   ```
+
+3. **Open a Pull Request** against `main`. CI runs automatically.
+
+4. **Squash merge** after review and passing CI.
+
+5. **Delete** the feature branch after merge.
+
+No long-lived `develop` branch — `main` is always deployable.
+
+## Release Process
+
+Maintainers: see [RELEASE.md](RELEASE.md).
 
 ## Reporting Issues
 
