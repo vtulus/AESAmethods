@@ -3,6 +3,7 @@ import importlib.resources as importlib_resources
 import json
 import shutil
 import tempfile
+from dataclasses import dataclass
 from pathlib import Path
 
 import brightway2 as bw
@@ -12,6 +13,31 @@ from prettytable import PrettyTable
 from .biosphere import get_biosphere_database
 from .data_converter import DataConverter
 from . import __version__
+
+
+@dataclass(frozen=True, slots=True)
+class MethodSpec:
+    name_parts: tuple[str, ...]
+    unit: str
+    overview: str
+    authors: str
+    doi: str | None
+    filename: str
+
+    def description(self) -> str:
+        return json.dumps(
+            {
+                "overview": self.overview,
+                "authors": self.authors,
+                "doi": self.doi,
+                "current_version": "v" + __version__,
+                "changelog": CHANGELOG,
+                "implemented_by": MAINTAINER,
+            }
+        )
+
+    def full_name(self) -> tuple[str, ...]:
+        return ("AESA (PBs-LCIA)", str(__version__), *self.name_parts)
 
 
 # write_methods() does not write metadata other than "description",
@@ -62,269 +88,151 @@ def add_aesa_pbs(verbose=True):
     #  implemented_by: author implemented}
     # filename: excel file with categories
 
-    categories = {
-        (
-            (
-                "AESA (PBs-LCIA)",
-                str(__version__),
-                "climate change",
-                "atmospheric CO2 concentration",
-            ),
-            "ppm",
-            json.dumps(
-                {
-                    "overview": "",
-                    "authors": RYBERG_ET_AL,
-                    "doi": DOI_RYBERG,
-                    "current_version": "v" + __version__,
-                    "changelog": CHANGELOG,
-                    "implemented_by": MAINTAINER,
-                }
-            ),
-            "aesa_ClimateChange_AtmosphericCO2Concentration.xlsx",
+    methods: list[MethodSpec] = [
+        MethodSpec(
+            name_parts=("climate change", "atmospheric CO2 concentration"),
+            unit="ppm",
+            overview="",
+            authors=RYBERG_ET_AL,
+            doi=DOI_RYBERG,
+            filename="aesa_ClimateChange_AtmosphericCO2Concentration.xlsx",
         ),
-        (
-            (
-                "AESA (PBs-LCIA)",
-                str(__version__),
-                "climate change",
-                "energy imbalance at top-of-atmosphere",
-            ),
-            "Wm-2",
-            json.dumps(
-                {
-                    "overview": "",
-                    "authors": RYBERG_ET_AL,
-                    "doi": DOI_RYBERG,
-                    "current_version": "v" + __version__,
-                    "changelog": CHANGELOG,
-                    "implemented_by": MAINTAINER,
-                }
-            ),
-            "aesa_ClimateChange_EnergyImbalance.xlsx",
+        MethodSpec(
+            name_parts=("climate change", "energy imbalance at top-of-atmosphere"),
+            unit="Wm-2",
+            overview="",
+            authors=RYBERG_ET_AL,
+            doi=DOI_RYBERG,
+            filename="aesa_ClimateChange_EnergyImbalance.xlsx",
         ),
-        (
-            (
-                "AESA (PBs-LCIA)",
-                str(__version__),
-                "ozone depletion",
-                "stratospheric O3 concentration",
-            ),
-            "Dobson unit",
-            json.dumps(
-                {
-                    "overview": "",
-                    "authors": RYBERG_ET_AL,
-                    "doi": DOI_RYBERG,
-                    "current_version": "v" + __version__,
-                    "changelog": CHANGELOG,
-                    "implemented_by": MAINTAINER,
-                }
-            ),
-            "aesa_OzoneDepletion_StratosphericO3Concentration.xlsx",
+        MethodSpec(
+            name_parts=("ozone depletion", "stratospheric O3 concentration"),
+            unit="Dobson unit",
+            overview="",
+            authors=RYBERG_ET_AL,
+            doi=DOI_RYBERG,
+            filename="aesa_OzoneDepletion_StratosphericO3Concentration.xlsx",
         ),
-        (
-            (
-                "AESA (PBs-LCIA)",
-                str(__version__),
-                "ocean acidification",
-                "carbonate ion concentration",
-            ),
-            "omega aragonite",
-            json.dumps(
-                {
-                    "overview": "",
-                    "authors": RYBERG_ET_AL,
-                    "doi": DOI_RYBERG,
-                    "current_version": "v" + __version__,
-                    "changelog": CHANGELOG,
-                    "implemented_by": MAINTAINER,
-                }
-            ),
-            "aesa_OceanAcidification_CarbontateIonConcentration.xlsx",
+        MethodSpec(
+            name_parts=("ocean acidification", "carbonate ion concentration"),
+            unit="omega aragonite",
+            overview="",
+            authors=RYBERG_ET_AL,
+            doi=DOI_RYBERG,
+            filename="aesa_OceanAcidification_CarbontateIonConcentration.xlsx",
         ),
-        (
-            ("AESA (PBs-LCIA)", str(__version__), "biogeochemical flows", "phosphorus"),
-            "Tg P",
-            json.dumps(
-                {
-                    "overview": "P flow from freshwater systems into the ocean",
-                    "authors": RYBERG_ET_AL,
-                    "doi": DOI_RYBERG,
-                    "current_version": "v" + __version__,
-                    "changelog": CHANGELOG,
-                    "implemented_by": MAINTAINER,
-                }
-            ),
-            "aesa_BiogeochemicalFlows_P.xlsx",
+        MethodSpec(
+            name_parts=("biogeochemical flows", "phosphorus"),
+            unit="Tg P",
+            overview="P flow from freshwater systems into the ocean",
+            authors=RYBERG_ET_AL,
+            doi=DOI_RYBERG,
+            filename="aesa_BiogeochemicalFlows_P.xlsx",
         ),
-        (
-            (
-                "AESA (PBs-LCIA)",
-                str(__version__),
+        MethodSpec(
+            name_parts=(
                 "biogeochemical flows",
                 "nitrogen",
                 "inverse modelling, surface water",
             ),
-            "Tg N",
-            json.dumps(
-                {
-                    "overview": "industrial and intentional biological fixation of N",
-                    "authors": RYBERG_ET_AL,
-                    "doi": DOI_RYBERG,
-                    "current_version": "v" + __version__,
-                    "changelog": CHANGELOG,
-                    "implemented_by": MAINTAINER,
-                }
-            ),
-            "aesa_BiogeochemicalFlows_N_inverseModelling_surfaceWater.xlsx",
+            unit="Tg N",
+            overview="industrial and intentional biological fixation of N",
+            authors=RYBERG_ET_AL,
+            doi=DOI_RYBERG,
+            filename="aesa_BiogeochemicalFlows_N_inverseModelling_surfaceWater.xlsx",
         ),
-        (
-            (
-                "AESA (PBs-LCIA)",
-                str(__version__),
+        MethodSpec(
+            name_parts=(
                 "biogeochemical flows",
                 "nitrogen",
                 "directly fixated",
             ),
-            "Tg N",
-            json.dumps(
-                {
-                    "overview": (
-                        "direct quantification of industrial and intentional"
-                        " biological fixation of N fertilizer"
-                    ),
-                    "authors": MAINTAINER,
-                    "doi": None,
-                    "current_version": "v" + __version__,
-                    "changelog": CHANGELOG,
-                    "implemented_by": MAINTAINER,
-                }
+            unit="Tg N",
+            overview=(
+                "direct quantification of industrial and intentional"
+                " biological fixation of N fertilizer"
             ),
-            "aesa_BiogeochemicalFlows_N_directlyFixated.xlsx",
+            authors=MAINTAINER,
+            doi=None,
+            filename="aesa_BiogeochemicalFlows_N_directlyFixated.xlsx",
         ),
-        (
-            ("AESA (PBs-LCIA)", str(__version__), "land-system change", "global"),
-            "% forested land",
-            json.dumps(
-                {
-                    "overview": (
-                        "Unit: area of forested land as % of original forest cover"
-                    ),
-                    "authors": RYBERG_ET_AL,
-                    "doi": DOI_RYBERG,
-                    "current_version": "v" + __version__,
-                    "changelog": CHANGELOG,
-                    "implemented_by": MAINTAINER,
-                }
-            ),
-            "aesa_LandSystemChange_Global.xlsx",
+        MethodSpec(
+            name_parts=("land-system change", "global"),
+            unit="% forested land",
+            overview="Unit: area of forested land as % of original forest cover",
+            authors=RYBERG_ET_AL,
+            doi=DOI_RYBERG,
+            filename="aesa_LandSystemChange_Global.xlsx",
         ),
-        (
-            ("AESA (PBs-LCIA)", str(__version__), "freshwater use", "global"),
-            "km3",
-            json.dumps(
-                {
-                    "overview": (
-                        "Unit: Maximum amount of consumptive blue water use per year"
-                    ),
-                    "authors": RYBERG_ET_AL,
-                    "doi": DOI_RYBERG,
-                    "current_version": "v" + __version__,
-                    "changelog": CHANGELOG,
-                    "implemented_by": MAINTAINER,
-                }
-            ),
-            "aesa_FreshwaterUse_Global.xlsx",
+        MethodSpec(
+            name_parts=("freshwater use", "global"),
+            unit="km3",
+            overview="Unit: Maximum amount of consumptive blue water use per year",
+            authors=RYBERG_ET_AL,
+            doi=DOI_RYBERG,
+            filename="aesa_FreshwaterUse_Global.xlsx",
         ),
-        (
-            (
-                "AESA (PBs-LCIA)",
-                str(__version__),
+        MethodSpec(
+            name_parts=(
                 "change in biosphere integrity",
                 "functional diversity",
                 "total",
             ),
-            "% BII loss",
-            json.dumps(
-                {
-                    "overview": "Unit: % of Biosphere Intactness Index loss",
-                    "authors": GALAN_ET_AL,
-                    "doi": DOI_GALAN,
-                    "current_version": "v" + __version__,
-                    "changelog": CHANGELOG,
-                    "implemented_by": MAINTAINER,
-                }
-            ),
-            "aesa_ChangeBiosphereIntegrity_FunctionalDiversity_Hierarchist.xlsx",
+            unit="% BII loss",
+            overview="Unit: % of Biosphere Intactness Index loss",
+            authors=GALAN_ET_AL,
+            doi=DOI_GALAN,
+            filename="aesa_ChangeBiosphereIntegrity_FunctionalDiversity_Hierarchist.xlsx",
         ),
-        (
-            (
-                "AESA (PBs-LCIA)",
-                str(__version__),
+        MethodSpec(
+            name_parts=(
                 "change in biosphere integrity",
                 "functional diversity",
                 "direct land use",
             ),
-            "% BII loss",
-            json.dumps(
-                {
-                    "overview": "Unit: % of Biosphere Intactness Index loss",
-                    "authors": GALAN_ET_AL,
-                    "doi": DOI_GALAN,
-                    "current_version": "v" + __version__,
-                    "changelog": CHANGELOG,
-                    "implemented_by": MAINTAINER,
-                }
-            ),
-            "aesa_ChangeBiosphereIntegrity_FunctionalDiversity_Hierarchist_land_use.xlsx",
+            unit="% BII loss",
+            overview="Unit: % of Biosphere Intactness Index loss",
+            authors=GALAN_ET_AL,
+            doi=DOI_GALAN,
+            filename="aesa_ChangeBiosphereIntegrity_FunctionalDiversity_Hierarchist_land_use.xlsx",
         ),
-        (
-            (
-                "AESA (PBs-LCIA)",
-                str(__version__),
+        MethodSpec(
+            name_parts=(
                 "change in biosphere integrity",
                 "functional diversity",
                 "CO2eq emissions",
             ),
-            "% BII loss",
-            json.dumps(
-                {
-                    "overview": "Unit: % of Biosphere Intactness Index loss",
-                    "authors": GALAN_ET_AL,
-                    "doi": DOI_GALAN,
-                    "current_version": "v" + __version__,
-                    "changelog": CHANGELOG,
-                    "implemented_by": MAINTAINER,
-                }
-            ),
-            "aesa_ChangeBiosphereIntegrity_FunctionalDiversity_Hierarchist_CO2eq_emissions.xlsx",
+            unit="% BII loss",
+            overview="Unit: % of Biosphere Intactness Index loss",
+            authors=GALAN_ET_AL,
+            doi=DOI_GALAN,
+            filename="aesa_ChangeBiosphereIntegrity_FunctionalDiversity_Hierarchist_CO2eq_emissions.xlsx",
         ),
-    }
+    ]
 
     temp_dir = tempfile.mkdtemp()
     try:
-        for cat in categories:
-            yaml_filename = Path(cat[-1]).with_suffix(".yaml").name
+        for spec in methods:
+            yaml_filename = Path(spec.filename).with_suffix(".yaml").name
             with importlib_resources.path("aesa_pbs.data", yaml_filename) as yaml_path:
                 generate_excel_from_yaml(filepath=str(yaml_path), outdir=temp_dir)
 
-        for cat in categories:
-            print(f"Adding {cat[0]}")
-            excel_path = Path(temp_dir) / cat[-1]
+        for spec in methods:
+            print(f"Adding {spec.full_name()}")
+            excel_path = Path(temp_dir) / spec.filename
             method = ExcelLCIAImporter(
                 filepath=excel_path,
-                name=cat[0],
-                unit=cat[1],
-                description=cat[2],
-                filename=cat[-1],
+                name=spec.full_name(),
+                unit=spec.unit,
+                description=spec.description(),
+                filename=spec.filename,
             )
 
             # flows of the method for directly fixated nitrogen may not be linked
             # because of the missing database `A_technosphere_flows`
             if all(
                 map(
-                    lambda item: item in str(cat[0]).lower(),
+                    lambda item: item in " ".join(spec.full_name()).lower(),
                     ["nitrogen", "directly fixated"],
                 )
             ):
@@ -364,7 +272,7 @@ def add_aesa_pbs(verbose=True):
 
             # confirm that everything is correctly linked
             assert len(list(method.unlinked)) == 0, (
-                f"{cat[0]} method contains unlinked flows; "
+                f"{spec.full_name()} method contains unlinked flows; "
                 "method could not be installed."
             )
 
