@@ -1,0 +1,12 @@
+name: "Setup UV"
+description: "Checkout and setup UV with cache"
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v4
+    - uses: astral-sh/setup-uv@v3
+      with:
+        version: "latest"
+        enable-cache: true
+    - run: uv sync --all-extras
+      shell: bash
